@@ -86,8 +86,8 @@
             <swiper-slide>
                 <div class="card">
                     <a href="{% url 'staff' %}#{{ member.slug }}">
-                        <div class="staff-image-container">
-                            <img height="472.98" width="354.75" src="{{ member.image.url }}" class="card-img" alt="не удалось загрузить" loading="lazy">
+                        <div class="staff-image-container" style="aspect-ratio: 3/4;">
+                            <img src="{{ member.image.url }}" class="card-img" alt="{{ member.fio }}" loading="lazy" width="354.75" height="472.98">
                         </div>
                         <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                             <p class="card-text text-white" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"><small>{{ member.roles }}</small></p>
