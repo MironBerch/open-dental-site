@@ -87,7 +87,7 @@
                 <div class="card">
                     <a href="{% url 'staff' %}#{{ member.slug }}">
                         <div class="staff-image-container">
-                            <img height="472.98" width="354.75" src="{{ member.image.url }}" class="card-img" alt="не удалось загрузить">
+                            <img height="472.98" width="354.75" src="{{ member.image.url }}" class="card-img" alt="не удалось загрузить" loading="lazy">
                         </div>
                         <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                             <p class="card-text text-white" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"><small>{{ member.roles }}</small></p>
@@ -124,7 +124,7 @@
                         <a href="{% url 'work' work.slug %}">
                             <div class="card text-bg-dark">
                                 <div class="work-image-container">
-                                    <img height="459" width="459" src="{{ work.image.url }}" class="card-img" alt="не удалось загрузить">
+                                    <img height="459" width="459" src="{{ work.image.url }}" class="card-img" alt="не удалось загрузить" loading="lazy">
                                 </div>
                                 <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                                     <p class="card-text" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">{{ work.photo_count }} фото</p>
