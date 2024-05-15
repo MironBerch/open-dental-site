@@ -180,13 +180,8 @@
                                     <p class="card-text">{{ review.name }}</p>
                                 </div>
                                 <div class="star-rating">
-                                    {% for i in "12345" %}
-                                        {% if forloop.counter <= review.rating %}
-                                            <span class="star gold">★</span>
-                                        {% else %}
-                                            <span class="star">☆</span>
-                                        {% endif %}
-                                    {% endfor %}
+                                    <span class="star gold">{{ review.get_gold_stars }}</span>
+                                    <span class="star">{{ review.get_grey_stars }}</span>
                                 </div>
                             </div>
                             <p class="card-text">{{ review.message }}</p>

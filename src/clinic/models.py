@@ -151,6 +151,12 @@ class Review(models.Model):
     def __str__(self):
         return f'{self.name} - {self.rating}'
 
+    def get_gold_stars(self) -> str:
+        return self.rating * '★'
+
+    def get_grey_stars(self):
+        return (5 - self.rating) * '☆'
+
 
 class Staff(models.Model):
     image = WebPImageField(
