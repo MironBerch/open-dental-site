@@ -4,7 +4,10 @@
 {% load django_bootstrap5 %}
 
 {% block title %}Отзывы{% endblock %}
-{% block meta %}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Отзывы об стоматологической клинике Денталия в Ломоносове." />
+{% endblock %}
 
 {% block links %}
     <link href="{% static 'css/reviews.css' %}" rel="stylesheet">

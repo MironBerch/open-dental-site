@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block title %}{{work.name}}{% endblock %}
-{% block meta %}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{work.name}}. Работники стоматологической клиники Денталия помогли пациенту." />
+{% endblock %}
 
 {% block content %}
     <style>

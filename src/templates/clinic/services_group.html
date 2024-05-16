@@ -4,7 +4,10 @@
 {% load custom_tags %}
 
 {% block title %}{{ group.name }}{% endblock %}
-{% block meta %}{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ group.name }} в стоматологической клинике Денталия в Ломоносове." />
+{% endblock %}
 
 {% block links %}
     <link href="{% static 'css/services_group.css' %}" rel="stylesheet">
