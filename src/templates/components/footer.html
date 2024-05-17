@@ -6,17 +6,17 @@
             <div class="social-links">
                 {% if contact.vk %}
                     <a href="{{ contact.vk }}" target="_blank">
-                        <img width="64" height="64" src="{% static 'svg/vk.svg' %}">
+                        <img width="64" height="64" src="{% static 'svg/vk.svg' %}" alt="группа VK">
                     </a>
                 {% endif %}
                 {% if contact.whatsapp %}
                     <a href="{{ contact.whatsapp }}" target="_blank">
-                        <img width="64" height="64" src="{% static 'svg/whatsapp.svg' %}">
+                        <img width="64" height="64" src="{% static 'svg/whatsapp.svg' %}" alt="whatsapp">
                     </a>
                 {% endif %}
                 {% if contact.tg %}
                     <a href="{{ contact.tg }}" target="_blank">
-                        <img width="64" height="64" src="{% static 'svg/telegram.svg' %}">
+                        <img width="64" height="64" src="{% static 'svg/telegram.svg' %}" alt="telegram">
                     </a>
                 {% endif %}
             </div>
@@ -27,7 +27,7 @@
             <div class="col-md-4 d-flex flex-column align-items-center mt-3">
                 {% if contact.email %}
                 <div class="d-flex flex-column align-items-center">
-                    <img width="42" height="42" src="{% static 'svg/email.svg' %}" class="mb-2">
+                    <img width="42" height="42" src="{% static 'svg/email.svg' %}" alt="" class="mb-2">
                     <div class="text-center">
                         <h5 class="mb-1">Электронный адрес</h5>
                         <a class="link-offset-2 link-underline link-underline-opacity-0" 
@@ -43,7 +43,7 @@
             <div class="col-md-4 d-flex flex-column align-items-center mt-3">
                 {% if contact.phone_numbers %}
                 <div class="d-flex flex-column align-items-center">
-                    <img width="42" height="42" src="{% static 'svg/phone.svg' %}" class="mb-2">
+                    <img width="42" height="42" src="{% static 'svg/phone.svg' %}" alt="" class="mb-2">
                     <div class="text-center">
                         <h5 class="mb-1">Телефон</h5>
                         <a class="link-offset-2 link-underline link-underline-opacity-0" 
@@ -59,7 +59,7 @@
             <div class="col-md-4 d-flex flex-column align-items-center mt-3">
                 {% if contact.opening_hours %}
                 <div class="d-flex flex-column align-items-center">
-                    <img width="42" height="42" src="{% static 'svg/watch.svg' %}" class="mb-2">
+                    <img width="42" height="42" src="{% static 'svg/watch.svg' %}" alt="" class="mb-2">
                     <div class="text-center">
                         <h5 class="mb-1">График работы</h5>
                         <span>{{ contact.opening_hours }}</span>
