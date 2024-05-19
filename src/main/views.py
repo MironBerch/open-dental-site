@@ -83,23 +83,3 @@ class SitemapView(TemplateView):
             filtered_service_groups.append(service_group) if services_by_group else None
         context['service_groups'] = filtered_service_groups
         return context
-
-
-class BadRequestView(TemplateView):
-    template_name = 'errors/400.html'
-    status_code = 400
-
-
-class PermissionDeniedView(TemplateView):
-    template_name = 'errors/403.html'
-    status_code = 403
-
-
-class PageNotFoundView(TemplateView):
-    template_name = 'errors/404.html'
-    status_code = 404
-
-
-class ServerErrorView(TemplateView):
-    template_name = 'errors/500.html'
-    status_code = 500
