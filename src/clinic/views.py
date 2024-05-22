@@ -9,7 +9,7 @@ from clinic.models import PriceGroup
 from clinic.services import (
     get_all_staff,
     get_clinic_about,
-    get_clinic_contacts,
+    get_clinic_contact,
     get_clinic_licenses,
     get_clinic_policy,
     get_group_by_slug,
@@ -55,7 +55,7 @@ class ContactsView(TemplateResponseMixin, View):
         return self.render_to_response(
             context={
                 'active_page': 'contacts',
-                'contacts': get_clinic_contacts(),
+                'contact': get_clinic_contact(),
             },
         )
 
