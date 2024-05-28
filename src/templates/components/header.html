@@ -13,30 +13,30 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <hr>
-                <ul class="navbar-nav flex-grow-1 pe-3 mt-3">
+                <ul class="navbar-nav flex-grow-1 pe-3 mt-3" style="margin-bottom: 9px;">
                     <li class="nav-item">
-                        <a href="{% url 'main' %}" class="nav-link {% if active_page == '' %}link-secondary{% else %}link-body-emphasis{% endif %}">Главная</a>
+                        <a href="{% url 'main' %}" class="nav-link {% if active_page == '' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="padding-top: 5px; padding-bottom: 5px;">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'services_groups' %}" class="nav-link {% if active_page == 'services' %}link-secondary{% else %}link-body-emphasis{% endif %}">Услуги</a>
+                        <a href="{% url 'services_groups' %}" class="nav-link {% if active_page == 'services' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="padding-top: 5px; padding-bottom: 5px;">Услуги</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'staff' %}" class="nav-link {% if active_page == 'staff' %}link-secondary{% else %}link-body-emphasis{% endif %}">Работники</a>
+                        <a href="{% url 'staff' %}" class="nav-link {% if active_page == 'staff' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="padding-top: 5px; padding-bottom: 5px;">Работники</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'prices' %}" class="nav-link {% if active_page == 'prices' %}link-secondary{% else %}link-body-emphasis{% endif %}">Цены</a>
+                        <a href="{% url 'prices' %}" class="nav-link {% if active_page == 'prices' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="padding-top: 5px; padding-bottom: 5px;">Цены</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'company' %}" class="nav-link {% if active_page == 'clinic' %}link-secondary{% else %}link-body-emphasis{% endif %}">О клинике</a>
+                        <a href="{% url 'company' %}" class="nav-link {% if active_page == 'clinic' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="padding-top: 5px; padding-bottom: 5px;">О клинике</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'gallery' %}" class="nav-link {% if active_page == 'works' %}link-secondary{% else %}link-body-emphasis{% endif %}">Наши работы</a>
+                        <a href="{% url 'gallery' %}" class="nav-link {% if active_page == 'works' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="padding-top: 5px; padding-bottom: 5px;">Наши работы</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'reviews' %}" class="nav-link {% if active_page == 'reviews' %}link-secondary{% else %}link-body-emphasis{% endif %}">Отзывы</a>
+                        <a href="{% url 'reviews' %}" class="nav-link {% if active_page == 'reviews' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="padding-top: 5px; padding-bottom: 5px;">Отзывы</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'contacts' %}" class="nav-link {% if active_page == 'contacts' %}link-secondary{% else %}link-body-emphasis{% endif %}">Контакты</a>
+                        <a href="{% url 'contacts' %}" class="nav-link {% if active_page == 'contacts' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="padding-top: 5px; padding-bottom: 5px;">Контакты</a>
                     </li>
                 </ul>
                 <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -251,7 +251,7 @@
                 </li>
             </ul>
             <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <div style="position: relative;"> <!-- Новый контейнер для позиционирования -->
+                <div style="position: relative;">
                     <input type="text" class="form-control" placeholder="Поиск" id="header-search-input" aria-label="Поиск" autocomplete="off">
                     <div id="header-suggestions"></div>
                 </div>
