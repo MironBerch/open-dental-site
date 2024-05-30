@@ -5,7 +5,7 @@
 .service-list {
     padding-left: 20px;
     overflow: hidden;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     list-style-type: none;
     padding: 0;
 }
@@ -21,4 +21,5 @@
 
 .group-item {
     margin-left: 20px;
+
 }
