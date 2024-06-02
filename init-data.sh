@@ -14,7 +14,8 @@ uv run manage.py loaddata staff.json && \
     uv run manage.py loaddata servicegroups.json && \
     uv run manage.py loaddata services.json && \
     uv run manage.py loaddata about.json && \
-    uv run manage.py loaddata policy.json
+    uv run manage.py loaddata policy.json && \
+    uv run manage.py loaddata photos.json
 
 rm staff.json && \
     rm works.json && \
@@ -25,6 +26,7 @@ rm staff.json && \
     rm servicegroups.json && \
     rm services.json && \
     rm about.json && \
-    rm policy.json
+    rm policy.json && \
+    rm photos.json
 
 cd ..
