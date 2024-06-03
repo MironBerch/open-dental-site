@@ -1,0 +1,74 @@
+[
+    {
+        "model": "clinic.photo",
+        "pk": 2,
+        "fields": {
+            "work": 1,
+            "image": "works/Ровненькие зубки нашего 10-летнего пациента/rovnenkie-zubki-nashego-10-letnego-pacienta.webp"
+        }
+    },
+    {
+        "model": "clinic.photo",
+        "pk": 3,
+        "fields": {
+            "work": 6,
+            "image": "works/Две коронки, изменившие жизнь/dve-koronki-izmenivshie-zhizn.webp"
+        }
+    },
+    {
+        "model": "clinic.photo",
+        "pk": 4,
+        "fields": {
+            "work": 5,
+            "image": "works/Установка виниров на верхней челюсти/ustanovka-vinirov-na-verhnej-chelyusti.webp"
+        }
+    },
+    {
+        "model": "clinic.photo",
+        "pk": 5,
+        "fields": {
+            "work": 4,
+            "image": "works/Кабинетного отбеливания/kabinetnoe-otbelivanie.webp"
+        }
+    },
+    {
+        "model": "clinic.photo",
+        "pk": 6,
+        "fields": {
+            "work": 3,
+            "image": "works/СКРЫТЫЙ КАРИЕС/skrytyj-karies.webp"
+        }
+    },
+    {
+        "model": "clinic.photo",
+        "pk": 7,
+        "fields": {
+            "work": 3,
+            "image": "works/СКРЫТЫЙ КАРИЕС/skrytyj-karies-2.webp"
+        }
+    },
+    {
+        "model": "clinic.photo",
+        "pk": 8,
+        "fields": {
+            "work": 3,
+            "image": "works/СКРЫТЫЙ КАРИЕС/skrytyj-karies-3.webp"
+        }
+    },
+    {
+        "model": "clinic.photo",
+        "pk": 9,
+        "fields": {
+            "work": 3,
+            "image": "works/СКРЫТЫЙ КАРИЕС/skrytyj-karies-4.webp"
+        }
+    },
+    {
+        "model": "clinic.photo",
+        "pk": 10,
+        "fields": {
+            "work": 2,
+            "image": "works/Пациентке на верхнюю челюсть установлено 9 керамических коронок E max./pacientke-na-verhnyuyu-chelyust-ustanovleno-9-keramicheskih-koronok-e-max.webp"
+        }
+    }
+]
