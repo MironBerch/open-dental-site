@@ -16,15 +16,14 @@
     transform: translateY(-5px);
 }
 
-/* Стиль для карточек работ с соотношением сторон */
 .work-card {
-    aspect-ratio: 1.5; /* Соотношение ширины к высоте 1.5 */
+    aspect-ratio: 1.5;
 }
 
 .image-container {
     position: relative;
     width: 100%;
-    padding-top: 66.67%; /* Соотношение сторон 3:2 можно изменить по желанию */
+    padding-top: 66.67%;
     overflow: hidden;
 }
 
@@ -61,8 +60,8 @@
 }
 
 .card-body {
-    position: relative; /* Чтобы текст располагался над изображением */
-    z-index: 1; /* Обеспечить, что текст остается сверху */
+    position: relative;
+    z-index: 1;
 }
 
 .card-title, .card-text {

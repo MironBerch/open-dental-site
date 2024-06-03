@@ -1,17 +1,17 @@
 @media (max-width: 1000px) {
     .card-body {
-        flex-direction: column; /* Переключаемся на столбик для узких экранов */
-        align-items: flex-start; /* Выравниваем элементы по левому краю */
+        flex-direction: column;
+        align-items: flex-start;
     }
     .card-body .btn {
-        margin-top: 10px; /* Отступ сверху для кнопки */
+        margin-top: 10px;
     }
 }
 
 @media (min-width: 1001px) {
     .card-body {
-        flex-direction: row; /* Горизонтальное расположение для широких экранов */
-        align-items: center; /* Выравниваем элементы по центру вертикально */
+        flex-direction: row;
+        align-items: center;
     }
     .card-body .btn {
         max-width: 300px;

@@ -1,24 +1,24 @@
 .active {
-    transform: rotate(180deg); /* Поворот стрелочки при активном состоянии */
+    transform: rotate(180deg);
 }
 
 .service-list {
-    padding-left: 20px; /* Отступ для списка услуг */
-    overflow: hidden; /* Убираем переполнение */
-    margin-bottom: 10px; /* Отступ снизу между группами */
-    list-style-type: none; /* Убираем маркеры */
-    padding: 0; /* Убираем отступы */
+    padding-left: 20px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    list-style-type: none;
+    padding: 0;
 }
 
 .list-group {
-    padding: 0; /* Убираем отступы */
+    padding: 0;
 }
 
 .group-name {
-    display: inline-block; /* Позволяет элементу принимать ширину, основанную на его содержимом */
-    margin-right: 10px; /* Устанавливаем отступ справа */
+    display: inline-block;
+    margin-right: 10px;
 }
 
 .group-item {
-    margin-left: 20px; /* Отступ для групп */
+    margin-left: 20px;
 }

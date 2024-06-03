@@ -3,30 +3,30 @@
 }
 
 #suggestions, #header-suggestions {
-    position: absolute; /* Позволяет позиционировать список относительно родителя */
-    z-index: 1000;     /* Устанавливаем достаточно высокий z-index, чтобы он был выше других элементов */
-    background-color: white; /* Задаем фон для выпадающего списка */
-    border: 1px solid #ccc;  /* Обводка выпадающего списка */
-    max-height: 200px;       /* Максимальная высота списка */
-    overflow-y: auto;        /* Прокрутка по вертикали, если слишком много элементов */
-    width: 100%;             /* Ширина должна соответствовать ширине родительского */
-    display: none;           /* Изначально скрываем блок */
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    display: none;
 }
 
 #suggestions, #header-suggestions div {
     padding: 10px;
     cursor: pointer;
-    border-bottom: 1px solid #ccc; /* Разделители между элементами */
+    border-bottom: 1px solid #ccc;
 }
 
 #suggestions, #header-suggestions div:last-child {
-    border-bottom: none; /* Убираем нижнюю границу для последнего элемента */
+    border-bottom: none;
 }
 
 #suggestions, #header-suggestions div:hover {
-    background-color: #f0f0f0; /* Цвет при наведении */
+    background-color: #f0f0f0;
 }
-/* Стили для всплывающей карточки */
+
 .contact-card {
     display: none;
     position: absolute;
@@ -37,27 +37,33 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 300px;
 }
+
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 0;
 }
+
 .social-links {
     display: flex;
     gap: 10px;
 }
+
 .social-links a {
     font-size: 24px;
     color: #007bff;
 }
+
 .contact-info {
     position: relative;
     cursor: pointer;
 }
+
 .dropdown-toggle::after {
     display: none;
 }
+
 #suggestions, #header-suggestions {
     position: absolute;
     z-index: 1000;
@@ -74,37 +80,36 @@
     cursor: pointer;
     border-bottom: 1px solid #ccc;
 }
+
 #suggestions, #header-suggestions div:last-child {
     border-bottom: none;
 }
+
 #suggestions, #header-suggestions div:hover {
     background-color: #f0f0f0;
 }
 
-/* Скрываем header на мобильных устройствах и при сильном увеличении */
-/* Если используете Bootstrap, можно также использовать классы для отступов */
 @media (max-width: 1100px) {
     .header-container {
         display: none;
     }
     header {display: none;}
     .container {
-        padding-top: 20px; /* Можете глянуть, как это будет на телефонах и изменить отступ под размер navbar */
+        padding-top: 20px;
     }
 }
 
-/* Скрываем navbar на более широких экранах */
 @media (min-width: 1100px) {
     .navbar {
         display: none;
     }
 }
 .navbar-toggler {
-    margin-left: auto; /* Перемещает кнопку вправо */
+    margin-left: auto;
 }
 
 .navbar {
-    padding: 0 15px; /* Добавляем отступы по бокам */
+    padding: 0 15px;
 }
 
 .offcanvas-start {
@@ -115,6 +120,6 @@
 
 @media (min-width: 576px) {
     .offcanvas-start {
-        max-width: 400px; /* Ширина на десктопах */
+        max-width: 400px;
     }
 }
