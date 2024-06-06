@@ -76,3 +76,51 @@
     display: flex;
     align-items: center;
 }
+
+
+/* Тень на карточках works and staff */
+
+
+/* Добавьте эти стили в ваш CSS */
+.staff-image-container::after,
+.work-image-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+    z-index: 1;
+}
+
+.card-img-overlay {
+    z-index: 2; /* Чтобы текст был поверх градиента */
+}
+
+/* Для плавности можно добавить transition */
+.staff-image-container::after,
+.work-image-container::after {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.card:hover .staff-image-container::after,
+.card:hover .work-image-container::after {
+    opacity: 0.8; /* Можно добавить эффект при наведении */
+}
+
+/* Усиленный вариант для staff */
+.staff-image-container::after {
+    height: 50%; /* Увеличиваем зону покрытия */
+    background: linear-gradient(
+        to top, 
+        rgba(0, 0, 0, 0.6) 0%, /* Увеличиваем непрозрачность */
+        transparent 100%
+    );
+}
+
+/* Эффект при наведении для staff */
+.card:hover .staff-image-container::after {
+    opacity: 1; /* Можно оставить полную непрозрачность при наведении */
+}
