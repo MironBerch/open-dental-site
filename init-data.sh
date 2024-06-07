@@ -16,4 +16,15 @@ uv run manage.py loaddata staff.json && \
     uv run manage.py loaddata about.json && \
     uv run manage.py loaddata policy.json
 
+rm staff.json && \
+    rm works.json && \
+    rm reviews.json && \
+    rm pricegroups.json && \
+    rm prices.json && \
+    rm contacts.json && \
+    rm servicegroups.json && \
+    rm services.json && \
+    rm about.json && \
+    rm policy.json
+
 cd ..
