@@ -5,7 +5,6 @@
         <div>
             <a class="navbar-brand" href="{% url 'main' %}"><img src="{% static 'images/logo.webp' %}" alt="Логотип" style="height: 50px;"></a>
         </div>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
         aria-controls="offcanvasNavbar" aria-label="Toggle navigation" 
         style="position: fixed; right: 15px; top: 15px; z-index: 1000;">
@@ -66,23 +65,6 @@
                     {% endif %}
                     {% if contact.opening_hours %}
                         <img width="26" height="26" src="{% static 'svg/watch.svg' %}"> {{ contact.opening_hours }}<br>
-                    {% endif %}
-                </div>
-                <div class="social-links">
-                    {% if contact.vk %}
-                        <a href="{{ contact.vk }}" target="_blank">
-                            <img width="48" height="48" src="{% static 'svg/vk.svg' %}">
-                        </a>
-                    {% endif %}
-                    {% if contact.whatsapp %}
-                        <a href="{{ contact.whatsapp }}" target="_blank">
-                            <img width="48" height="48" src="{% static 'svg/whatsapp.svg' %}">
-                        </a>
-                    {% endif %}
-                    {% if contact.tg %}
-                        <a href="{{ contact.tg }}" target="_blank">
-                            <img width="48" height="48" src="{% static 'svg/telegram.svg' %}">
-                        </a>
                     {% endif %}
                 </div>
             </div>
@@ -197,7 +179,6 @@
                 <img src="{% static 'images/logo.webp' %}" alt="Логотип" style="height: 50px;">
             </a>
         </div>
-
         <!-- Центральная колонка -->
         <div>
             <div class="contact-info" id="phoneDropdown">
@@ -216,7 +197,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Правая колонка -->
         <div>
             <a class="link-offset-2 link-underline link-underline-opacity-0" 
@@ -235,57 +215,43 @@
                     <a 
                         href="{% url 'services_groups' %}"
                         class="nav-link px-2 {% if active_page == 'services' %}link-secondary{% else %}link-body-emphasis{% endif %}"
-                    >
-                        Услуги
-                    </a>
+                    >Услуги</a>
                 </li>
                 <li>
                     <a 
                         href="{% url 'staff' %}"
                         class="nav-link px-2 {% if active_page == 'staff' %}link-secondary{% else %}link-body-emphasis{% endif %}"
-                    >
-                        Работники
-                    </a>
+                    >Работники</a>
                 </li>
                 <li>
                     <a 
                         href="{% url 'prices' %}"
                         class="nav-link px-2 {% if active_page == 'prices' %}link-secondary{% else %}link-body-emphasis{% endif %}"
-                    >
-                        Цены
-                    </a>
+                    >Цены</a>
                 </li>
                 <li>
                     <a 
                         href="{% url 'company' %}"
                         class="nav-link px-2 {% if active_page == 'clinic' %}link-secondary{% else %}link-body-emphasis{% endif %}"
-                    >
-                        О клинике
-                    </a>
+                    >О клинике</a>
                 </li>
                 <li>
                     <a 
                         href="{% url 'gallery' %}"
                         class="nav-link px-2 {% if active_page == 'works' %}link-secondary{% else %}link-body-emphasis{% endif %}"
-                    >
-                        Наши работы
-                    </a>
+                    >Наши работы</a>
                 </li>
                 <li>
                     <a 
                         href="{% url 'reviews' %}" 
                         class="nav-link px-2 {% if active_page == 'reviews' %}link-secondary{% else %}link-body-emphasis{% endif %}"
-                    >
-                        Отзывы
-                    </a>
+                    >Отзывы</a>
                 </li>
                 <li>
                     <a 
                         href="{% url 'contacts' %}"
                         class="nav-link px-2 {% if active_page == 'contacts' %}link-secondary{% else %}link-body-emphasis{% endif %}"
-                    >
-                        Контакты
-                    </a>
+                    >Контакты</a>
                 </li>
             </ul>
             <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">

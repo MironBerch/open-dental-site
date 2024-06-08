@@ -24,7 +24,7 @@
     >
     {% endif %}
     <p>{{ service.information|safe }}</p>
-    {% if prices.items %}<h2>Цены:</h2>{% endif %}
+    {% if prices.items %}<h3>Цены:</h3>{% endif %}
     <div class="accordion" id="accordionExample">
         {% for group, prices in prices.items %}
             <div class="accordion-item">
