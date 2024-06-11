@@ -103,4 +103,18 @@
     margin-left: auto; /* Перемещает кнопку вправо */
 }
 
+.navbar {
+    padding: 0 15px; /* Добавляем отступы по бокам */
+}
 
+.offcanvas-start {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-right: none !important;
+}
+
+@media (min-width: 576px) {
+    .offcanvas-start {
+        max-width: 400px; /* Ширина на десктопах */
+    }
+}

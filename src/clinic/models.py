@@ -30,13 +30,6 @@ def get_license_pdf_upload_path(instance: 'License', filename: str) -> str:
     return f'license/{instance.name}/pdf/{filename}'
 
 
-class PositionChoices(models.TextChoices):
-    MANAGER = 'Руководитель', 'Руководитель'
-    ADMINISTRATOR = 'Администратор', 'Администратор'
-    MEDIC = 'Мед персонал', 'Мед персонал'
-    JUNIOR_MEDIC = 'Младщий мед персонал', 'Младщий мед персонал'
-
-
 class License(models.Model):
     name = models.CharField(verbose_name='название лицензии', max_length=255)
     image = WebPImageField(

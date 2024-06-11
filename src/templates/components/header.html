@@ -6,11 +6,14 @@
             <a class="navbar-brand" href="{% url 'main' %}"><img src="{% static 'images/logo.webp' %}" alt="Логотип" style="height: 50px;"></a>
         </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
+        aria-controls="offcanvasNavbar" aria-label="Toggle navigation" 
+        style="position: fixed; right: 15px; top: 15px; z-index: 1000;">
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" 
+     aria-labelledby="offcanvasNavbarLabel" style="width: 100%; max-width: 100%;">
             <div class="offcanvas-header">
                 <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Меню</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
