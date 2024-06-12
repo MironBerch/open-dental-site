@@ -22,11 +22,9 @@
                 {% block content %}{% endblock %}
             </div>
         </div>
-        {% include 'components/theme.html' %}
         {% include 'components/footer.html' %}
         <script src="{% static 'js/header.js' %}"></script>
         <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'js/color-modes.js' %}"></script>
         <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script>
         {% block scripts %}{% endblock %}
     </body>
