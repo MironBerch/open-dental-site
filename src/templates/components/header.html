@@ -92,24 +92,126 @@
         </div>
     </div>
 </nav>
-
+<style>
+    .dropdown-toggle::after {
+        display: none;
+    }
+    
+    #suggestions, #header-suggestions {
+        position: absolute;
+        z-index: 1000;
+        background-color: white;
+        border: 1px solid #ccc;
+        max-height: 200px;
+        overflow-y: auto;
+        width: 100%;
+        display: none;
+    }
+    
+    #suggestions div, #header-suggestions div {
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    #suggestions div:last-child, #header-suggestions div:last-child {
+        border-bottom: none;
+    }
+    
+    #suggestions div:hover, #header-suggestions div:hover {
+        background-color: #f0f0f0;
+    }
+    
+    .contact-card {
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+    
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .header-container > div {
+        flex: 1;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+    
+    /* Левая колонка - лого */
+    .header-container > div:first-child {
+        display: flex;
+        justify-content: flex-start;
+    }
+    
+    /* Центральная колонка - адрес */
+    .header-container > div:nth-child(2) {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Правая колонка - телефон */
+    .header-container > div:last-child {
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+    }
+    
+    .contact-info {
+        position: relative;
+        cursor: pointer;
+    }
+    
+    @media (max-width: 1100px) {
+        .header-container {
+            display: none;
+        }
+        header {display: none;}
+        .container {
+            padding-top: 20px;
+        }
+    }
+    
+    @media (min-width: 1100px) {
+        .navbar {
+            display: none;
+        }
+    }
+    
+    .navbar-toggler {
+        margin-left: auto;
+    }
+    </style>
 <div class="container">
     <div class="header-container">
-        <!-- Логотип слева -->
+        <!-- Левая колонка -->
         <div>
-            <a class="navbar-brand" href="{% url 'main' %}"><img src="{% static 'images/logo.webp' %}" alt="Логотип" style="height: 50px;"></a>
+            <a class="navbar-brand" href="{% url 'main' %}">
+                <img src="{% static 'images/logo.webp' %}" alt="Логотип" style="height: 50px;">
+            </a>
         </div>
-        
-        <!-- Центр: адрес, номера телефонов и социальные иконки -->
-        <div class="center-container">
+
+        <!-- Центральная колонка -->
+        <div>
             <div class="contact-info" id="phoneDropdown">
                 <div>{{contact.address}}</div>
                 <div class="contact-card" id="contactCard">
                     <strong>Контактная информация</strong>
                     <br>
                     {% if contact.email %}
-                        <img src="{% static 'svg/email.svg' %}"> <a class="link-offset-2 link-underline link-underline-opacity-0"
-                        href="mailto:{{contact.email}}"> {{ contact.email }}</a><br>
+                        <img src="{% static 'svg/email.svg' %}"> 
+                        <a class="link-offset-2 link-underline link-underline-opacity-0" 
+                           href="mailto:{{contact.email}}">{{ contact.email }}</a><br>
                     {% endif %}
                     {% if contact.opening_hours %}
                         <img src="{% static 'svg/watch.svg' %}"> {{ contact.opening_hours }}<br>
@@ -117,8 +219,11 @@
                 </div>
             </div>
         </div>
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <a class="link-offset-2 link-underline link-underline-opacity-0" href="tel:{{contact.phone_numbers}}">
+
+        <!-- Правая колонка -->
+        <div>
+            <a class="link-offset-2 link-underline link-underline-opacity-0" 
+               href="tel:{{contact.phone_numbers}}">
                 <p style="font-size: 24px; margin: 0;">📞 {{ contact.phone_numbers }}</p>
             </a>
         </div>

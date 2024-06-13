@@ -1,6 +1,7 @@
 .dropdown-toggle::after {
     display: none;
 }
+
 #suggestions, #header-suggestions {
     position: absolute; /* Позволяет позиционировать список относительно родителя */
     z-index: 1000;     /* Устанавливаем достаточно высокий z-index, чтобы он был выше других элементов */
@@ -42,11 +43,6 @@
     justify-content: space-between;
     padding: 10px 0;
 }
-.center-container {
-    display: flex;
-    align-items: center; /* Выравнивание по центру */
-    gap: 15px; /* Отступ между номерами и иконками */
-}
 .social-links {
     display: flex;
     gap: 10px;
@@ -84,33 +80,6 @@
 #suggestions, #header-suggestions div:hover {
     background-color: #f0f0f0;
 }
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-}
-.center-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.social-links {
-    display: flex;
-    gap: 10px;
-}
-.social-links a {
-    font-size: 24px;
-    color: #007bff;
-}
-.contact-info {
-    position: relative;
-    cursor: pointer;
-}
-/* Стили для navbar по умолчанию */
-.navbar {
-    display: block; /* Включаем по умолчанию */
-}
 
 /* Скрываем header на мобильных устройствах и при сильном увеличении */
 /* Если используете Bootstrap, можно также использовать классы для отступов */
@@ -133,3 +102,5 @@
 .navbar-toggler {
     margin-left: auto; /* Перемещает кнопку вправо */
 }
+
+
