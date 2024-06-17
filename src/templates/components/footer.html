@@ -1,5 +1,43 @@
+{% load static %}
+
 <div class="container">
     <footer class="py-5">
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="social-links">
+                {% if contact.vk %}
+                    <a href="{{ contact.vk }}" target="_blank">
+                        <img width="64" height="64" src="{% static 'svg/vk.svg' %}">
+                    </a>
+                {% endif %}
+                {% if contact.whatsapp %}
+                    <a href="{{ contact.whatsapp }}" target="_blank">
+                        <img width="64" height="64" src="{% static 'svg/whatsapp.svg' %}">
+                    </a>
+                {% endif %}
+                {% if contact.tg %}
+                    <a href="{{ contact.tg }}" target="_blank">
+                        <img width="64" height="64" src="{% static 'svg/telegram.svg' %}">
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 d-flex justify-content-center">
+                {% if contact.email %}
+                    <img src="{% static 'svg/email.svg' %}"> <a class="link-offset-2 link-underline link-underline-opacity-0" href="mailto:{{contact.email}}"> {{ contact.email }}</a><br>
+                {% endif %}
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                {% if contact.phone_numbers %}
+                    <img src="{% static 'svg/phone.svg' %}"> <a class="link-offset-2 link-underline link-underline-opacity-0" href="tel:{{contact.phone_numbers}}"> {{ contact.phone_numbers }}</a><br>
+                {% endif %}
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                {% if contact.opening_hours %}
+                    <img src="{% static 'svg/watch.svg' %}"> {{ contact.opening_hours }}<br>
+                {% endif %}
+            </div>
+        </div>
         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
             <p class="text-center text-sm-start mb-3 mb-sm-0">© 2024</p>
             <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-2 gap-sm-3">

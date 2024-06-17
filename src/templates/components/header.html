@@ -62,9 +62,6 @@
                     {% if contact.address %}
                         <img src="{% static 'svg/label.svg' %}"> {{ contact.address }}<br>
                     {% endif %}
-                    {% if contact.phone_numbers %}
-                        <img src="{% static 'svg/phone.svg' %}"> {{ contact.phone_numbers }}<br>
-                    {% endif %}
                     {% if contact.email %}
                         <img src="{% static 'svg/email.svg' %}"> <a class="link-offset-2 link-underline link-underline-opacity-0" href="mailto:{{contact.email}}"> {{ contact.email }}</a><br>
                     {% endif %}
@@ -111,9 +108,6 @@
                     {% if contact.address %}
                         <img src="{% static 'svg/label.svg' %}"> {{ contact.address }}<br>
                     {% endif %}
-                    {% if contact.phone_numbers %}
-                        <img src="{% static 'svg/phone.svg' %}"> {{ contact.phone_numbers }}<br>
-                    {% endif %}
                     {% if contact.email %}
                         <img src="{% static 'svg/email.svg' %}"> <a class="link-offset-2 link-underline link-underline-opacity-0"
                         href="mailto:{{contact.email}}"> {{ contact.email }}</a><br>
@@ -122,23 +116,6 @@
                         <img src="{% static 'svg/watch.svg' %}"> {{ contact.opening_hours }}<br>
                     {% endif %}
                 </div>
-            </div>
-            <div class="social-links">
-                {% if contact.vk %}
-                    <a href="{{ contact.vk }}" target="_blank">
-                        <img src="{% static 'svg/vk.svg' %}">
-                    </a>
-                {% endif %}
-                {% if contact.whatsapp %}
-                    <a href="{{ contact.whatsapp }}" target="_blank">
-                        <img src="{% static 'svg/whatsapp.svg' %}">
-                    </a>
-                {% endif %}
-                {% if contact.tg %}
-                    <a href="{{ contact.tg }}" target="_blank">
-                        <img src="{% static 'svg/telegram.svg' %}">
-                    </a>
-                {% endif %}
             </div>
         </div>
         <div style="display: flex; align-items: center; justify-content: center;">
