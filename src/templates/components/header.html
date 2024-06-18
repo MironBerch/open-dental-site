@@ -105,9 +105,6 @@
                 <div class="contact-card" id="contactCard">
                     <strong>Контактная информация</strong>
                     <br>
-                    {% if contact.address %}
-                        <img src="{% static 'svg/label.svg' %}"> {{ contact.address }}<br>
-                    {% endif %}
                     {% if contact.email %}
                         <img src="{% static 'svg/email.svg' %}"> <a class="link-offset-2 link-underline link-underline-opacity-0"
                         href="mailto:{{contact.email}}"> {{ contact.email }}</a><br>

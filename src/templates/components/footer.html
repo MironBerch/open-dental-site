@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class="container">
-    <footer class="py-5">
+    <footer class="py-5 border-top">
         <div style="display: flex; align-items: center; justify-content: center;">
             <div class="social-links">
                 {% if contact.vk %}
@@ -21,36 +21,60 @@
                 {% endif %}
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-md-4 d-flex justify-content-center">
+            <!-- Email блок -->
+            <div class="col-md-4 d-flex flex-column align-items-center mt-3">
                 {% if contact.email %}
-                    <img src="{% static 'svg/email.svg' %}"> <a class="link-offset-2 link-underline link-underline-opacity-0" href="mailto:{{contact.email}}"> {{ contact.email }}</a><br>
+                <div class="d-flex flex-column align-items-center">
+                    <img width="42" height="42" src="{% static 'svg/email.svg' %}" class="mb-2">
+                    <div class="text-center">
+                        <h5 class="mb-1">Электронный адрес</h5>
+                        <a class="link-offset-2 link-underline link-underline-opacity-0" 
+                           href="mailto:{{contact.email}}">
+                            {{ contact.email }}
+                        </a>
+                    </div>
+                </div>
                 {% endif %}
             </div>
-            <div class="col-md-4 d-flex justify-content-center">
+        
+            <!-- Телефон блок -->
+            <div class="col-md-4 d-flex flex-column align-items-center mt-3">
                 {% if contact.phone_numbers %}
-                    <img src="{% static 'svg/phone.svg' %}"> <a class="link-offset-2 link-underline link-underline-opacity-0" href="tel:{{contact.phone_numbers}}"> {{ contact.phone_numbers }}</a><br>
+                <div class="d-flex flex-column align-items-center">
+                    <img width="42" height="42" src="{% static 'svg/phone.svg' %}" class="mb-2">
+                    <div class="text-center">
+                        <h5 class="mb-1">Телефон</h5>
+                        <a class="link-offset-2 link-underline link-underline-opacity-0" 
+                           href="tel:{{contact.phone_numbers}}">
+                            {{ contact.phone_numbers }}
+                        </a>
+                    </div>
+                </div>
                 {% endif %}
             </div>
-            <div class="col-md-4 d-flex justify-content-center">
+        
+            <!-- Часы работы блок -->
+            <div class="col-md-4 d-flex flex-column align-items-center mt-3">
                 {% if contact.opening_hours %}
-                    <img src="{% static 'svg/watch.svg' %}"> {{ contact.opening_hours }}<br>
+                <div class="d-flex flex-column align-items-center">
+                    <img width="42" height="42" src="{% static 'svg/watch.svg' %}" class="mb-2">
+                    <div class="text-center">
+                        <h5 class="mb-1">График работы</h5>
+                        <span>{{ contact.opening_hours }}</span>
+                    </div>
+                </div>
                 {% endif %}
             </div>
         </div>
-        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p class="text-center text-sm-start mb-3 mb-sm-0">© 2024</p>
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4">
+            <p class="text-center text-sm-start mb-3 mb-sm-0">© 2025</p>
             <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-2 gap-sm-3">
                 {% csrf_token %}
-                <li>
-                    <a class="link-body-emphasis text-nowrap" id="specialButton">Версия для слабовидящих</a>
-                </li>
-                <li>
-                    <a class="link-body-emphasis" href="{% url 'policy' %}">Политика конфиденциальности</a>
-                </li>
-                <li>
-                    <a class="link-body-emphasis" href="{% url 'site_map' %}">Карта сайта</a>
-                </li>
+                <li><a class="link-body-emphasis text-nowrap" id="specialButton">Версия для слабовидящих</a></li>
+                <li><a class="link-body-emphasis" href="{% url 'policy' %}">Политика конфиденциальности</a></li>
+                <li><a class="link-body-emphasis" href="{% url 'site_map' %}">Карта сайта</a></li>
             </ul>
         </div>
     </footer>
