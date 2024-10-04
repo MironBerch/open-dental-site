@@ -1,0 +1,184 @@
+[
+    {
+        "model": "clinic.service",
+        "pk": 1,
+        "fields": {
+            "name": "Консультация стоматолога",
+            "slug": "konsultaciya-stomatologa",
+            "short_information": "В ходе первичной консультации врач стоматолог оценивает состояние полости рта пациента: зубов и десен, определяет необходимость и объём лечения, предлагая различные его варианты.",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 1,
+            "published": true,
+            "prices": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 2,
+        "fields": {
+            "name": "Дентальный фотопротокол",
+            "slug": "dentalnyj-fotoprotokol",
+            "short_information": "Дентальная фотография - диагностическая серия снимков лица и полости рта пациентов, выполняемая по строгому протоколу. Это способ зафиксировать изначальную клиническую картину, процесс лечения, результат проделанной работы.",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 1,
+            "published": true,
+            "prices": [
+                9,
+                10,
+                11
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 3,
+        "fields": {
+            "name": "Чистка зубов",
+            "slug": "chistka-zubov",
+            "short_information": "Профессиональная гигиена полости рта - санация ротовой полости от микроорганизмов, удаление зубного камня и налета (с помощью дентального микроскопа).",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 2,
+            "published": true,
+            "prices": [
+                18,
+                5
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 4,
+        "fields": {
+            "name": "Отбеливание зубов",
+            "slug": "otbelivanie-zubov",
+            "short_information": "Желание обладать яркой и белоснежной улыбкой легко осуществимо в клинике \"Мастерская Улыбок\". Мы проводим самое современное, безопасное и эффективное отбеливание ZOOM!",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 2,
+            "published": true,
+            "prices": [
+                19
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 5,
+        "fields": {
+            "name": "Лечение кариеса",
+            "slug": "lechenie-kariesa",
+            "short_information": "Самое распространенное в мире заболевание зубов - кариес.\r\n\r\nВ центрах стоматологии \"Мастерская Улыбок\" применяются все самые современные и эффективные методики лечении, позволяющие справиться с этой болезнью на любой стадии заболевания качественно и профессионально.",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 3,
+            "published": true,
+            "prices": [
+                16,
+                2
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 6,
+        "fields": {
+            "name": "Удаление кисты зуба",
+            "slug": "udalenie-kisty-zuba",
+            "short_information": "Киста – доброкачественное новообразование, которое может возникнуть у корней зубов и привести не только повредить их, но и вызвать гнойное воспаление, перелом кости, сепсис и другие осложнения, влияющие на весь организм.",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 3,
+            "published": true,
+            "prices": [
+                3
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 7,
+        "fields": {
+            "name": "Удаление зуба мудрости",
+            "slug": "udalenie-zuba-mudrosti",
+            "short_information": "В стоматологии удаление зуба мудрости часто проходит с осложнением. Доступ к участку затруднен, третий моляр может быть непрорезавшимся, закрытым десневым капюшоном, что усложняет манипуляции с «восьмеркой».",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 4,
+            "published": true,
+            "prices": [
+                12
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 8,
+        "fields": {
+            "name": "Удаление зубов",
+            "slug": "udalenie-zubov",
+            "short_information": "Удаление поврежденного зуба — это всегда стресс для пациента. Современная стоматология постоянно совершенствует технологии лечения, чтобы сохранить зубы максимально долго, однако бывают ситуации, когда удаление – единственный вариант для пациента.",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 4,
+            "published": true,
+            "prices": [
+                13,
+                6
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 9,
+        "fields": {
+            "name": "Синус-лифтинг",
+            "slug": "sinus-lifting",
+            "short_information": "Синус-лифтинг — операция по поднятию дна гайморовой пазухи и наращиванию костной ткани.",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 4,
+            "published": true,
+            "prices": [
+                35
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 10,
+        "fields": {
+            "name": "Имплантация",
+            "slug": "implantaciya",
+            "short_information": "",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 6,
+            "published": true,
+            "prices": [
+                32,
+                31
+            ]
+        }
+    },
+    {
+        "model": "clinic.service",
+        "pk": 11,
+        "fields": {
+            "name": "Несъемное протезирование",
+            "slug": "nesemnoe-protezirovanie",
+            "short_information": "",
+            "information": "<p>&nbsp;</p>",
+            "image": "",
+            "group": 6,
+            "published": true,
+            "prices": [
+                29
+            ]
+        }
+    }
+]
