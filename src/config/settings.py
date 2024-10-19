@@ -131,10 +131,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
 
-# Celery
-
-CELERY_BROKER_URL = environ.get('CELERY_BROKER_URL')
-
 # INTERNAL IPS configuration
 
 hostname, _, ips = gethostbyname_ex(gethostname())
