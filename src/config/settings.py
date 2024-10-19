@@ -25,6 +25,7 @@ INSTALLED_APPS = [
 
     # local
     'main.apps.MainConfig',
+    'reviews.apps.ReviewsConfig',
 ]
 
 MIDDLEWARE = [
