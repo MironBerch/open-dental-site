@@ -4,9 +4,9 @@ from socket import gethostbyname_ex, gethostname
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = environ.get('SECRET_KEY')
+SECRET_KEY = environ.get('SECRET_KEY', 'UwU')
 
-DEBUG = int(environ.get('DEBUG'))
+DEBUG = int(environ.get('DEBUG', 1))
 
 ALLOWED_HOSTS = ['*']
 
@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     # local
     'main.apps.MainConfig',
     'reviews.apps.ReviewsConfig',
+    'clinic.apps.ClinicConfig',
+    'staff.apps.StaffConfig',
 ]
 
 MIDDLEWARE = [
