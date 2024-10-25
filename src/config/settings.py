@@ -23,6 +23,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # django 3rd party
+    'django_ckeditor_5',
+
     # local
     'main.apps.MainConfig',
     'reviews.apps.ReviewsConfig',
@@ -139,3 +142,116 @@ EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
 
 hostname, _, ips = gethostbyname_ex(gethostname())
 INTERNAL_IPS = [ip[: ip.rfind('.')] + '.1' for ip in ips] + ['127.0.0.1', '10.0.2.2']
+
+
+# Ckeditor configuration
+"""
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'allowedContent': True,
+        'skin': 'moono',
+        'width': 'auto',
+        'height': 'auto',
+        'toolbar': 'Custom',
+        'toolbar_Basic': [
+            ['Source', '-', 'Bold', 'Italic'],
+        ],
+        'toolbar_Custom': [
+            {
+                'name': 'document',
+                'items': [
+                    'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates',
+                ],
+            },
+            {
+                'name': 'clipboard',
+                'items': [
+                    'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',
+                ],
+            },
+            {
+                'name': 'editing',
+                'items': ['Find', 'Replace', '-', 'SelectAll'],
+            },
+            '/',
+            {
+                'name': 'basicstyles',
+                'items': [
+                    'Bold',
+                    'Italic',
+                    'Underline',
+                    'Strike',
+                    'Subscript',
+                    'Superscript',
+                    '-',
+                    'RemoveFormat',
+                ],
+            },
+            {
+                'name': 'paragraph',
+                'items': [
+                    'NumberedList',
+                    'BulletedList',
+                    '-',
+                    'Outdent',
+                    'Indent',
+                    '-',
+                    'Blockquote',
+                    'CreateDiv',
+                    '-',
+                    'JustifyLeft',
+                    'JustifyCenter',
+                    'JustifyRight',
+                    'JustifyBlock',
+                    '-',
+                    'BidiLtr',
+                    'BidiRtl',
+                ],
+            },
+            {
+                'name': 'links', 'items': ['Link', 'Unlink', 'Anchor', 'Youtube'],
+            },
+            {
+                'name': 'insert',
+                'items': [
+                    'Image',
+                    'Flash',
+                    'Table',
+                    'HorizontalRule',
+                    'Smiley',
+                    'SpecialChar',
+                    'PageBreak',
+                    'Iframe',
+                ],
+            },
+            '/',
+            {
+                'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize'],
+            },
+            {
+                'name': 'colors', 'items': ['TextColor', 'BGColor'],
+            },
+            {
+                'name': 'tools', 'items': ['Maximize', 'ShowBlocks', 'Preview'],
+            },
+        ],
+        'tabSpaces': 4,
+        'extraPlugins': ','.join(
+            [
+                'uploadimage',
+                'div',
+                'autolink',
+                'autoembed',
+                'embedsemantic',
+                'autogrow',
+                'widget',
+                'lineutils',
+                'clipboard',
+                'dialog',
+                'dialogui',
+                'elementspath',
+            ],
+        ),
+    },
+}
+"""

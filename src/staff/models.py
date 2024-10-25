@@ -1,5 +1,7 @@
 from django.db import models
 
+from django_ckeditor_5.fields import CKEditor5Field
+
 
 def get_staff_image_upload_path(instance: 'Staff', filename: str) -> str:
     return f'upload/{instance.fio}/{filename}'
@@ -35,7 +37,7 @@ class Staff(models.Model):
         max_length=100,
         unique=True,
     )
-    information = models.TextField(
+    information = CKEditor5Field(
         verbose_name='информация',
         blank=True,
         null=True,

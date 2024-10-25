@@ -1,5 +1,7 @@
 from django.db import models
 
+from django_ckeditor_5.fields import CKEditor5Field
+
 
 def get_license_image_upload_path(instance: 'License', filename: str) -> str:
     return f'upload/license/{instance.name}/image/{filename}'
@@ -33,7 +35,7 @@ class License(models.Model):
 
 
 class About(models.Model):
-    about = models.TextField(
+    about = CKEditor5Field(
         verbose_name='о клинике',
         blank=True,
         null=True,
