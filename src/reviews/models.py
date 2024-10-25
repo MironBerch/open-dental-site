@@ -36,6 +36,8 @@ class Review(models.Model):
         default=True,
     )
 
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
+
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
