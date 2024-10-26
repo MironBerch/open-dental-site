@@ -26,6 +26,6 @@ class AboutView(TemplateResponseMixin, View):
         return self.render_to_response(
             context={
                 'active_page': 'clinic',
-                'about': get_clinic_about(),
+                'company': get_clinic_about(),
             },
         )
