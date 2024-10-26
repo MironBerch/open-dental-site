@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Реквизиты &bull;
+{% endblock %}
+
+{% block content %}
+    <div class="">
+        <h1 class="h1 text-center">Реквизиты</h1>
+        <div class="form w-100 m-auto">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Полное наименование:</td>
+                        <td>{{ requisites.full_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Сокращенное наименование:</td>
+                        <td>{{ requisites.abbreviated_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>ИНН/КПП:</td>
+                        <td>{{ requisites.INN_KPP }}</td>
+                    </tr>
+                    <tr>
+                        <td>ОГРН:</td>
+                        <td>{{ requisites.OGRN }}</td>
+                    </tr>
+                    <tr>
+                        <td>Юридический адрес:</td>
+                        <td>{{ requisites.legal_address }}</td>
+                    </tr>
+                    <tr>
+                        <td>Фактический адрес:</td>
+                        <td>{{ requisites.actual_address }}</td>
+                    </tr>
+                    <tr>
+                        <td>Телефон, факс:</td>
+                        <td>тел: {{ requisites.telephone }} факс: {{ requisites.fax }}</td>
+                    </tr>
+                    <tr>
+                        <td>Электронная почта:</td>
+                        <td>{{ requisites.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Сайт:</td>
+                        <td>{{ requisites.website }}</td>
+                    </tr>
+                    <tr>
+                        <td>Банковские реквизиты:</td>
+                        <td>{{ requisites.bank_details }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

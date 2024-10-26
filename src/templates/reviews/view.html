@@ -34,20 +34,18 @@
             </div>
         </div>
         <h1 class="h1 text-center">Отзывы клиентов</h1>
-        <div class="d-flex align-items-center py-4 bg-body-tertiary">
-            <div class="form w-100 m-auto">
-                {% for review in reviews %}
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-text">
-                                <small class="text-body-secondary">{{review.created_at|date:"d F Y"}}</small>
-                            </p>
-                            <p class="card-text">{{review.message}}</p>
-                        </div>
+        <div class="form w-100 m-auto">
+            {% for review in reviews %}
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <small class="text-body-secondary">{{review.created_at|date:"d F Y"}}</small>
+                        </p>
+                        <p class="card-text">{{review.message}}</p>
                     </div>
-                    <br>
-                {% endfor %}
-            </div>
+                </div>
+                <br>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
