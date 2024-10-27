@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Услуги{% endblock %}
+
+{% block content %}
+    <div class="">
+        <h1 class="h1 text-center">Услуги</h1>
+        <div class="form w-100 m-auto">
+            {% for service in services %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="">{{ service.name }}</a></h5>
+                        <p class="card-text">{{ service.description }}</p>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
