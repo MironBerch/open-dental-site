@@ -1,11 +1,21 @@
 from django.urls import path
 
-from services.views import ServicesView
+from services.views import ServicesGroupsView, ServiceView, ServicesGroupView
 
 urlpatterns = [
     path(
         route='services/',
-        view=ServicesView.as_view(),
-        name='services',
+        view=ServicesGroupsView.as_view(),
+        name='services_groups',
+    ),
+    path(
+        route='services/<slug>/',
+        view=ServicesGroupView.as_view(),
+        name='services_group',
+    ),
+    path(
+        route='service/<slug>/',
+        view=ServiceView.as_view(),
+        name='service',
     ),
 ]

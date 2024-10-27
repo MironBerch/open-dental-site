@@ -3,7 +3,8 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 
 class ServiceGroup(models.Model):
-    name = models.CharField(verbose_name='название', max_length=50)
+    name = models.CharField(verbose_name='название', unique=True, max_length=255)
+    slug = models.SlugField(unique=True, max_length=255)
     description = models.TextField(
         verbose_name='описание',
         blank=True,
@@ -21,9 +22,10 @@ class ServiceGroup(models.Model):
 class Service(models.Model):
     name = models.CharField(
         verbose_name='название',
-        max_length=100,
+        max_length=255,
         unique=True,
     )
+    slug = models.SlugField(unique=True, max_length=255)
     information = CKEditor5Field(
         verbose_name='информация',
         blank=True,
