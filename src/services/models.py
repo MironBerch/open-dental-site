@@ -2,8 +2,13 @@ from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 
 
-class Tag(models.Model):
+class ServiceGroup(models.Model):
     name = models.CharField(verbose_name='название', max_length=50)
+    description = models.TextField(
+        verbose_name='описание',
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name = 'Тэг'
@@ -25,12 +30,12 @@ class Service(models.Model):
         null=True,
     )
 
-    tag = models.ForeignKey(
-        Tag,
+    group = models.ForeignKey(
+        ServiceGroup,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        verbose_name='тэг',
+        verbose_name='группа',
     )
 
     published = models.BooleanField(
