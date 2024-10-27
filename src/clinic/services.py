@@ -15,3 +15,7 @@ def get_clinic_about() -> QuerySet[About]:
         return About.objects.first()
     except Exception:
         return None
+
+
+def get_clinic_licenses() -> QuerySet[License]:
+    return License.objects.filter(published=True)

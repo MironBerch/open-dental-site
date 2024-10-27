@@ -25,6 +25,12 @@ class License(models.Model):
         upload_to=get_license_pdf_upload_path,
     )
 
+    published = models.BooleanField(
+        verbose_name='является ли опубликованным',
+        blank=True,
+        default=True,
+    )
+
     class Meta:
         verbose_name = 'лицензия'
         verbose_name_plural = 'лицензии'

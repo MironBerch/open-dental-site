@@ -2,7 +2,7 @@ from django.http import HttpRequest
 from django.views.generic import View
 from django.views.generic.base import TemplateResponseMixin
 
-from clinic.services import get_clinic_requisites, get_clinic_about
+from clinic.services import get_clinic_requisites, get_clinic_about, get_clinic_licenses
 
 #  from django.core.paginator import Paginator
 
@@ -27,5 +27,17 @@ class AboutView(TemplateResponseMixin, View):
             context={
                 'active_page': 'clinic',
                 'company': get_clinic_about(),
+            },
+        )
+
+
+class LicensesView(TemplateResponseMixin, View):
+    template_name = 'clinic/licenses.html'
+
+    def get(self, request: HttpRequest):
+        return self.render_to_response(
+            context={
+                'active_page': 'clinic',
+                'licenses': get_clinic_licenses(),
             },
         )

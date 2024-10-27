@@ -1,6 +1,6 @@
 from django.urls import path
 
-from clinic.views import RequisitesView, AboutView
+from clinic.views import RequisitesView, AboutView, LicensesView
 
 urlpatterns = [
     path(
@@ -12,5 +12,10 @@ urlpatterns = [
         route='company/',
         view=AboutView.as_view(),
         name='company',
+    ),
+    path(
+        route='licenses/',
+        view=LicensesView.as_view(),
+        name='licenses',
     ),
 ]
