@@ -4,19 +4,28 @@
 
 {% block content %}
     <div class="">
-        <h1 class="h1 text-center">{{group.name}}</h1>
-        <p>{{ group.description }}</p>
         <div class="form w-100 m-auto">
-            {% for service in services %}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{% url 'services_group' service.slug %}">{{ service.name }}</a>
-                        </h5>
+            <h1 class="h1 text-center">{{group.name}}</h1>
+            <p>{{ group.description }}</p>
+            <div class="row">
+                {% for service in services %}
+                <div class="col-md-4 mb-4"> 
+                    <div class="card">
+                        <img
+                            src="{{service.image.url}}"
+                            class="card-img-top"
+                            alt="..."
+                            style="height: 245px; width: 340px; object-fit: cover; margin-right: 15px;"
+                        >
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                <a href="{% url 'service' service.slug %}">{{ service.name }}</a>
+                            </h5>
+                        </div>
                     </div>
                 </div>
-                <br>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

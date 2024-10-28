@@ -15,3 +15,8 @@ class ServiceAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name', ),
     }
+    list_display = (
+        'name',
+        'group',
+        'published',
+    )

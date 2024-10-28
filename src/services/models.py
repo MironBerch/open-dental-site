@@ -2,6 +2,10 @@ from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 
 
+def get_license_image_upload_path(instance: 'Service', filename: str) -> str:
+    return f'upload/services/{instance.name}/{filename}'
+
+
 class ServiceGroup(models.Model):
     name = models.CharField(verbose_name='название', unique=True, max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
@@ -30,6 +34,13 @@ class Service(models.Model):
         verbose_name='информация',
         blank=True,
         null=True,
+    )
+
+    image = models.ImageField(
+        verbose_name='фото документа',
+        blank=True,
+        null=True,
+        upload_to=get_license_image_upload_path,
     )
 
     group = models.ForeignKey(

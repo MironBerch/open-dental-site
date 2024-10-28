@@ -14,6 +14,7 @@
                     <li><a href="{% url 'requisites' %}">Реквизиты</a></li>
                     <br>
                     <li><a href="{% url 'reviews' %}"><h4>Отзывы</h4></a></li>
+                    <br>
                     {% if request.user.is_superuser or request.user.is_staff %}
                         <li><a href="{% url 'admin:index' %}">Панель администратора</a></li>
                     {% endif %}
