@@ -3,18 +3,16 @@
 {% block title %}Услуги{% endblock %}
 
 {% block content %}
-    <div class="">
+    <div class="content w-100 m-auto">
         <h1 class="h1 text-center">Услуги</h1>
-        <div class="form w-100 m-auto">
-            {% for service in services %}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{% url 'services_group' service.slug %}">{{ service.name }}</a></h5>
-                        <p class="card-text">{{ service.description }}</p>
-                    </div>
+        {% for service in services %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'services_group' service.slug %}">{{ service.name }}</a></h5>
+                    <p class="card-text">{{ service.description }}</p>
                 </div>
-                <br>
-            {% endfor %}
-        </div>
+            </div>
+            <br>
+        {% endfor %}
     </div>
 {% endblock %}

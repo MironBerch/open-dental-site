@@ -3,23 +3,21 @@
 {% block title %}Карта сайта{% endblock %}
 
 {% block content %}
-    <div class="">
+    <div class="content w-100 m-auto">
         <h1 class="h1 text-center">Карта сайта</h1>
-        <div class="d-flex align-items-center py-4 bg-body-tertiary">
-            <div class="form w-100 m-auto">
-                <ul class="list-group">
-                    <li><a href="{% url 'company' %}"><h4>Клиника</h4></a></li>
-                    <li><a href="{% url 'company' %}">О клинике</a></li>
-                    <li><a href="{% url 'licenses' %}">Лицензии</a></li>
-                    <li><a href="{% url 'requisites' %}">Реквизиты</a></li>
-                    <br>
-                    <li><a href="{% url 'reviews' %}"><h4>Отзывы</h4></a></li>
-                    <br>
-                    {% if request.user.is_superuser or request.user.is_staff %}
-                        <li><a href="{% url 'admin:index' %}">Панель администратора</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
+        <ul class="list-group">
+            <li><a href="{% url 'company' %}"><h4>Клиника</h4></a></li>
+            <li><a href="{% url 'company' %}">О клинике</a></li>
+            <li><a href="{% url 'licenses' %}">Лицензии</a></li>
+            <li><a href="{% url 'requisites' %}">Реквизиты</a></li>
+            <br>
+            <li><a href="{% url 'reviews' %}"><h4>Отзывы</h4></a></li>
+            <br>
+            <li><a href="{% url 'services_groups' %}"><h4>Услуги</h4></a></li>
+            <br>
+            {% if request.user.is_superuser or request.user.is_staff %}
+                <li><a href="{% url 'admin:index' %}">Панель администратора</a></li>
+            {% endif %}
+        </ul>
     </div>
 {% endblock %}

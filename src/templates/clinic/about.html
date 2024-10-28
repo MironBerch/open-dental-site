@@ -3,10 +3,8 @@
 {% block title %}Наша клиника{% endblock %}
 
 {% block content %}
-    <div class="">
+    <div class="content w-100 m-auto">
         <h1 class="h1 text-center">Наша клиника</h1>
-        <div class="form w-100 m-auto">
-            {{ company.about|safe }}
-        </div>
+        {{ company.about|safe }}
     </div>
 {% endblock %}

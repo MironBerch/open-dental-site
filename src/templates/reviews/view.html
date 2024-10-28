@@ -5,7 +5,7 @@
 {% block title %}Отзывы{% endblock %}
 
 {% block content %}
-    <div class="">
+    <div class="content w-100 m-auto">
         <div style="display: flex; justify-content: center;">
             <button type="button" class="btn btn-primary w-10 py-2" style="justify-content: center;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Оставить отзыв
@@ -32,18 +32,16 @@
             </div>
         </div>
         <h1 class="h1 text-center">Отзывы клиентов</h1>
-        <div class="form w-100 m-auto">
-            {% for review in reviews %}
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-text">
-                            <small class="text-body-secondary">{{review.created_at|date:"d F Y"}}</small>
-                        </p>
-                        <p class="card-text">{{review.message}}</p>
-                    </div>
+        {% for review in reviews %}
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">
+                        <small class="text-body-secondary">{{review.created_at|date:"d F Y"}}</small>
+                    </p>
+                    <p class="card-text">{{review.message}}</p>
                 </div>
-                <br>
-            {% endfor %}
-        </div>
+            </div>
+            <br>
+        {% endfor %}
     </div>
 {% endblock %}
