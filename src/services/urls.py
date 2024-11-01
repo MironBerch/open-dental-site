@@ -1,6 +1,6 @@
 from django.urls import path
 
-from services.views import ServicesGroupsView, ServiceView, ServicesGroupView
+from services.views import ServicesGroupsView, ServicesGroupView, ServiceView
 
 urlpatterns = [
     path(

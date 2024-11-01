@@ -1,6 +1,6 @@
 from django.urls import path
 
-from clinic.views import RequisitesView, AboutView, LicensesView
+from clinic.views import AboutView, LicensesView, RequisitesView
 
 urlpatterns = [
     path(

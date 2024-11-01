@@ -2,7 +2,11 @@ from django.http import HttpRequest
 from django.views.generic import View
 from django.views.generic.base import TemplateResponseMixin
 
-from clinic.services import get_clinic_requisites, get_clinic_about, get_clinic_licenses
+from clinic.services import (
+    get_clinic_about,
+    get_clinic_licenses,
+    get_clinic_requisites,
+)
 
 #  from django.core.paginator import Paginator
 

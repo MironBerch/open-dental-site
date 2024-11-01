@@ -1,7 +1,7 @@
 from django.db.models import QuerySet
-
-from services.models import ServiceGroup, Service
 from django.shortcuts import get_object_or_404
+
+from services.models import Service, ServiceGroup
 
 
 def get_service_groups() -> QuerySet[ServiceGroup]:

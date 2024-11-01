@@ -1,6 +1,6 @@
 from django.db.models import QuerySet
 
-from clinic.models import Details, License, About
+from clinic.models import About, Details, License
 
 
 def get_clinic_requisites() -> QuerySet[Details]:

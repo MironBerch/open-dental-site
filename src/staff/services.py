@@ -1,7 +1,8 @@
 from collections import defaultdict
-from django.db.models import Case, When, QuerySet
 
-from staff.models import Staff, PositionChoices
+from django.db.models import Case, QuerySet, When
+
+from staff.models import PositionChoices, Staff
 
 
 def get_all_staff() -> dict[str, QuerySet[Staff]]:
