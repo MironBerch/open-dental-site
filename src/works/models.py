@@ -7,6 +7,12 @@ def get_staff_image_upload_path(instance: 'Work', filename: str) -> str:
 
 
 class Work(models.Model):
+    image = models.ImageField(
+        verbose_name='Превью',
+        upload_to='works/previews/',
+        blank=True,
+        null=True,
+    )
     name = models.CharField(
         verbose_name='название',
         max_length=100,

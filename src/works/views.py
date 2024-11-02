@@ -2,7 +2,7 @@ from django.http import HttpRequest
 from django.views.generic import View
 from django.views.generic.base import TemplateResponseMixin
 
-from works.services import get_works, get_work_by_slug
+from works.services import get_works, get_work_by_slug, get_work_images_by_work_slug
 
 
 class WorksView(TemplateResponseMixin, View):
@@ -25,5 +25,6 @@ class WorkView(TemplateResponseMixin, View):
             context={
                 'active_page': 'works',
                 'work': get_work_by_slug(slug=slug),
+                'images': get_work_images_by_work_slug(slug=slug),
             },
         )
