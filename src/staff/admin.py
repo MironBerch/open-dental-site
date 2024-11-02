@@ -8,6 +8,9 @@ admin.site.register(Role)
 
 @admin.register(Staff)
 class StaffAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ('fio', ),
+    }
     list_display = (
         'fio',
         'display_roles',

@@ -1,8 +1,8 @@
 from django.urls import path
 
-from .views import StaffView
+from staff.views import StaffView, StaffDetailView
 
 urlpatterns = [
     path('staff/', StaffView.as_view(), name='staff_list'),
-    path('staff/<slug>/', StaffView.as_view(), name='staff'),
+    path('staff/<slug>/', StaffDetailView.as_view(), name='staff'),
 ]

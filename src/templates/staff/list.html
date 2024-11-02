@@ -21,7 +21,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title text-center">
-                                <a href="">{{member.fio}} - {{ member.stage }}</a>
+                                <a href="{% url 'staff' member.slug %}">{{member.fio}} - {{ member.stage }}</a>
                             </h5>
                         </div>
                     </div>
