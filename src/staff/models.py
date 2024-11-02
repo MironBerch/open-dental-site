@@ -36,6 +36,7 @@ class Staff(models.Model):
         max_length=100,
         unique=True,
     )
+    slug = models.SlugField(unique=True, max_length=255)
     information = CKEditor5Field(
         verbose_name='информация',
         blank=True,

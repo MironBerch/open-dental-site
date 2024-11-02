@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+from django.shortcuts import get_object_or_404
 from django.db.models import Case, QuerySet, When
 
 from staff.models import PositionChoices, Staff
@@ -21,3 +22,7 @@ def get_all_staff() -> dict[str, QuerySet[Staff]]:
         grouped_staff[staff_member.stage].append(staff_member)
 
     return dict(grouped_staff)
+
+
+def get_staff_by_slug(slug: str) -> Staff:
+    return get_object_or_404(Staff, slug=slug)
