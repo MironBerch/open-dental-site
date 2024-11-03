@@ -45,3 +45,14 @@ class LicensesView(TemplateResponseMixin, View):
                 'licenses': get_clinic_licenses(),
             },
         )
+
+
+class ContactsView(TemplateResponseMixin, View):
+    template_name = 'clinic/contacts.html'
+
+    def get(self, request: HttpRequest):
+        return self.render_to_response(
+            context={
+                'active_page': 'contacts',
+            },
+        )

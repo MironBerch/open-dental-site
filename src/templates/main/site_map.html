@@ -19,6 +19,8 @@
             <br>
             <li><a href="{% url 'gallery' %}"><h4>Наши работы</h4></a></li>
             <br>
+            <li><a href="{% url 'contacts' %}"><h4>Контакты</h4></a></li>
+            <br>
             {% if request.user.is_superuser or request.user.is_staff %}
                 <li><a href="{% url 'admin:index' %}"><h4>Панель администратора</h4></a></li>
             {% endif %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+    <div class="content w-100 m-auto">
+        <h1 class="h1 text-center">Контакты</h1>
+        <style>
+            #map {
+                width: 600px;
+                height: 400px;
+            }
+        </style>
+        <div id="map"></div>
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+        <script type="text/javascript">
+            function init() {
+                var myMap = new ymaps.Map(
+                    "map",
+                    {
+                        center: [59.913078, 29.770747],
+                        zoom: 12
+                
+                    }
+                );
+                var myPlacemark = new ymaps.Placemark(
+                    [59.913078, 29.770747],
+                    {
+                        balloonContent: "Клиника"
+                    }
+                );
+                myMap.geoObjects.add(myPlacemark);
+            }
+            ymaps.ready(init);
+        </script>
+    </div>
+{% endblock %}
