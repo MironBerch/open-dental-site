@@ -13,10 +13,10 @@ class StaffView(TemplateResponseMixin, View):
         return self.render_to_response(
             context={
                 'active_page': 'staff',
-                'managers':  staff['Руководитель'],
-                'administrators': staff['Администратор'],
-                'medics': staff['Мед персонал'],
-                'junior_medics': staff['Младщий мед персонал'],
+                'managers':  staff.get('Руководитель', ''),
+                'administrators': staff.get('Администратор', ''),
+                'medics': staff.get('Мед персонал', ''),
+                'junior_medics': staff.get('Младщий мед персонал', ''),
             },
         )
 

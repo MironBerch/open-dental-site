@@ -1,6 +1,10 @@
 from django.views.generic import TemplateView
 
 
+class MainView(TemplateView):
+    template_name = 'main/site_map.html'
+
+
 class SitemapView(TemplateView):
     """Просмотр для отображения карты сайта."""
 
