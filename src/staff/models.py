@@ -3,7 +3,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 
 def get_staff_image_upload_path(instance: 'Staff', filename: str) -> str:
-    return f'upload/{instance.fio}/{filename}'
+    return f'staff/{instance.fio}/{filename}'
 
 
 class PositionChoices(models.TextChoices):

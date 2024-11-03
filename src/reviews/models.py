@@ -4,7 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 def get_review_image_upload_path(instance: 'Review', filename: str) -> str:
-    return f'upload/review/{instance.email}/{filename}'
+    return f'review/{instance.email}/{filename}'
 
 
 class Review(models.Model):

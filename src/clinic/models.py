@@ -3,11 +3,11 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 
 def get_license_image_upload_path(instance: 'License', filename: str) -> str:
-    return f'upload/license/{instance.name}/image/{filename}'
+    return f'license/{instance.name}/image/{filename}'
 
 
 def get_license_pdf_upload_path(instance: 'License', filename: str) -> str:
-    return f'upload/license/{instance.name}/pdf/{filename}'
+    return f'license/{instance.name}/pdf/{filename}'
 
 
 class License(models.Model):

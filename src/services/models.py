@@ -5,7 +5,7 @@ from prices.models import Price
 
 
 def get_license_image_upload_path(instance: 'Service', filename: str) -> str:
-    return f'upload/services/{instance.name}/{filename}'
+    return f'services/{instance.name}/{filename}'
 
 
 class ServiceGroup(models.Model):
