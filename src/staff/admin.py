@@ -1,9 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from staff.models import Role, Staff
-
-admin.site.register(Role)
+from staff.models import Staff
 
 
 @admin.register(Staff)
@@ -13,7 +11,6 @@ class StaffAdmin(admin.ModelAdmin):
     }
     list_display = (
         'fio',
-        'display_roles',
         'stage',
         'published',
         'view_image',
@@ -23,11 +20,6 @@ class StaffAdmin(admin.ModelAdmin):
         'published',
         'roles',
     )
-
-    def display_roles(self, object):
-        return ', '.join(role.name for role in object.roles.all())
-
-    display_roles.short_description = 'Роли'
 
     def view_image(self, obj):
         if obj.image:

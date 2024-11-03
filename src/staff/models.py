@@ -13,17 +13,6 @@ class PositionChoices(models.TextChoices):
     JUNIOR_MEDIC = 'Младщий мед персонал', 'Младщий мед персонал'
 
 
-class Role(models.Model):
-    name = models.CharField(verbose_name='название', max_length=50)
-
-    class Meta:
-        verbose_name = 'роль или специализация'
-        verbose_name_plural = 'роли или специализации'
-
-    def __str__(self):
-        return self.name
-
-
 class Staff(models.Model):
     image = models.ImageField(
         verbose_name='фото работника',
@@ -43,8 +32,8 @@ class Staff(models.Model):
         null=True,
     )
 
-    roles = models.ManyToManyField(
-        Role,
+    roles = models.CharField(
+        max_length=255,
         verbose_name='роли или специализации',
         blank=True,
     )

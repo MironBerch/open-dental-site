@@ -11,9 +11,7 @@
             class="img-thumbnail mx-auto d-block"
             alt="..."
         >
-        {% for role in staff.roles.all %}
-            {{ role.name }}
-        {% endfor %}
+        <p>{{staff.roles}}</p>
         <p>{{staff.stage}}</p>
         <p>{{ staff.information|safe }}</p>
     </div>
