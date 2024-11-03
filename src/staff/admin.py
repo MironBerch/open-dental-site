@@ -14,12 +14,9 @@ class StaffAdmin(admin.ModelAdmin):
         'stage',
         'published',
         'view_image',
-    )
-    list_filter = (
-        'stage',
-        'published',
         'roles',
     )
+    list_filter = ('stage', 'published',)
 
     def view_image(self, obj):
         if obj.image:
