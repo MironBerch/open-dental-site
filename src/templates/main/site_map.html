@@ -17,8 +17,10 @@
             <br>
             <li><a href="{% url 'staff_list' %}"><h4>Сотрудники</h4></a></li>
             <br>
+            <li><a href="{% url 'gallery' %}"><h4>Наши работы</h4></a></li>
+            <br>
             {% if request.user.is_superuser or request.user.is_staff %}
-                <li><a href="{% url 'admin:index' %}">Панель администратора</a></li>
+                <li><a href="{% url 'admin:index' %}"><h4>Панель администратора</h4></a></li>
             {% endif %}
         </ul>
     </div>
