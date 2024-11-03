@@ -1,6 +1,8 @@
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 
+from prices.models import Price
+
 
 def get_license_image_upload_path(instance: 'Service', filename: str) -> str:
     return f'upload/services/{instance.name}/{filename}'
@@ -41,6 +43,12 @@ class Service(models.Model):
         blank=True,
         null=True,
         upload_to=get_license_image_upload_path,
+    )
+
+    prices = models.ManyToManyField(
+        Price,
+        verbose_name='цены',
+        blank=True,
     )
 
     group = models.ForeignKey(
