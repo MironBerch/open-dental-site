@@ -32,6 +32,11 @@ class Service(models.Model):
         unique=True,
     )
     slug = models.SlugField(unique=True, max_length=255)
+    short_information = models.TextField(
+        verbose_name='краткая информация',
+        blank=True,
+        null=True,
+    )
     information = CKEditor5Field(
         verbose_name='информация',
         blank=True,
@@ -71,3 +76,7 @@ class Service(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def get_min_price(self):
+        """Возвращает минимальную цену услуги."""
+        return self.prices.aggregate(models.Min('cost'))['cost__min']

@@ -36,7 +36,6 @@ class ServiceView(TemplateResponseMixin, View):
     template_name = 'services/service.html'
 
     def get(self, request: HttpRequest, slug: str):
-        print(get_service_by_slug(slug))
         service, prices = get_service_by_slug(slug)
         return self.render_to_response(
             context={

@@ -13,7 +13,17 @@ def get_group_by_slug(slug: str) -> ServiceGroup:
 
 
 def get_services_by_group(group: ServiceGroup) -> QuerySet[Service]:
-    return Service.objects.filter(group=group)
+    services = Service.objects.filter(group=group)
+    service_details = []
+    for service in services:
+        min_price = service.get_min_price()
+        service_details.append(
+            {
+                'service': service,
+                'min_price': min_price,
+            },
+        )
+    return service_details
 
 
 def get_service_by_slug(slug: str) -> tuple[Service, dict[str, list]]:
