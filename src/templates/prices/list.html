@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Цены{% endblock %}
+
+{% block content %}
+    <div class="content w-100 m-auto">
+        <h1 class="h1 text-center">Цены</h1>
+        {% for group in price_groups %}
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        {{ group.name }}
+                    </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            {% for price in group.price_set.all %}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ price.name }} - от {{ price.cost }}</h5>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
