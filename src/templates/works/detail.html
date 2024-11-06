@@ -3,17 +3,15 @@
 {% block title %}{{work.name}}{% endblock %}
 
 {% block content %}
-    <div class="content w-100 m-auto">
-        <h1 class="h1 text-center">{{work.name}}</h1>
-        <div class="row">
-            {% for image in images %}
-                <div class="col-md-6 mb-4">
-                    <div class="card text-bg-dark">
-                        <img src="{{ image.image.url }}" style="height: 400px; width: 600px; object-fit: cover; margin-right: 15px;"  class="card-img" alt="..." class="img-thumbnail mx-auto d-block">
-                    </div>
+    <h1 class="h1 text-center">{{work.name}}</h1>
+    <div class="row">
+        {% for image in images %}
+            <div class="col-md-6 mb-4">
+                <div class="card text-bg-dark">
+                    <img src="{{ image.image.url }}" style="height: 400px; width: 600px; object-fit: cover; margin-right: 15px;"  class="card-img" alt="..." class="img-thumbnail mx-auto d-block">
                 </div>
-            {% endfor %}
-        </div>
-        <p>{{ work.information|safe }}</p>
+            </div>
+        {% endfor %}
     </div>
+    <p>{{ work.information|safe }}</p>
 {% endblock %}

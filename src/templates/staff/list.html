@@ -3,98 +3,96 @@
 {% block title %}Сотрудники{% endblock %}
 
 {% block content %}
-    <div class="content w-100 m-auto">
-        <h1>Сотрудники</h1>
-        <h2>Руководители</h2>
-        <p>Руководители центра авторской стоматологии «Мастерская Улыбок» - популярные лица и голоса, узнаваемые во всем мире. Они – неиссякаемый источник идей, профессионализма и опыта. Во многом, благодаря руководству, клиника «Мастерская Улыбок» вышла на наивысший качественный уровень, став центром высокотехнологической стоматологической помощи.</p>
-        <div class="row">
-            {% for member in managers %}
-                <div class="col-md-4 mb-4"> 
-                    <div class="card h-100">
-                        <div class="image-container" style="height: 245px; overflow: hidden;">
-                            <img
-                                src="{{ member.image.url }}"
-                                class="card-img-top"
-                                alt="..."
-                                style="object-fit: cover; width: 100%; height: 100%;"
-                            >
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">
-                                <a href="{% url 'staff' member.slug %}">{{member.fio}} - {{ member.stage }}</a>
-                            </h5>
-                        </div>
+    <h1>Сотрудники</h1>
+    <h2>Руководители</h2>
+    <p>Руководители центра авторской стоматологии «Мастерская Улыбок» - популярные лица и голоса, узнаваемые во всем мире. Они – неиссякаемый источник идей, профессионализма и опыта. Во многом, благодаря руководству, клиника «Мастерская Улыбок» вышла на наивысший качественный уровень, став центром высокотехнологической стоматологической помощи.</p>
+    <div class="row">
+        {% for member in managers %}
+            <div class="col-md-4 mb-4"> 
+                <div class="card h-100">
+                    <div class="image-container" style="height: 245px; overflow: hidden;">
+                        <img
+                            src="{{ member.image.url }}"
+                            class="card-img-top"
+                            alt="..."
+                            style="object-fit: cover; width: 100%; height: 100%;"
+                        >
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a href="{% url 'staff' member.slug %}">{{member.fio}} - {{ member.stage }}</a>
+                        </h5>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-        <h2>Мастера по улыбкам</h2>
-        <p>В клинике «Мастерская Улыбок» собран коллектив лучших врачей-стоматологов, кому нет равных в диагностике, лечении и научном опыте. В их руках обычное оборудование становятся магическим инструментом, способным воплотить мечту об идеальной улыбке в реальность..</p>
-        <div class="row">
-            {% for member in medics %}
-                <div class="col-md-4 mb-4"> 
-                    <div class="card h-100">
-                        <div class="image-container" style="height: 245px; overflow: hidden;">
-                            <img
-                                src="{{ member.image.url }}"
-                                class="card-img-top"
-                                alt="..."
-                                style="object-fit: cover; width: 100%; height: 100%;"
-                            >
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">
-                                <a href="">{{member.fio}} - {{ member.stage }}</a>
-                            </h5>
-                        </div>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>Мастера по улыбкам</h2>
+    <p>В клинике «Мастерская Улыбок» собран коллектив лучших врачей-стоматологов, кому нет равных в диагностике, лечении и научном опыте. В их руках обычное оборудование становятся магическим инструментом, способным воплотить мечту об идеальной улыбке в реальность..</p>
+    <div class="row">
+        {% for member in medics %}
+            <div class="col-md-4 mb-4"> 
+                <div class="card h-100">
+                    <div class="image-container" style="height: 245px; overflow: hidden;">
+                        <img
+                            src="{{ member.image.url }}"
+                            class="card-img-top"
+                            alt="..."
+                            style="object-fit: cover; width: 100%; height: 100%;"
+                        >
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a href="">{{member.fio}} - {{ member.stage }}</a>
+                        </h5>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-        <h2>Администраторы</h2>
-        <div class="row">
-            {% for member in administrators %}
-                <div class="col-md-4 mb-4"> 
-                    <div class="card h-100">
-                        <div class="image-container" style="height: 245px; overflow: hidden;">
-                            <img
-                                src="{{ member.image.url }}"
-                                class="card-img-top"
-                                alt="..."
-                                style="object-fit: cover; width: 100%; height: 100%;"
-                            >
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">
-                                <a href="">{{member.fio}} - {{ member.stage }}</a>
-                            </h5>
-                        </div>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>Администраторы</h2>
+    <div class="row">
+        {% for member in administrators %}
+            <div class="col-md-4 mb-4"> 
+                <div class="card h-100">
+                    <div class="image-container" style="height: 245px; overflow: hidden;">
+                        <img
+                            src="{{ member.image.url }}"
+                            class="card-img-top"
+                            alt="..."
+                            style="object-fit: cover; width: 100%; height: 100%;"
+                        >
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a href="">{{member.fio}} - {{ member.stage }}</a>
+                        </h5>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-        <h2>Помощники мастеров по улыбкам</h2>
-        <p>В команду клиники "Мастерская Улыбок" попадают лучшие и надежнейшие медицинские сотрудники. Это наша поддержка, помощь, "правая рука" и профессиональные сотрудники!</p>
-        <div class="row">
-            {% for member in junior_medics %}
-                <div class="col-md-4 mb-4"> 
-                    <div class="card h-100">
-                        <div class="image-container" style="height: 245px; overflow: hidden;">
-                            <img
-                                src="{{ member.image.url }}"
-                                class="card-img-top"
-                                alt="..."
-                                style="object-fit: cover; width: 100%; height: 100%;"
-                            >
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title text-center">
-                                <a href="">{{member.fio}} - {{ member.stage }}</a>
-                            </h5>
-                        </div>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>Помощники мастеров по улыбкам</h2>
+    <p>В команду клиники "Мастерская Улыбок" попадают лучшие и надежнейшие медицинские сотрудники. Это наша поддержка, помощь, "правая рука" и профессиональные сотрудники!</p>
+    <div class="row">
+        {% for member in junior_medics %}
+            <div class="col-md-4 mb-4"> 
+                <div class="card h-100">
+                    <div class="image-container" style="height: 245px; overflow: hidden;">
+                        <img
+                            src="{{ member.image.url }}"
+                            class="card-img-top"
+                            alt="..."
+                            style="object-fit: cover; width: 100%; height: 100%;"
+                        >
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a href="">{{member.fio}} - {{ member.stage }}</a>
+                        </h5>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

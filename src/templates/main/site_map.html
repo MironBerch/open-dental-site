@@ -3,29 +3,27 @@
 {% block title %}Карта сайта{% endblock %}
 
 {% block content %}
-    <div class="content w-100 m-auto">
-        <h1 class="h1 text-center">Карта сайта</h1>
-        <ul class="list-group">
-            <li><a href="{% url 'company' %}"><h4>Клиника</h4></a></li>
-            <li><a href="{% url 'company' %}">О клинике</a></li>
-            <li><a href="{% url 'licenses' %}">Лицензии</a></li>
-            <li><a href="{% url 'requisites' %}">Реквизиты</a></li>
-            <br>
-            <li><a href="{% url 'reviews' %}"><h4>Отзывы</h4></a></li>
-            <br>
-            <li><a href="{% url 'services_groups' %}"><h4>Услуги</h4></a></li>
-            <br>
-            <li><a href="{% url 'staff_list' %}"><h4>Сотрудники</h4></a></li>
-            <br>
-            <li><a href="{% url 'gallery' %}"><h4>Наши работы</h4></a></li>
-            <br>
-            <li><a href="{% url 'contacts' %}"><h4>Контакты</h4></a></li>
-            <br>
-            <li><a href="{% url 'prices' %}"><h4>Контакты</h4></a></li>
-            <br>
-            {% if request.user.is_superuser or request.user.is_staff %}
-                <li><a href="{% url 'admin:index' %}"><h4>Панель администратора</h4></a></li>
-            {% endif %}
-        </ul>
-    </div>
+    <h1 class="h1 text-center">Карта сайта</h1>
+    <ul class="list-group">
+        <li><a href="{% url 'company' %}"><h4>Клиника</h4></a></li>
+        <li><a href="{% url 'company' %}">О клинике</a></li>
+        <li><a href="{% url 'licenses' %}">Лицензии</a></li>
+        <li><a href="{% url 'requisites' %}">Реквизиты</a></li>
+        <br>
+        <li><a href="{% url 'reviews' %}"><h4>Отзывы</h4></a></li>
+        <br>
+        <li><a href="{% url 'services_groups' %}"><h4>Услуги</h4></a></li>
+        <br>
+        <li><a href="{% url 'staff_list' %}"><h4>Сотрудники</h4></a></li>
+        <br>
+        <li><a href="{% url 'gallery' %}"><h4>Наши работы</h4></a></li>
+        <br>
+        <li><a href="{% url 'contacts' %}"><h4>Контакты</h4></a></li>
+        <br>
+        <li><a href="{% url 'prices' %}"><h4>Контакты</h4></a></li>
+        <br>
+        {% if request.user.is_superuser or request.user.is_staff %}
+            <li><a href="{% url 'admin:index' %}"><h4>Панель администратора</h4></a></li>
+        {% endif %}
+    </ul>
 {% endblock %}

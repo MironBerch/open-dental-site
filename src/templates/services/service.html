@@ -3,16 +3,14 @@
 {% block title %}{{service.name}}{% endblock %}
 
 {% block content %}
-    <div class="content w-100 m-auto">
-        <h1 class="h1 text-center">{{service.name}}</h1>
-        <img
-            src="{{ service.image.url }}"
-            style="height: 375px; width: 500px; object-fit: cover; margin-right: 15px;" 
-            class="img-thumbnail mx-auto d-block"
-            alt="..."
-        >
-        <p>{{ service.information|safe }}</p>
-    </div>
+    <h1 class="h1 text-center">{{service.name}}</h1>
+    <img
+        src="{{ service.image.url }}"
+        style="height: 375px; width: 500px; object-fit: cover; margin-right: 15px;" 
+        class="img-thumbnail mx-auto d-block"
+        alt="..."
+    >
+    <p>{{ service.information|safe }}</p>
     <h2>Цены:</h2>
     {% for group, prices in prices.items %}
         <div class="accordion" id="accordionExample">

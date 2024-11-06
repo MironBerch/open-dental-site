@@ -3,30 +3,28 @@
 {% block title %}{{ group.name }}{% endblock %}
 
 {% block content %}
-    <div class="content w-100 m-auto">
-        <h1 class="h1 text-center">{{ group.name }}</h1>
-        <p>{{ group.description }}</p>
-        <div class="row">
-            {% for detail in services %}
-            <div class="col-md-4 mb-4"> 
-                <div class="card h-100">
-                    <div class="image-container" style="height: 245px; overflow: hidden;">
-                        <img
-                            src="{{ detail.service.image.url }}"
-                            class="card-img-top"
-                            alt="..."
-                            style="object-fit: cover; width: 100%; height: 100%;"
-                        >
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="{% url 'service' detail.service.slug %}">{{ detail.service.name }}</a>
-                        </h5>
-                        <p class="card-text"><small class="text-body-secondary">от {{ detail.min_price }}</small></p>
-                    </div>
+    <h1 class="h1 text-center">{{ group.name }}</h1>
+    <p>{{ group.description }}</p>
+    <div class="row">
+        {% for detail in services %}
+        <div class="col-md-4 mb-4"> 
+            <div class="card h-100">
+                <div class="image-container" style="height: 245px; overflow: hidden;">
+                    <img
+                        src="{{ detail.service.image.url }}"
+                        class="card-img-top"
+                        alt="..."
+                        style="object-fit: cover; width: 100%; height: 100%;"
+                    >
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <a href="{% url 'service' detail.service.slug %}">{{ detail.service.name }}</a>
+                    </h5>
+                    <p class="card-text"><small class="text-body-secondary">от {{ detail.min_price }}</small></p>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
 {% endblock %}

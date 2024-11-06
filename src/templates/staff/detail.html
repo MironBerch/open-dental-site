@@ -3,16 +3,14 @@
 {% block title %}{{staff.fio}}{% endblock %}
 
 {% block content %}
-    <div class="content w-100 m-auto">
-        <h1 class="h1 text-center">{{staff.fio}}</h1>
-        <img
-            src="{{ staff.image.url }}"
-            style="height: 375px; width: 500px; object-fit: cover; margin-right: 15px;" 
-            class="img-thumbnail mx-auto d-block"
-            alt="..."
-        >
-        <p>{{staff.roles}}</p>
-        <p>{{staff.stage}}</p>
-        <p>{{ staff.information|safe }}</p>
-    </div>
+    <h1 class="h1 text-center">{{staff.fio}}</h1>
+    <img
+        src="{{ staff.image.url }}"
+        style="height: 375px; width: 500px; object-fit: cover; margin-right: 15px;" 
+        class="img-thumbnail mx-auto d-block"
+        alt="..."
+    >
+    <p>{{staff.roles}}</p>
+    <p>{{staff.stage}}</p>
+    <p>{{ staff.information|safe }}</p>
 {% endblock %}
