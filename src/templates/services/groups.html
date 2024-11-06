@@ -2,6 +2,10 @@
 
 {% block title %}Услуги{% endblock %}
 
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Главная</a></li>
+{% endblock %}
+
 {% block content %}
     <h1 class="h1 text-center">Услуги</h1>
     {% for service in services %}

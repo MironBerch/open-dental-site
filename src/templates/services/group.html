@@ -2,6 +2,11 @@
 
 {% block title %}{{ group.name }}{% endblock %}
 
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Главная</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'services_groups' %}">Услуги стоматологии</a></li>
+{% endblock %}
+
 {% block content %}
     <h1 class="h1 text-center">{{ group.name }}</h1>
     <p>{{ group.description }}</p>

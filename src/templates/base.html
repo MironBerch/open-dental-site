@@ -14,7 +14,14 @@
         {% include 'components/header.html' %}
         {% include 'components/messages.html' %}
         <div class="container">
-            <div class="content w-100 m-auto">{% block content %}{% endblock %}</div>
+            <div class="content w-100 m-auto">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {% block breadcrumbs %}{% endblock %}
+                    </ol>
+                </nav>
+                {% block content %}{% endblock %}
+            </div>
         </div>
         {% include 'components/theme.html' %}
         {% include 'components/footer.html' %}

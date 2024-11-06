@@ -4,6 +4,11 @@
 
 {% block title %}Лицензии и сертификаты{% endblock %}
 
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="#">Главная</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'company' %}">О клинике</a></li>
+{% endblock %}
+
 {% block content %}
     <h1 class="h1 text-center">Лицензии и сертификаты</h1>
     {% for license in licenses %}
