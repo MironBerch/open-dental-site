@@ -70,3 +70,19 @@ class Details(models.Model):
 
     def __str__(self):
         return self.full_name
+
+
+class Contact(models.Model):
+    address = models.CharField(
+        verbose_name='адрес',
+        max_length=255,
+    )
+    opening_hours = models.CharField(
+        verbose_name='Часы работы',
+        max_length=255,
+    )
+    phone_numbers = models.CharField(verbose_name='Номера телефонов', max_length=255)
+    email = models.EmailField(verbose_name='почта', max_length=255)
+
+    def __str__(self):
+        return self.address

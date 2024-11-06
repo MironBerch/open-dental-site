@@ -7,7 +7,7 @@
         <h1 class="h1 text-center">Контакты</h1>
         <style>
             #map {
-                width: 600px;
+                width: 100%;
                 height: 400px;
             }
         </style>
@@ -33,5 +33,19 @@
             }
             ymaps.ready(init);
         </script>
+        <br>
+        {% for contact in contacts %}
+            <div class="card d-flex flex-row">
+                <div class="card-body d-flex align-items-center">
+                    <div>
+                        <strong>{{ contact.address }}</strong>
+                        {{ contact.opening_hours }}
+                        {{ contact.phone_numbers }}
+                        {{ contact.email }}
+                    </div>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
     </div>
 {% endblock %}

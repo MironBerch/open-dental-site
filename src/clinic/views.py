@@ -6,6 +6,7 @@ from clinic.services import (
     get_clinic_about,
     get_clinic_licenses,
     get_clinic_requisites,
+    get_clinic_contacts,
 )
 
 #  from django.core.paginator import Paginator
@@ -54,5 +55,6 @@ class ContactsView(TemplateResponseMixin, View):
         return self.render_to_response(
             context={
                 'active_page': 'contacts',
+                'contacts': get_clinic_contacts(),
             },
         )
