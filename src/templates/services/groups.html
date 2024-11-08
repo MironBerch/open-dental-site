@@ -3,7 +3,7 @@
 {% block title %}Услуги{% endblock %}
 
 {% block breadcrumbs %}
-    <li class="breadcrumb-item"><a href="#">Главная</a></li>
+    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="#">Главная</a></li>
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
     {% for service in services %}
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title"><a href="{% url 'services_group' service.slug %}">{{ service.name }}</a></h5>
+                <h5 class="card-title"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_group' service.slug %}">{{ service.name }}</a></h5>
                 <p class="card-text">{{ service.description }}</p>
             </div>
         </div>

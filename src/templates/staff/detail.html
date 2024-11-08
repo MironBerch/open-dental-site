@@ -3,9 +3,9 @@
 {% block title %}{{staff.fio}}{% endblock %}
 
 {% block breadcrumbs %}
-    <li class="breadcrumb-item"><a href="#">Главная</a></li>
-    <li class="breadcrumb-item"><a href="{% url 'company' %}">О клинике</a></li>
-    <li class="breadcrumb-item"><a href="{% url 'staff_list' %}">Сотрудники</a></li>
+    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="#">Главная</a></li>
+    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
+    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'staff_list' %}">Сотрудники</a></li>
 {% endblock %}
 
 {% block content %}

@@ -3,7 +3,7 @@
 {% block title %}Наши работы{% endblock %}
 
 {% block breadcrumbs %}
-    <li class="breadcrumb-item"><a href="#">Главная</a></li>
+    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="#">Главная</a></li>
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title text-center">
-                            <a href="{% url 'work' work.slug %}">{{work.name}}</a>
+                            <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'work' work.slug %}">{{work.name}}</a>
                         </h5>
                     </div>
                 </div>
