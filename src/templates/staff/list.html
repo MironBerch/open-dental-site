@@ -8,42 +8,110 @@
 {% endblock %}
 
 {% block content %}
+    <style>
+        .card {
+            transition: background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .card-img-overlay {
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-img-overlay {
+            transform: translateY(-5px);
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 128%;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        
+        .card-img {
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .image-container::after {
+            opacity: 1;
+        }
+    </style>
+
+
     <h1>Сотрудники</h1>
+    
     <h2>Руководители</h2>
     <p>Руководители центра авторской стоматологии «Мастерская Улыбок» - популярные лица и голоса, узнаваемые во всем мире. Они – неиссякаемый источник идей, профессионализма и опыта. Во многом, благодаря руководству, клиника «Мастерская Улыбок» вышла на наивысший качественный уровень, став центром высокотехнологической стоматологической помощи.</p>
+    
     <div class="row">
         {% for member in managers %}
             <div class="col-md-4 mb-4"> 
-                <div class="card h-100">
-                    <div class="image-container" style="height: 245px; overflow: hidden;">
+                <div class="card text-bg-dark">
+                    <div class="image-container">
                         <img
                             src="{{ member.image.url }}"
-                            class="card-img-top"
+                            class="card-img"
                             alt="..."
-                            style="object-fit: cover; width: 100%; height: 100%;"
                         >
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="{% url 'staff' member.slug %}">{{member.fio}} - {{ member.stage }}</a>
-                        </h5>
+                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                        <h6 class="card-title">
+                            <a 
+                                class="link-light link-offset-2 link-underline link-underline-opacity-0" 
+                                href="{% url 'staff' member.slug %}"
+                            >
+                                {{member.fio}}
+                            </a>
+                        </h6>
+                        <p class="card-text"><small>{{ member.roles }}</small></p>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
+    
     <h2>Мастера по улыбкам</h2>
-    <p>В клинике «Мастерская Улыбок» собран коллектив лучших врачей-стоматологов, кому нет равных в диагностике, лечении и научном опыте. В их руках обычное оборудование становятся магическим инструментом, способным воплотить мечту об идеальной улыбке в реальность..</p>
+    <p>В клинике «Мастерская Улыбок» собран коллектив лучших врачей-стоматологов, кому нет равных в диагностике, лечении и научном опыте. В их руках обычное оборудование становятся магическим инструментом, способным воплотить мечту об идеальной улыбке в реальность.</p>
+    
     <div class="row">
         {% for member in medics %}
             <div class="col-md-4 mb-4"> 
                 <div class="card h-100">
-                    <div class="image-container" style="height: 245px; overflow: hidden;">
+                    <div class="image-container">
                         <img
                             src="{{ member.image.url }}"
                             class="card-img-top"
                             alt="..."
-                            style="object-fit: cover; width: 100%; height: 100%;"
                         >
                     </div>
                     <div class="card-body">
@@ -55,17 +123,17 @@
             </div>
         {% endfor %}
     </div>
+    
     <h2>Администраторы</h2>
     <div class="row">
         {% for member in administrators %}
             <div class="col-md-4 mb-4"> 
                 <div class="card h-100">
-                    <div class="image-container" style="height: 245px; overflow: hidden;">
+                    <div class="image-container">
                         <img
                             src="{{ member.image.url }}"
                             class="card-img-top"
                             alt="..."
-                            style="object-fit: cover; width: 100%; height: 100%;"
                         >
                     </div>
                     <div class="card-body">
@@ -77,18 +145,19 @@
             </div>
         {% endfor %}
     </div>
+    
     <h2>Помощники мастеров по улыбкам</h2>
     <p>В команду клиники "Мастерская Улыбок" попадают лучшие и надежнейшие медицинские сотрудники. Это наша поддержка, помощь, "правая рука" и профессиональные сотрудники!</p>
+    
     <div class="row">
         {% for member in junior_medics %}
             <div class="col-md-4 mb-4"> 
                 <div class="card h-100">
-                    <div class="image-container" style="height: 245px; overflow: hidden;">
+                    <div class="image-container">
                         <img
                             src="{{ member.image.url }}"
                             class="card-img-top"
                             alt="..."
-                            style="object-fit: cover; width: 100%; height: 100%;"
                         >
                     </div>
                     <div class="card-body">
