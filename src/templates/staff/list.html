@@ -106,18 +106,24 @@
     <div class="row">
         {% for member in medics %}
             <div class="col-md-4 mb-4"> 
-                <div class="card h-100">
+                <div class="card text-bg-dark">
                     <div class="image-container">
                         <img
                             src="{{ member.image.url }}"
-                            class="card-img-top"
+                            class="card-img"
                             alt="..."
                         >
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="">{{member.fio}} - {{ member.stage }}</a>
-                        </h5>
+                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                        <h6 class="card-title">
+                            <a 
+                                class="link-light link-offset-2 link-underline link-underline-opacity-0" 
+                                href="{% url 'staff' member.slug %}"
+                            >
+                                {{member.fio}}
+                            </a>
+                        </h6>
+                        <p class="card-text"><small>{{ member.roles }}</small></p>
                     </div>
                 </div>
             </div>
@@ -128,18 +134,24 @@
     <div class="row">
         {% for member in administrators %}
             <div class="col-md-4 mb-4"> 
-                <div class="card h-100">
+                <div class="card text-bg-dark">
                     <div class="image-container">
                         <img
                             src="{{ member.image.url }}"
-                            class="card-img-top"
+                            class="card-img"
                             alt="..."
                         >
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="">{{member.fio}} - {{ member.stage }}</a>
-                        </h5>
+                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                        <h6 class="card-title">
+                            <a 
+                                class="link-light link-offset-2 link-underline link-underline-opacity-0" 
+                                href="{% url 'staff' member.slug %}"
+                            >
+                                {{member.fio}}
+                            </a>
+                        </h6>
+                        <p class="card-text"><small>{{ member.roles }}</small></p>
                     </div>
                 </div>
             </div>
@@ -152,18 +164,24 @@
     <div class="row">
         {% for member in junior_medics %}
             <div class="col-md-4 mb-4"> 
-                <div class="card h-100">
+                <div class="card text-bg-dark">
                     <div class="image-container">
                         <img
                             src="{{ member.image.url }}"
-                            class="card-img-top"
+                            class="card-img"
                             alt="..."
                         >
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a href="">{{member.fio}} - {{ member.stage }}</a>
-                        </h5>
+                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                        <h6 class="card-title">
+                            <a 
+                                class="link-light link-offset-2 link-underline link-underline-opacity-0" 
+                                href="{% url 'staff' member.slug %}"
+                            >
+                                {{member.fio}}
+                            </a>
+                        </h6>
+                        <p class="card-text"><small>{{ member.roles }}</small></p>
                     </div>
                 </div>
             </div>
