@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django_ckeditor_5',
     'phonenumber_field',
     'django_bootstrap5',
+    'debug_toolbar',
 
     # local
     'main.apps.MainConfig',
@@ -46,6 +47,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -316,3 +319,9 @@ CKEDITOR_5_CONFIGS = {
 }
 CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'staff'
 # CKEDITOR_5_FILE_STORAGE = 'content/ckeditor/'
+
+
+# INTERNAL IPS configuration
+
+hostname, _, ips = gethostbyname_ex(gethostname())
+INTERNAL_IPS = [ip[: ip.rfind('.')] + '.1' for ip in ips] + ['127.0.0.1', '10.0.2.2']

@@ -70,6 +70,21 @@ Pillow = "*"
 dev = ["bandit[toml] (==1.7.6)", "black (==22.12.0)", "codespell (==2.2.2)", "coverage (==7.4.0)", "mypy (==1.8.0)", "mypy-extensions (==1.0.0)", "pytest (==7.4.4)", "pytest-cov (==4.0.0)", "pytest-django (==4.5.2)", "pytest-mock (==3.10.0)", "safety (==2.3.5)", "types-setuptools (==65.6.0.2)", "typing-extensions (==4.9.0)"]
 
 [[package]]
+name = "django-debug-toolbar"
+version = "4.4.6"
+description = "A configurable set of panels that display various debug information about the current request/response."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_debug_toolbar-4.4.6-py3-none-any.whl", hash = "sha256:3beb671c9ec44ffb817fad2780667f172bd1c067dbcabad6268ce39a81335f45"},
+    {file = "django_debug_toolbar-4.4.6.tar.gz", hash = "sha256:36e421cb908c2f0675e07f9f41e3d1d8618dc386392ec82d23bcfcd5d29c7044"},
+]
+
+[package.dependencies]
+django = ">=4.2.9"
+sqlparse = ">=0.2"
+
+[[package]]
 name = "django-phonenumber-field"
 version = "8.0.0"
 description = "An international phone number field for django models."
@@ -296,4 +311,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "e620c48110702c4e375774c871182d19dafa912ecb47743341955bdf0bd2a1f9"
+content-hash = "0fcc0c2cbaa50b0dc2fc4e183bb7c86f9e44ef36040d936750d065d16b0dd64f"

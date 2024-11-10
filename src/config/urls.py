@@ -3,6 +3,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+from debug_toolbar.toolbar import debug_toolbar_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
@@ -14,7 +16,7 @@ urlpatterns = [
     path('reviews/', include('reviews.urls')),
 
     path('ckeditor5/', include('django_ckeditor_5.urls')),
-]
+] + debug_toolbar_urls()
 
 if settings.DEBUG:
     urlpatterns += static(

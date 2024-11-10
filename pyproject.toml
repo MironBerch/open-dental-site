@@ -16,6 +16,7 @@ django-ckeditor-5 = "0.2.15"
 django-bootstrap5 = "24.3"
 phonenumbers = "8.13.48"
 django-phonenumber-field = "8.0.0"
+django-debug-toolbar = "^4.4.6"
 
 
 [build-system]
