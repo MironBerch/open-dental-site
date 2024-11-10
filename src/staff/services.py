@@ -6,6 +6,10 @@ from django.db.models import Case, QuerySet, When
 from staff.models import PositionChoices, Staff
 
 
+def get_staff() -> QuerySet[Staff]:
+    return Staff.objects.all()
+
+
 def get_all_staff() -> dict[str, QuerySet[Staff]]:
     grouped_staff = defaultdict(list)
     staff_queryset = Staff.objects.annotate(
