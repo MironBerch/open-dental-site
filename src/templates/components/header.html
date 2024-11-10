@@ -1,3 +1,8 @@
+<style>
+    .dropdown-toggle::after {
+        display: none;
+    }
+</style>
 <div class="container">
     <header class="p-3 mb-3 border-bottom">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -26,13 +31,15 @@
                         Цены
                     </a>
                 </li>
-                <li>
-                    <a 
-                        href="{% url 'company' %}"
-                        class="nav-link px-2 {% if active_page == 'clinic' %}link-secondary{% else %}link-body-emphasis{% endif %}"
-                    >
+                <li class="nav-item dropdown">
+                    <a class="nav-link px-2 {% if active_page == 'clinic' %}link-secondary{% else %}link-body-emphasis{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Клиника
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'company' %}">О клинике</a></li>
+                        <li><a class="dropdown-item" href="{% url 'licenses' %}">Лицензии</a></li>
+                        <li><a class="dropdown-item" href="{% url 'requisites' %}">Реквизиты</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a 
