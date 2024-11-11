@@ -37,7 +37,7 @@ class SearchView(TemplateResponseMixin, View):
         query = request.GET.get('query', '')
         results = []
         if query:
-            results = list(get_search_results(query))
+            results = get_search_results(query)
         return JsonResponse(results, safe=False)
 
 

@@ -2,6 +2,26 @@
     .dropdown-toggle::after {
         display: none;
     }
+    #suggestions {
+        position: absolute; /* Позволяет позиционировать список относительно родителя */
+        z-index: 1000;     /* Устанавливаем достаточно высокий z-index, чтобы он был выше других элементов */
+        background-color: white; /* Задаем фон для выпадающего списка */
+        border: 1px solid #ccc;  /* Обводка выпадающего списка */
+        max-height: 200px;       /* Максимальная высота списка */
+        overflow-y: auto;        /* Прокрутка по вертикали, если слишком много элементов */
+        width: 100%;             /* Ширина должна соответствовать ширине родительского */
+        display: none;           /* Изначально скрываем блок */
+    }
+
+    #suggestions div {
+        padding: 10px;          /* Отступы для элементов списка */
+        cursor: pointer;        /* Курсор в виде указателя */
+    }
+
+    #suggestions div:hover {
+        background-color: #f0f0f0; /* Цвет при наведении */
+    }
+
 </style>
 <div class="container">
     <header class="p-3 mb-3 border-bottom">
@@ -66,53 +86,87 @@
                     </a>
                 </li>
             </ul>
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control" placeholder="Поиск" aria-label="Поиск">
 
-
-                <input type="text" id="search-input" placeholder="Поиск..." autocomplete="off">
-                <div id="suggestions" style="display: none;"></div>
-
+            <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <div style="position: relative;"> <!-- Новый контейнер для позиционирования -->
+                    <input type="text" class="form-control" placeholder="Поиск" id="search-input" aria-label="Поиск" autocomplete="off">
+            
+                    <div id="suggestions"></div> <!-- Удалено стиль display: none; будет контролироваться в JS -->
+                </div>
+            
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script>
-                $(document).ready(function() {
-                    $('#search-input').on('keyup', function() {
-                        let query = $(this).val();
-                        if (query.length > 2) { // Начинаем поиск, если введено больше двух символов
+                    $(document).ready(function() {
+                        function fetchSuggestions(query) {
                             $.ajax({
-                                url: "{% url 'search' %}",
+                                url: "{% url 'search' %}",  // Ensure this URL is correct
                                 data: {
                                     'query': query
                                 },
                                 dataType: 'json',
                                 success: function(data) {
-                                    $('#suggestions').empty().show();
-                                    $.each(data, function(index, result) {
-                                        $('#suggestions').append('<div>' + result.name + '</div>'); // Отображаем результаты
+                                    $('#suggestions').empty().show(); // Show suggestions
+                                    // Combine results from different categories
+                                    let allResults = [];
+                                    allResults = allResults.concat(data.staff.map(item => ({ name: item.fio })));
+                                    allResults = allResults.concat(data.services.map(item => ({ name: item.name })));
+                                    allResults = allResults.concat(data.service_groups.map(item => ({ name: item.name })));
+                                    allResults = allResults.concat(data.works.map(item => ({ name: item.name })));
+                                    allResults = allResults.concat(data.licenses.map(item => ({ name: item.name })));
+                                    allResults = allResults.concat(data.pages);
+
+                                    // Add suggestions to the dropdown
+                                    $.each(allResults, function(index, result) {
+                                        $('#suggestions').append('<div>' + (result.title || result.name) + '</div>');
                                     });
+
+                                    // Hide suggestions if no results
+                                    if (allResults.length === 0) {
+                                        $('#suggestions').hide();
+                                    }
                                 }
                             });
-                        } else {
-                            $('#suggestions').hide();
                         }
-                    });
 
-                    $(document).on('click', '#suggestions div', function() {
-                        $('#search-input').val($(this).text());
-                        $('#suggestions').hide();
-                    });
+                        $('#search-input').on('keyup', function() {
+                            let query = $(this).val();
+                            if (query.length > 2) {
+                                fetchSuggestions(query);
+                            } else {
+                                $('#suggestions').hide();
+                            }
+                        });
 
-                    $('#search-input').on('keydown', function(event) {
-                        if (event.key === 'Enter') {
-                            // Перенаправление на страницу поиска
-                            window.location.href = '/search/?query=' + encodeURIComponent($(this).val());
-                        }
+                        // Handle click on suggestion
+                        $(document).on('click', '#suggestions div', function() {
+                            $('#search-input').val($(this).text());
+                            $('#suggestions').hide(); // Hide suggestions after selection
+                        });
+
+                        // Handle pressing Enter key
+                        $('#search-input').on('keydown', function(event) {
+                            if (event.key === 'Enter') {
+                                window.location.href = '/search/?query=' + encodeURIComponent($(this).val());
+                            }
+                        });
+
+                        // Close suggestions when clicking outside
+                        $(document).on('click', function(event) {
+                            if (!$(event.target).closest('#search-input').length && !$(event.target).closest('#suggestions').length) {
+                                $('#suggestions').hide();
+                            }
+                        });
+
+                        // Show suggestions on focus
+                        $('#search-input').on('focus', function() {
+                            let query = $(this).val();
+                            if (query.length > 2) {
+                                fetchSuggestions(query);
+                            }
+                        });
                     });
-                });
                 </script>
-
-
-            </form>
+            </div>
         </div>
     </header>
 </div>
