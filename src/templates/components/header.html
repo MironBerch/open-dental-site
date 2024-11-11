@@ -68,6 +68,50 @@
             </ul>
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                 <input type="search" class="form-control" placeholder="Поиск" aria-label="Поиск">
+
+
+                <input type="text" id="search-input" placeholder="Поиск..." autocomplete="off">
+                <div id="suggestions" style="display: none;"></div>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                $(document).ready(function() {
+                    $('#search-input').on('keyup', function() {
+                        let query = $(this).val();
+                        if (query.length > 2) { // Начинаем поиск, если введено больше двух символов
+                            $.ajax({
+                                url: "{% url 'search' %}",
+                                data: {
+                                    'query': query
+                                },
+                                dataType: 'json',
+                                success: function(data) {
+                                    $('#suggestions').empty().show();
+                                    $.each(data, function(index, result) {
+                                        $('#suggestions').append('<div>' + result.name + '</div>'); // Отображаем результаты
+                                    });
+                                }
+                            });
+                        } else {
+                            $('#suggestions').hide();
+                        }
+                    });
+
+                    $(document).on('click', '#suggestions div', function() {
+                        $('#search-input').val($(this).text());
+                        $('#suggestions').hide();
+                    });
+
+                    $('#search-input').on('keydown', function(event) {
+                        if (event.key === 'Enter') {
+                            // Перенаправление на страницу поиска
+                            window.location.href = '/search/?query=' + encodeURIComponent($(this).val());
+                        }
+                    });
+                });
+                </script>
+
+
             </form>
         </div>
     </header>

@@ -1,10 +1,12 @@
 from django.http import HttpRequest
 from django.views.generic import View, TemplateView
 from django.views.generic.base import TemplateResponseMixin
+from django.http import JsonResponse
 
 from staff.services import get_staff
 from works.services import get_works
 from services.services import get_service_groups
+from main.services import get_search_results
 
 
 class MainView(TemplateResponseMixin, View):
@@ -28,6 +30,15 @@ class MainView(TemplateResponseMixin, View):
                 'service_groups': service_groups,
             },
         )
+
+
+class SearchView(TemplateResponseMixin, View):
+    def get(self, request):
+        query = request.GET.get('query', '')
+        results = []
+        if query:
+            results = list(get_search_results(query))
+        return JsonResponse(results, safe=False)
 
 
 class SitemapView(TemplateView):
