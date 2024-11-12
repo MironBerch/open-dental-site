@@ -6,6 +6,7 @@ from services.models import ServiceGroup, Service
 
 
 def get_search_results(query: str):
+    query = query.upper()
     SITES = {
         'контакты': 'contacts',
         'отзывы клиентов': 'reviews',
@@ -23,7 +24,7 @@ def get_search_results(query: str):
 
     # Staff results
     staff_results = Staff.objects.filter(published=True).filter(
-        Q(fio__icontains=query) | Q(information__icontains=query)
+        Q(fio__iregex=query) | Q(information__iregex=query)
     ).values('id', 'fio', 'information')
 
     for staff in staff_results:
@@ -33,7 +34,7 @@ def get_search_results(query: str):
 
     # Service Groups results
     service_group_results = ServiceGroup.objects.filter(
-        Q(name__icontains=query) | Q(description__icontains=query)
+        Q(name__iregex=query) | Q(description__iregex=query)
     ).values('id', 'name', 'description')
 
     for group in service_group_results:
@@ -43,9 +44,9 @@ def get_search_results(query: str):
 
     # Services results
     service_results = Service.objects.filter(published=True).filter(
-        Q(name__icontains=query) |
-        Q(information__icontains=query) |
-        Q(short_information__icontains=query)
+        Q(name__iregex=query) |
+        Q(information__iregex=query) |
+        Q(short_information__iregex=query)
     ).values('id', 'name', 'information', 'short_information')
 
     for service in service_results:
@@ -56,7 +57,7 @@ def get_search_results(query: str):
 
     # Works results
     work_results = Work.objects.filter(published=True).filter(
-        Q(name__icontains=query) | Q(information__icontains=query)
+        Q(name__iregex=query) | Q(information__iregex=query)
     ).values('id', 'name', 'information')
 
     for work in work_results:
@@ -66,7 +67,7 @@ def get_search_results(query: str):
 
     # Licenses results
     license_results = License.objects.filter(published=True).filter(
-        name__icontains=query
+        name__iregex=query
     ).values('id', 'name')
 
     for license in license_results:
