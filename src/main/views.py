@@ -2,7 +2,10 @@ from django.http import HttpRequest
 from django.views.generic import View, TemplateView
 from django.views.generic.base import TemplateResponseMixin
 from django.http import JsonResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 
+from main.forms import SearchForm
 from staff.services import get_staff
 from works.services import get_works
 from services.services import get_service_groups
@@ -32,13 +35,42 @@ class MainView(TemplateResponseMixin, View):
         )
 
 
-class SearchView(TemplateResponseMixin, View):
+class SearchAPIView(TemplateResponseMixin, View):
     def get(self, request):
         query = request.GET.get('query', '')
         results = []
         if query:
             results = get_search_results(query)
         return JsonResponse(results, safe=False)
+
+
+class SearchView(TemplateResponseMixin, View):
+    template_name = 'main/search.html'
+    form_class = SearchForm
+
+    def get(self, request: HttpRequest):
+        query = request.GET.get('query', '')
+        results = []
+        if query:
+            results = get_search_results(query)
+            print(results)
+        return self.render_to_response(
+            context={
+                'form': self.form_class(initial={'query': query}),
+                'results': results,
+            },
+        )
+
+    def post(self, request: HttpRequest, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            return redirect(f'{reverse('search_view')}?query={query}')
+        return self.render_to_response(
+            context={
+                'form': form,
+            },
+        )
 
 
 class SitemapView(TemplateView):

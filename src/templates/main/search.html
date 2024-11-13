@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %}Поиск{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Поиск</h1>
+    
+    <form method="POST" action="{% url 'search_view' %}" class="form-inline mb-4">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary ml-2">Поиск</button>
+    </form>
+
+    {% if results %}
+        <h2 class="mt-4">Результаты поиска:</h2>
+        <ul class="list-group">
+            {% for result in results %}
+                <li class="list-group-item" style="margin-top: 10px;">
+                    {% if result.type == 'staff' %}
+                        <strong>{{ result.data.fio }}</strong>
+                    {% endif %}
+                    {% if result.type == 'service_group' %}
+                        <strong>{{ result.data.name }}</strong>
+                    {% endif %}
+                    {% if result.type == 'service' %}
+                        <strong>{{ result.data.name }}</strong>
+                    {% endif %}
+                    {% if result.type == 'work' %}
+                        <strong>{{ result.data.name }}</strong>
+                    {% endif %}
+                    {% if result.type == 'license' %}
+                        <strong>{{ result.data.name }}</strong>
+                    {% endif %}
+                    {% if result.type == 'page' %}
+                        <a href="{{ result.data.url }}">{{ result.data.title }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="mt-4">Нет результатов для вашего запроса.</p>
+    {% endif %}
+</div>
+{% endblock %}

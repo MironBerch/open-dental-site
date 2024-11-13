@@ -75,30 +75,32 @@
     
     <div class="row">
         {% for member in managers %}
-            <div class="col-md-4 mb-4"> 
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'staff' member.slug %}">
                 <div class="card text-bg-dark">
                     <div class="image-container">
-                        <img
-                            src="{{ member.image.url }}"
-                            class="card-img"
-                            alt="..."
-                        >
+                        
+                            <img
+                                src="{{ member.image.url }}"
+                                class="card-img"
+                                alt="..."
+                            >
                     </div>
                     <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                         <h6 class="card-title">
-                            <a 
-                                class="link-light link-offset-2 link-underline link-underline-opacity-0" 
-                                href="{% url 'staff' member.slug %}"
+                            <p
+                                class="link-light link-offset-2 link-underline link-underline-opacity-0"
                             >
                                 {{member.fio}}
-                            </a>
+                        </p>
                         </h6>
                         <p class="card-text"><small>{{ member.roles }}</small></p>
                     </div>
-                </div>
+                </div></a>
             </div>
         {% endfor %}
     </div>
+    
     
     <h2>Мастера по улыбкам</h2>
     <p>В клинике «Мастерская Улыбок» собран коллектив лучших врачей-стоматологов, кому нет равных в диагностике, лечении и научном опыте. В их руках обычное оборудование становятся магическим инструментом, способным воплотить мечту об идеальной улыбке в реальность.</p>

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from main.views import SitemapView, MainView, SearchView
+from main.views import SitemapView, MainView, SearchAPIView, SearchView
 
 urlpatterns = [
     path(
@@ -14,8 +14,13 @@ urlpatterns = [
         name='main',
     ),
     path(
+        route='/api/search/',
+        view=SearchAPIView.as_view(),
+        name='search',
+    ),
+    path(
         route='search/',
         view=SearchView.as_view(),
-        name='search',
+        name='search_view',
     ),
 ]

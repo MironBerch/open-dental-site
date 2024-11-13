@@ -1,4 +1,6 @@
 from django.db.models import Q
+from django.urls import reverse
+
 from works.models import Work
 from clinic.models import License
 from staff.models import Staff
@@ -7,17 +9,18 @@ from services.models import ServiceGroup, Service
 
 def get_search_results(query: str):
     query = query.upper()
+
     SITES = {
-        'контакты': 'contacts',
-        'отзывы клиентов': 'reviews',
-        'лицензии и сертификаты': 'licenses',
-        'реквизиты': 'requisites',
-        'услуги': 'services_groups',
-        'цены': 'prices',
-        'персонал специалисты': 'staff_list',
-        'клиника': 'company',
-        'галерея наши работы': 'gallery',
-        'карта сайта': 'site_map',
+        'контакты': reverse('contacts'),
+        'отзывы клиентов': reverse('reviews'),
+        'лицензии и сертификаты': reverse('licenses'),
+        'реквизиты': reverse('requisites'),
+        'услуги': reverse('services_groups'),
+        'цены': reverse('prices'),
+        'персонал специалисты сотрудники': reverse('staff_list'),
+        'клиника': reverse('company'),
+        'галерея наши работы': reverse('gallery'),
+        'карта сайта': reverse('site_map'),
     }
 
     results = []
