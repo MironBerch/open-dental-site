@@ -14,7 +14,7 @@ urlpatterns = [
         name='main',
     ),
     path(
-        route='/api/search/',
+        route='api/search/',
         view=SearchAPIView.as_view(),
         name='search',
     ),

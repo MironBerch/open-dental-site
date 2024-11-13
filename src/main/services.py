@@ -28,7 +28,7 @@ def get_search_results(query: str):
     # Staff results
     staff_results = Staff.objects.filter(published=True).filter(
         Q(fio__iregex=query) | Q(information__iregex=query)
-    ).values('id', 'fio', 'information')
+    ).values('id', 'fio', 'information', 'slug')
 
     for staff in staff_results:
         match_count = (staff['fio'].lower().count(query.lower()) +
@@ -38,7 +38,7 @@ def get_search_results(query: str):
     # Service Groups results
     service_group_results = ServiceGroup.objects.filter(
         Q(name__iregex=query) | Q(description__iregex=query)
-    ).values('id', 'name', 'description')
+    ).values('id', 'name', 'description', 'slug')
 
     for group in service_group_results:
         match_count = (group['name'].lower().count(query.lower()) +
@@ -50,7 +50,7 @@ def get_search_results(query: str):
         Q(name__iregex=query) |
         Q(information__iregex=query) |
         Q(short_information__iregex=query)
-    ).values('id', 'name', 'information', 'short_information')
+    ).values('id', 'name', 'information', 'short_information', 'slug', 'group__name', 'group__slug')
 
     for service in service_results:
         match_count = (service['name'].lower().count(query.lower()) +
@@ -61,7 +61,7 @@ def get_search_results(query: str):
     # Works results
     work_results = Work.objects.filter(published=True).filter(
         Q(name__iregex=query) | Q(information__iregex=query)
-    ).values('id', 'name', 'information')
+    ).values('id', 'name', 'information', 'slug')
 
     for work in work_results:
         match_count = (work['name'].lower().count(query.lower()) +
@@ -71,7 +71,7 @@ def get_search_results(query: str):
     # Licenses results
     license_results = License.objects.filter(published=True).filter(
         name__iregex=query
-    ).values('id', 'name')
+    ).values('id', 'name', 'slug')
 
     for license in license_results:
         match_count = license['name'].lower().count(query.lower())

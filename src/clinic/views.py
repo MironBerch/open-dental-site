@@ -7,6 +7,7 @@ from clinic.services import (
     get_clinic_licenses,
     get_clinic_requisites,
     get_clinic_contacts,
+    get_clinic_license_by_slug,
 )
 
 #  from django.core.paginator import Paginator
@@ -44,6 +45,18 @@ class LicensesView(TemplateResponseMixin, View):
             context={
                 'active_page': 'clinic',
                 'licenses': get_clinic_licenses(),
+            },
+        )
+
+
+class LicenseView(TemplateResponseMixin, View):
+    template_name = 'clinic/license.html'
+
+    def get(self, request: HttpRequest, slug: str):
+        return self.render_to_response(
+            context={
+                'active_page': 'clinic',
+                'license': get_clinic_license_by_slug(slug),
             },
         )
 

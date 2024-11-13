@@ -1,4 +1,5 @@
 from django.db.models import QuerySet
+from django.shortcuts import get_object_or_404
 
 from clinic.models import About, Details, License, Contact
 
@@ -23,3 +24,7 @@ def get_clinic_licenses() -> QuerySet[License]:
 
 def get_clinic_contacts() -> QuerySet[License]:
     return Contact.objects.all()
+
+
+def get_clinic_license_by_slug(slug: str) -> QuerySet[License]:
+    return get_object_or_404(License, slug=slug)

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static%}
+
+{% block title %}Лицензии и сертификаты{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1 class="h1 text-center">{{ license.name }}</h1>
+    {% if license.image %}
+        <img
+            src="{{ license.image.url }}"
+            class="img-thumbnail"
+            style="height: 138px; width: 104px; object-fit: cover; margin-right: 15px;"
+            alt="не удалось загрузить"
+        >
+    {% endif %}
+    <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{{ license.image.pdf }}" class="card-link">
+        <img
+            src="{% static 'images/pdf.png' %}"
+            style="height: 41px; width: 37px; object-fit: cover; margin-right: 15px;"
+            alt="не удалось загрузить"
+        >
+    </a>
+{% endblock %}

@@ -12,6 +12,8 @@ def get_license_pdf_upload_path(instance: 'License', filename: str) -> str:
 
 class License(models.Model):
     name = models.CharField(verbose_name='название лицензии', max_length=255)
+    slug = models.SlugField(max_length=255)
+
     image = models.ImageField(
         verbose_name='фото документа',
         blank=True,

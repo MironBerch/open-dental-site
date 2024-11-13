@@ -6,7 +6,7 @@
     <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
     <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_groups' %}">Услуги стоматологии</a></li>
     <li class="breadcrumb-item">
-        <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_group' service.group.slug %}">Услуги стоматологии</a>
+        <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_group' service.group.slug %}">{{ service.group.name }}</a>
     </li>
 {% endblock %}
 
