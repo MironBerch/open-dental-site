@@ -22,6 +22,8 @@
         <br>
         <li><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'prices' %}"><h4>Цены</h4></a></li>
         <br>
+        <li><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'search_view' %}"><h4>Поиск</h4></a></li>
+        <br>
         {% if request.user.is_superuser or request.user.is_staff %}
             <li><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'admin:index' %}"><h4>Панель администратора</h4></a></li>
         {% endif %}

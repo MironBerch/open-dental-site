@@ -3,34 +3,13 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-    <h2 class="h2">Наши работы</h2>
-    <div class="row">
-        {% for work in works %}
-            <div class="col-md-4 mb-4"> 
-                <div class="card h-100">
-                    <div class="image-container" style="height: 245px; overflow: hidden;">
-                        <img
-                            src="{{ work.image.url }}"
-                            class="card-img-top"
-                            alt="..."
-                            style="object-fit: cover; width: 100%; height: 100%;"
-                        >
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'work' work.slug %}">{{work.name}}</a>
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
     <style>
         .card {
             transition: background-color 0.3s;
             position: relative;
             overflow: hidden;
         }
-        
+
         .card:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
@@ -43,14 +22,23 @@
             transform: translateY(-5px);
         }
 
+        .work-card {
+            aspect-ratio: 1.5; /* Соотношение для работ */
+        }
+
         .image-container {
             position: relative;
             width: 100%;
-            padding-top: 128%;
+            padding-top: 66.67%; /* Соотношение сторон 3:2 для работ */
             overflow: hidden;
         }
 
-        .image-container img {
+        .staff-image-container {
+            padding-top: 128%; /* Соотношение сторон для сотрудников */
+        }
+
+        .image-container img,
+        .staff-image-container img {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -66,7 +54,8 @@
             height: auto;
         }
 
-        .image-container::after {
+        .image-container::after,
+        .staff-image-container::after {
             content: '';
             position: absolute;
             top: 0;
@@ -78,19 +67,40 @@
             transition: opacity 0.3s;
         }
 
-        .card:hover .image-container::after {
+        .card:hover .image-container::after,
+        .card:hover .staff-image-container::after {
             opacity: 1;
         }
     </style>
 
+    <h1>Наши работы</h1>
+    <div class="row">
+        {% for work in works %}
+            <div class="col-md-4 mb-4"> 
+                <div class="card work-card text-bg-dark">
+                    <div class="image-container">
+                        <img
+                            src="{{ work.image.url }}"
+                            class="card-img-top"
+                            alt="..."
+                        >
+                    </div>
+                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                        <h5 class="card-title text-center">
+                            <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'work' work.slug %}">{{work.name}}</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
     <h2 class="h2">Сотрудники</h2>
-    
     <div class="row">
         {% for member in staff %}
-            <div class="col-md-4 mb-4"> 
+            <div class="col-md-3 mb-4">
                 <div class="card text-bg-dark">
-                    <div class="image-container">
+                    <div class="staff-image-container">
                         <img
                             src="{{ member.image.url }}"
                             class="card-img"
@@ -115,14 +125,12 @@
 
     <h2 class="h2">Услуги</h2>
     {% for service in service_groups %}
-        <div class="card">
+        <div class="card" style="margin-bottom: 10px;">
             <div class="card-body">
                 <h5 class="card-title"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_group' service.slug %}">{{ service.name }}</a></h5>
                 <p class="card-text">{{ service.description }}</p>
             </div>
         </div>
-        <br>
-        <br>
     {% endfor %}
-
+  
 {% endblock %}

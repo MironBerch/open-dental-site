@@ -16,11 +16,8 @@ class MainView(TemplateResponseMixin, View):
     template_name = 'main/main.html'
 
     def get(self, request: HttpRequest):
-        staff = get_staff()
         works = get_works()
         service_groups = get_service_groups()
-        if len(staff) > 4:
-            staff = staff[:4]
         if len(works) > 3:
             works = works[:3]
         if len(service_groups) > 6:
@@ -29,7 +26,7 @@ class MainView(TemplateResponseMixin, View):
             context={
                 'active_page': '',
                 'works': works,
-                'staff': staff,
+                'staff': get_staff(),
                 'service_groups': service_groups,
             },
         )
