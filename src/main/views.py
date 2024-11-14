@@ -50,7 +50,6 @@ class SearchView(TemplateResponseMixin, View):
         results = []
         if query:
             results = get_search_results(query)
-            print(results)
         return self.render_to_response(
             context={
                 'form': self.form_class(initial={'query': query}),
