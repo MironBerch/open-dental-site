@@ -82,18 +82,18 @@
     <h1>Наши работы</h1>
     <div class="row">
         {% for work in works %}
-            <div class="col-md-4 mb-4"> 
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <div class="card h-100 text-bg-dark">
                     <div class="image-container">
                         <img
                             src="{{ work.image.url }}"
                             class="card-img-top"
-                            alt="..."
+                            alt="{{ work.name }}"
                         >
                     </div>
                     <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                         <h5 class="card-title text-center">
-                            <a class="link-light link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'work' work.slug %}">{{work.name}}</a>
+                            <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'work' work.slug %}">{{work.name}}</a>
                         </h5>
                     </div>
                 </div>

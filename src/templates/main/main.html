@@ -11,7 +11,7 @@
         }
 
         .card:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.5); /* Сделаем белый фон более прозрачным */
         }
 
         .card-img-overlay {
@@ -47,7 +47,7 @@
             transform: translate(-50%, -50%);
             object-fit: cover;
         }
-        
+
         .card-img {
             object-fit: cover;
             width: 100%;
@@ -71,6 +71,51 @@
         .card:hover .staff-image-container::after {
             opacity: 1;
         }
+
+        .staff-carousel {
+            overflow: hidden;
+            position: relative;
+            touch-action: pan-y; /* Разрешить вертикальную прокрутку */
+        }
+
+        .staff-carousel-inner {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card {
+            flex: 0 0 25%; /* 25% для отображения 4 карточек на больших экранах */
+            max-width: 25%;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .staff-card {
+                flex: 0 0 100%; /* 100% для отображения одной карточки на мобильных экранах */
+                max-width: 100%;
+            }
+        }
+
+        .navigation-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .prev-button, .next-button {
+            background-color: #007bff; /* Синий цвет для кнопок */
+            color: white; /* Белый текст для стрелочек */
+            border: none;
+        }
+
+        .prev-button {
+            left: 10px;
+        }
+
+        .next-button {
+            right: 10px;
+        }
     </style>
 
     <h1>Наши работы</h1>
@@ -79,11 +124,7 @@
             <div class="col-md-4 mb-4"> 
                 <div class="card work-card text-bg-dark">
                     <div class="image-container">
-                        <img
-                            src="{{ work.image.url }}"
-                            class="card-img-top"
-                            alt="..."
-                        >
+                        <img src="{{ work.image.url }}" class="card-img-top" alt="...">
                     </div>
                     <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                         <h5 class="card-title text-center">
@@ -96,38 +137,88 @@
     </div>
 
     <h2 class="h2">Сотрудники</h2>
-    <div class="row">
-        {% for member in staff %}
-            <div class="col-md-3 mb-4">
-                <div class="card text-bg-dark">
-                    <div class="staff-image-container">
-                        <img
-                            src="{{ member.image.url }}"
-                            class="card-img"
-                            alt="..."
-                        >
-                    </div>
-                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                        <h6 class="card-title">
-                            <a 
-                                class="link-light link-offset-2 link-underline link-underline-opacity-0" 
-                                href="{% url 'staff' member.slug %}"
-                            >
-                                {{member.fio}}
-                            </a>
-                        </h6>
-                        <p class="card-text"><small>{{ member.roles }}</small></p>
+    <div class="staff-carousel" id="staffCarousel">
+        <button class="btn prev-button navigation-button" onclick="slide('prev')"><</button>
+        <div class="staff-carousel-inner">
+            {% for member in staff %}
+                <div class="staff-card">
+                    <div class="card text-bg-dark">
+                        <div class="staff-image-container">
+                            <img src="{{ member.image.url }}" class="card-img" alt="...">
+                        </div>
+                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                            <h6 class="card-title">
+                                <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' member.slug %}">{{ member.fio }}</a>
+                            </h6>
+                            <p class="card-text"><small>{{ member.roles }}</small></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+            {# Дублируем карточки для создания эффекта бесконечного прокручивания #}
+            {% for member in staff %}
+                <div class="staff-card">
+                    <div class="card text-bg-dark">
+                        <div class="staff-image-container">
+                            <img src="{{ member.image.url }}" class="card-img" alt="...">
+                        </div>
+                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                            <h6 class="card-title">
+                                <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' member.slug %}">{{ member.fio }}</a>
+                            </h6>
+                            <p class="card-text"><small>{{ member.roles }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button class="btn next-button navigation-button" onclick="slide('next')">></button>
     </div>
+
+    <script>
+        let currentIndex = 0;
+        const cards = document.querySelectorAll('.staff-card');
+        const totalCards = cards.length / 2; // Учитываем дублирование
+        const visibleCards = 4; // На ПК 4 карточки видимы
+
+        const carouselInner = document.querySelector('.staff-carousel-inner');
+        
+        function slide(direction) {
+            if (direction === 'next') {
+                currentIndex++;
+                if (currentIndex >= totalCards) {
+                    currentIndex = 0; // Зациклить
+                }
+            } else {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = totalCards - 1; // Зациклить
+                }
+            }
+
+            // Расчет смещения для плавного перехода
+            const offset = -((currentIndex * 100) / visibleCards); // Показываем 4 карточки на ПК
+            carouselInner.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Обновляем слайдер при нажатии на кнопки на мобильных устройствах, чтобы показывалась следующая карточка
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            const buttons = document.querySelectorAll('.navigation-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    setTimeout(() => {
+                        slide(button.classList.contains('next-button') ? 'next' : 'prev');
+                    }, 300); // Задержка для плавности анимации
+                });
+            });
+        }
+    </script>
 
     <h2 class="h2">Услуги</h2>
     {% for service in service_groups %}
         <div class="card" style="margin-bottom: 10px;">
             <div class="card-body">
-                <h5 class="card-title"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_group' service.slug %}">{{ service.name }}</a></h5>
+                <h5 class="card-title"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_group' service.slug %}">{{ service.name }}</a></h5>
                 <p class="card-text">{{ service.description }}</p>
             </div>
         </div>

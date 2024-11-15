@@ -3,17 +3,24 @@
 {% block title %}{{work.name}}{% endblock %}
 
 {% block breadcrumbs %}
-    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
-    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'gallery' %}">Наши работы</a></li>
+    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'main' %}">Главная</a></li>
+    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'gallery' %}">Наши работы</a></li>
 {% endblock %}
 
 {% block content %}
+    <style>
+        .card {
+            transition: background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
     <h1 class="h1 text-center">{{work.name}}</h1>
     <div class="row">
         {% for image in images %}
-            <div class="col-md-6 mb-4">
-                <div class="card text-bg-dark">
-                    <img src="{{ image.image.url }}" style="height: 400px; width: 600px; object-fit: cover; margin-right: 15px;"  class="card-img" alt="..." class="img-thumbnail mx-auto d-block">
+            <div class="col-md-6 mb-4"> 
+                <div class="card work-card h-100">
+                    <img src="{{ image.image.url }}" class="card-img-top" alt="...">
                 </div>
             </div>
         {% endfor %}

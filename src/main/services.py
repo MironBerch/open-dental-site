@@ -82,6 +82,21 @@ def get_search_results(query: str):
         if page in query.lower():
             results.append({'type': 'page', 'match_count': 1, 'data': {'title': page, 'url': url}})
 
+    for result in results:
+        try:
+            if result['type'] == 'staff':
+                result['data']['url'] = reverse('staff', args=[result['data']['slug']])
+            if result['type'] == 'service_group':
+                result['data']['url'] = reverse('services_group', args=[result['data']['slug']])
+            if result['type'] == 'service':
+                result['data']['url'] = reverse('service', args=[result['data']['slug']])
+            if result['type'] == 'work':
+                result['data']['url'] = reverse('work', args=[result['data']['slug']])
+            if result['type'] == 'license':
+                result['data']['url'] = reverse('license', args=[result['data']['slug']])
+        except Exception:
+            pass
+
     # Sort by match count (higher match count first)
     results.sort(key=lambda x: x['match_count'], reverse=True)
 

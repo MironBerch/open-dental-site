@@ -115,47 +115,47 @@
                                     data.forEach(item => {
                                         if (item.type === 'staff' && item.data) {
                                             // Проверяем наличие нужных полей для staff
-                                            if (item.data.fio && item.data.slug) {
+                                            if (item.data.fio && item.data.url) {
                                                 allResults.push({
                                                     type: 'staff',
                                                     name: item.data.fio,
-                                                    slug: item.data.slug
+                                                    url: item.data.url
                                                 });
                                             }
                                         } else if (item.type === 'service' && item.data) {
                                             // Проверяем наличие нужных полей для service
-                                            if (item.data.name && item.data.slug) {
+                                            if (item.data.name && item.data.url) {
                                                 allResults.push({
                                                     type: 'service',
                                                     name: item.data.name,
-                                                    slug: item.data.slug
+                                                    url: item.data.url
                                                 });
                                             }
                                         } else if (item.type === 'service_group' && item.data) {
                                             // Проверяем наличие нужных полей для service_group
-                                            if (item.data.name && item.data.slug) {
+                                            if (item.data.name && item.data.url) {
                                                 allResults.push({
                                                     type: 'service_group',
                                                     name: item.data.name,
-                                                    slug: item.data.slug
+                                                    url: item.data.url
                                                 });
                                             }
                                         } else if (item.type === 'work' && item.data) {
                                             // Проверяем наличие нужных полей для work
-                                            if (item.data.name && item.data.slug) {
+                                            if (item.data.name && item.data.url) {
                                                 allResults.push({
                                                     type: 'work',
                                                     name: item.data.name,
-                                                    slug: item.data.slug
+                                                    url: item.data.url
                                                 });
                                             }
                                         } else if (item.type === 'license' && item.data) {
                                             // Проверяем наличие нужных полей для license
-                                            if (item.data.name && item.data.slug) {
+                                            if (item.data.name && item.data.url) {
                                                 allResults.push({
                                                     type: 'license',
                                                     name: item.data.name,
-                                                    slug: item.data.slug
+                                                    url: item.data.url
                                                 });
                                             }
                                         } else if (item.type === 'page' && item.data) {
@@ -164,7 +164,7 @@
                                                 allResults.push({
                                                     type: 'page',
                                                     name: item.data.title,
-                                                    slug: item.data.url
+                                                    url: item.data.url
                                                 });
                                             }
                                         }
@@ -177,7 +177,7 @@
                                     console.log('Все результаты:', allResults); // Логирование результатов
                                     if (allResults.length > 0) {
                                         $.each(allResults, function(index, result) {
-                                            $('#suggestions').append('<div><a href="' + (result.slug || '#') + '">' + result.name + '</a> (' + result.type + ')</div>');
+                                            $('#suggestions').append('<div><a href="' + (result.url || '#') + '">' + result.name + '</a></div>');
                                         });
                                     } else {
                                         console.log('Нет результатов для отображения.'); // Логирование, если нет результатов
