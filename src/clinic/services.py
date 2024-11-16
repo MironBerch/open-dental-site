@@ -1,7 +1,7 @@
 from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404
 
-from clinic.models import About, Details, License, Contact
+from clinic.models import About, Details, License, Contact, Media
 
 
 def get_clinic_requisites() -> QuerySet[Details]:
@@ -28,3 +28,7 @@ def get_clinic_contacts() -> QuerySet[License]:
 
 def get_clinic_license_by_slug(slug: str) -> QuerySet[License]:
     return get_object_or_404(License, slug=slug)
+
+
+def get_clinic_media(slug: str) -> QuerySet[Media]:
+    return Media.objects.first()
