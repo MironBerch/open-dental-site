@@ -88,3 +88,22 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.address
+
+
+class Media(models.Model):
+    tg = models.URLField(
+        verbose_name='телеграм',
+        max_length=255,
+    )
+    whatsapp = models.URLField(
+        verbose_name='ватсап',
+        max_length=255,
+    )
+    vk = models.URLField(
+        verbose_name='вк',
+        max_length=255,
+    )
+    whatsapp = models.URLField(
+        verbose_name='ватсап',
+        max_length=255,
+    )
