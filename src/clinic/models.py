@@ -94,16 +94,15 @@ class Media(models.Model):
     tg = models.URLField(
         verbose_name='телеграм',
         max_length=255,
+        blank=True,
     )
     whatsapp = models.URLField(
         verbose_name='ватсап',
         max_length=255,
+        blank=True,
     )
     vk = models.URLField(
         verbose_name='вк',
         max_length=255,
-    )
-    whatsapp = models.URLField(
-        verbose_name='ватсап',
-        max_length=255,
+        blank=True,
     )

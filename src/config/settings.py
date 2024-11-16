@@ -49,6 +49,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+
+    'main.middleware.BaseContextMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'

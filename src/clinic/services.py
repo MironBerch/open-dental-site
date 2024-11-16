@@ -26,9 +26,13 @@ def get_clinic_contacts() -> QuerySet[License]:
     return Contact.objects.all()
 
 
+def get_clinic_contact() -> QuerySet[License]:
+    return Contact.objects.first()
+
+
 def get_clinic_license_by_slug(slug: str) -> QuerySet[License]:
     return get_object_or_404(License, slug=slug)
 
 
-def get_clinic_media(slug: str) -> QuerySet[Media]:
+def get_clinic_media() -> QuerySet[Media]:
     return Media.objects.first()
