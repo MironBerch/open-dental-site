@@ -26,7 +26,7 @@ def get_clinic_contacts() -> QuerySet[License]:
     return Contact.objects.all()
 
 
-def get_clinic_contact() -> QuerySet[License]:
+def get_clinic_contact() -> QuerySet[Contact]:
     return Contact.objects.first()
 
 
