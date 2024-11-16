@@ -182,9 +182,11 @@
                     <br>
                     Телефон 📞: +7 (123) 456-78-90 <br>
                     Телефон 📞: +7 (987) 654-32-10 <br>
-                    Почта: {{ contact.email }}
+                    Почта: <a 
+                        class="link-offset-2 link-underline link-underline-opacity-0"
+                        href="mailto:{{contact.email}}"
+                    >{{ contact.email }}</a><br>
 
-                    <a href="{{ contact.whatsapp }}" >{{ media.whatsapp }}</a>
                 </div>
                 <div class="social-links">
                     <a href="{{ media.tg }}" target="_blank">
