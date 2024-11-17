@@ -10,6 +10,7 @@ from staff.services import get_staff
 from works.services import get_works
 from services.services import get_service_groups
 from main.services import get_search_results
+from services.models import ServiceGroup
 
 
 class MainView(TemplateResponseMixin, View):
@@ -71,8 +72,12 @@ class SearchView(TemplateResponseMixin, View):
 
 class SitemapView(TemplateView):
     """Просмотр для отображения карты сайта."""
-
     template_name = 'main/site_map.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['service_groups'] = ServiceGroup.objects.all()
+        return context
 
 
 class BadRequestView(TemplateView):

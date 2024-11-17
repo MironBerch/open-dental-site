@@ -4,11 +4,46 @@
 
 {% block content %}
     <style>
+        .collapsible {
+            background: none; /* Убираем фон */
+            color: #007bff; /* Цвет ссылки */
+            cursor: pointer; /* Указатель, показывающий, что это кликабельный элемент */
+            padding: 10px;
+            border: none; /* Убираем рамку */
+            text-align: left;
+            font-size: 15px;
+            display: flex; /* Используем flexbox для выравнивания */
+            align-items: center; /* Центрирование по вертикали */
+        }
+
+        .arrow {
+            margin-left: 5px; /* Отступ слева для стрелочки */
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid transparent;
+            border-right: 2px solid transparent;
+            border-top: 4px solid #007bff; /* Цвет стрелочки */
+            transition: transform 0.3s; /* Плавный переход при повороте */
+        }
+
+        .active .arrow {
+            transform: rotate(180deg); /* Поворот стрелочки при активном состоянии */
+        }
+
+        .service-list {
+            padding-left: 20px; /* Отступ для списка услуг */
+            display: none; /* Скрываем подсписки изначально */
+            overflow: hidden; /* Убираем переполнение */
+            background-color: #fff; /* Установите цвет фона на белый или нужный вам цвет */
+            border-left: 1px solid #ddd; /* Добавить левую границу (по желанию) */
+            margin-bottom: 10px; /* Отступ снизу между группами */
+        }
+
         .list-group a {
             color: inherit; /* Сохраняет цвет текста родительского элемента */
             text-decoration: none; /* Убирает подчеркивание */
         }
-        
+
         .list-group a:hover {
             text-decoration: underline; /* Добавляет подчеркивание при наведении */
             color: inherit; /* Оставляет тот же цвет при наведении */
@@ -23,6 +58,19 @@
                     <li><a href="{% url 'services_groups' %}"><h4>Услуги</h4></a></li>
                     <li><a href="{% url 'staff_list' %}"><h4>Сотрудники</h4></a></li>
                     <li><a href="{% url 'prices' %}"><h4>Цены</h4></a></li>
+                    {% for group in service_groups %}
+                        <div>
+                            <button class="collapsible">
+                                {{ group.name }} 
+                                <div class="arrow"></div>
+                            </button>
+                            <ul class="service-list">
+                                {% for service in group.service_set.all %}
+                                    <li><a href="{% url 'service' service.slug %}">{{ service.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="col-md-6">
@@ -38,9 +86,20 @@
                     {% if request.user.is_superuser or request.user.is_staff %}
                         <li><a href="{% url 'admin:index' %}"><h4>Панель администратора</h4></a></li>
                     {% endif %}
-                    <br>
                 </ul>
             </div>
         </div>
     </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                // Переключаем видимость списка услуг
+                content.style.display = (content.style.display === "block") ? "none" : "block";
+            });
+        }
+    </script>
 {% endblock %}
