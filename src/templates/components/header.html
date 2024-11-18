@@ -118,7 +118,30 @@
         position: relative;
         cursor: pointer;
     }
-</style>
+    /* Стили для navbar по умолчанию */
+    .navbar {
+        display: block; /* Включаем по умолчанию */
+    }
+
+    /* Скрываем header на мобильных устройствах и при сильном увеличении */
+    /* Если используете Bootstrap, можно также использовать классы для отступов */
+    @media (max-width: 1100px) {
+        .header-container {
+            display: none;
+        }
+        header {display: none;}
+        .container {
+            padding-top: 20px; /* Можете глянуть, как это будет на телефонах и изменить отступ под размер navbar */
+        }
+    }
+
+    /* Скрываем navbar на более широких экранах */
+    @media (min-width: 1100px) {
+        .navbar {
+            display: none;
+        }
+    }
+    </style>
 
 
 <nav class="navbar bg-body-tertiary fixed-top">
@@ -127,7 +150,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div>
-            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.webp' %}" alt="Логотип" style="height: 50px;"></a>
+            <a class="navbar-brand" href="{% url 'main' %}"><img src="{% static 'images/logo.webp' %}" alt="Логотип" style="height: 50px;"></a>
         </div>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -214,7 +237,7 @@
     <div class="header-container">
         <!-- Логотип слева -->
         <div>
-            <img src="{% static 'images/logo.png' %}" alt="Логотип" style="height: 50px;">
+            <a class="navbar-brand" href="{% url 'main' %}"><img src="{% static 'images/logo.webp' %}" alt="Логотип" style="height: 50px;"></a>
         </div>
         
         <!-- Центр: адрес, номера телефонов и социальные иконки -->
