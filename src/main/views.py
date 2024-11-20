@@ -17,16 +17,13 @@ class MainView(TemplateResponseMixin, View):
     template_name = 'main/main.html'
 
     def get(self, request: HttpRequest):
-        works = get_works()
         service_groups = get_service_groups()
-        if len(works) > 3:
-            works = works[:3]
         if len(service_groups) > 6:
             service_groups = service_groups[:6]
         return self.render_to_response(
             context={
                 'active_page': '',
-                'works': works,
+                'works': get_works(),
                 'staff': get_staff(),
                 'service_groups': service_groups,
             },

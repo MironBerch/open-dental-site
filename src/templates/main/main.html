@@ -116,26 +116,100 @@
         .next-button {
             right: 10px;
         }
+        .work-carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .work-carousel-inner {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .work-card {
+            min-width: 33.33%; /* Отображаем три карточки на разных экранах */
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .navigation-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .prev-button, .next-button {
+            background-color: white; /* Белый цвет для кнопок */
+            color: #007bff; /* Синий текст для стрелочек */
+            border: 1px solid #007bff; /* Синяя рамка */
+            transition: background-color 0.3s, color 0.3s; /* Плавный переход */
+        }
+
+        .prev-button:hover, .next-button:hover {
+            background-color: #007bff; /* Синий фон при наведении */
+            color: white; /* Белый текст при наведении */
+        }
+
+        .prev-button {
+            left: 10px;
+        }
+
+        .next-button {
+            right: 10px;
+        }
     </style>
 
-    <h1>Наши работы</h1>
-    <div class="row">
-        {% for work in works %}
-            <div class="col-md-4 mb-4"> 
-                <div class="card work-card text-bg-dark">
-                    <div class="image-container">
-                        <img src="{{ work.image.url }}" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                        <h5 class="card-title text-center">
-                            <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'work' work.slug %}">{{work.name}}</a>
-                        </h5>
+
+    <h2 class="h2">Наши работы</h2>
+    <div class="work-carousel" id="workCarousel">
+        <button class="btn prev-button navigation-button" onclick="slideWork('prev')"><</button>
+        <div class="work-carousel-inner">
+            {% for work in works %}
+                <div class="work-card">
+                    <div class="card text-bg-dark">
+                        <div class="image-container">
+                            <img src="{{ work.image.url }}" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                            <h5 class="card-title text-center">
+                                <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'work' work.slug %}">{{work.name}}</a>
+                            </h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+        <button class="btn next-button navigation-button" onclick="slideWork('next')">></button>
     </div>
+    
+    <script>
+        let currentWorkIndex = 0;
+        const workCards = document.querySelectorAll('.work-card');
+        const totalWorkCards = workCards.length;
+        const visibleWorkCards = 3; // Количество отображаемых карточек
 
+        function slideWork(direction) {
+            if (direction === 'next') {
+                currentWorkIndex++;
+                if (currentWorkIndex >= totalWorkCards - visibleWorkCards + 1) {
+                    currentWorkIndex = 0; // Зациклить
+                }
+            } else {
+                currentWorkIndex--;
+                if (currentWorkIndex < 0) {
+                    currentWorkIndex = totalWorkCards - visibleWorkCards; // Зациклить
+                }
+            }
+
+            // Расчет смещения для плавного перехода
+            const offset = -((currentWorkIndex * 100) / visibleWorkCards); // Показываем указанное количество карточек
+            const workCarouselInner = document.querySelector('.work-carousel-inner');
+            workCarouselInner.style.transform = `translateX(${offset}%)`;
+        }
+
+    </script>
     <h2 class="h2">Сотрудники</h2>
     <div class="staff-carousel" id="staffCarousel">
         <button class="btn prev-button navigation-button" onclick="slide('prev')"><</button>
