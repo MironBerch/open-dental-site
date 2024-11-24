@@ -1,5 +1,6 @@
-from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+
+from django.db import models
 
 from prices.models import Price
 

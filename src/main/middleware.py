@@ -1,6 +1,6 @@
 from django.utils.deprecation import MiddlewareMixin
 
-from clinic.services import get_clinic_media, get_clinic_contact
+from clinic.services import get_clinic_contact, get_clinic_media
 
 
 class BaseContextMiddleware(MiddlewareMixin):

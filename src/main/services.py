@@ -1,10 +1,10 @@
 from django.db.models import Q
 from django.urls import reverse
 
-from works.models import Work
 from clinic.models import License
+from services.models import Service, ServiceGroup
 from staff.models import Staff
-from services.models import ServiceGroup, Service
+from works.models import Work
 
 
 def get_search_results(query: str):

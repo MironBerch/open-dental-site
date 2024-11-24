@@ -1,5 +1,6 @@
-from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+
+from django.db import models
 
 
 def get_license_image_upload_path(instance: 'License', filename: str) -> str:
@@ -106,3 +107,15 @@ class Media(models.Model):
         max_length=255,
         blank=True,
     )
+
+
+class Policy(models.Model):
+    text = CKEditor5Field(
+        verbose_name='текст',
+        blank=True,
+        null=True,
+    )
+
+    class Meta:
+        verbose_name = 'Соглашение на обработку данных'
+        verbose_name_plural = 'Соглашения на обработку данных'

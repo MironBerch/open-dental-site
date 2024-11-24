@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Наша клиника{% endblock %}
+{% block title %}Соглашение на обработку персональных данных{% endblock %}
 
 {% block breadcrumbs %}
     <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
 {% endblock %}
 
 {% block content %}
-    <h1 class="h1">Наша клиника</h1>
+    <h1 class="h1">Соглашение на обработку персональных данных</h1>
     {{ company.about|safe }}
 {% endblock %}

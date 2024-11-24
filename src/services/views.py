@@ -2,8 +2,12 @@ from django.http import HttpRequest
 from django.views.generic import View
 from django.views.generic.base import TemplateResponseMixin
 
-from services.services import (get_group_by_slug, get_service_by_slug,
-                               get_service_groups, get_services_by_group)
+from services.services import (
+    get_group_by_slug,
+    get_service_by_slug,
+    get_service_groups,
+    get_services_by_group,
+)
 
 
 class ServicesGroupsView(TemplateResponseMixin, View):

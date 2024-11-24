@@ -1,17 +1,24 @@
+from debug_toolbar.toolbar import debug_toolbar_urls
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from debug_toolbar.toolbar import debug_toolbar_urls
-
-from clinic.views import AboutView, LicensesView, RequisitesView, ContactsView, LicenseView
-from works.views import WorksView, WorkView
-from main.views import SitemapView, MainView, SearchAPIView, SearchView
+from clinic.views import (
+    AboutView,
+    ContactsView,
+    LicensesView,
+    LicenseView,
+    PolicyView,
+    RequisitesView,
+)
+from main.views import MainView, SearchAPIView, SearchView, SitemapView
 from prices.views import PricesView
 from reviews.views import ReviewsView
 from services.views import ServicesGroupsView, ServicesGroupView, ServiceView
-from staff.views import StaffView, StaffDetailView
+from staff.views import StaffDetailView, StaffView
+from works.views import WorksView, WorkView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -105,6 +112,12 @@ urlpatterns = [
         route='company/staff/<slug>/',
         view=StaffDetailView.as_view(),
         name='staff',
+    ),
+
+    path(
+        route='policy/',
+        view=PolicyView.as_view(),
+        name='policy',
     ),
 
     path('ckeditor5/', include('django_ckeditor_5.urls')),

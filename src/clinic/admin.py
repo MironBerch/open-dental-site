@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-from clinic.models import About, Details, License, Contact, Media
+from clinic.models import About, Contact, Details, License, Media, Policy
 
 admin.site.register(About)
 admin.site.register(Details)
 admin.site.register(Media)
+admin.site.register(Policy)
 
 
 @admin.register(License)

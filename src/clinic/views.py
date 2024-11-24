@@ -4,10 +4,11 @@ from django.views.generic.base import TemplateResponseMixin
 
 from clinic.services import (
     get_clinic_about,
-    get_clinic_licenses,
-    get_clinic_requisites,
     get_clinic_contacts,
     get_clinic_license_by_slug,
+    get_clinic_licenses,
+    get_clinic_policy,
+    get_clinic_requisites,
 )
 
 #  from django.core.paginator import Paginator
@@ -69,5 +70,17 @@ class ContactsView(TemplateResponseMixin, View):
             context={
                 'active_page': 'contacts',
                 'contacts': get_clinic_contacts(),
+            },
+        )
+
+
+class PolicyView(TemplateResponseMixin, View):
+    template_name = 'clinic/policy.html'
+
+    def get(self, request: HttpRequest, slug: str):
+        return self.render_to_response(
+            context={
+                'active_page': 'clinic',
+                'policy': get_clinic_policy(),
             },
         )

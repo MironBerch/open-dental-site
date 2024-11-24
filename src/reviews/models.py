@@ -1,6 +1,7 @@
+from phonenumber_field.modelfields import PhoneNumberField
+
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 def get_review_image_upload_path(instance: 'Review', filename: str) -> str:

@@ -1,5 +1,6 @@
-from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+
+from django.db import models
 
 
 def get_staff_image_upload_path(instance: 'Staff', filename: str) -> str:

@@ -1,16 +1,15 @@
-from django.http import HttpRequest
-from django.views.generic import View, TemplateView
-from django.views.generic.base import TemplateResponseMixin
-from django.http import JsonResponse
+from django.http import HttpRequest, JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.views.generic import TemplateView, View
+from django.views.generic.base import TemplateResponseMixin
 
 from main.forms import SearchForm
-from staff.services import get_staff
-from works.services import get_works
-from services.services import get_service_groups
 from main.services import get_search_results
 from services.models import ServiceGroup
+from services.services import get_service_groups
+from staff.services import get_staff
+from works.services import get_works
 
 
 class MainView(TemplateResponseMixin, View):
