@@ -36,3 +36,11 @@ def get_service_by_slug(slug: str) -> tuple[Service, dict[str, list]]:
             grouped_prices[group_name] = []
         grouped_prices[group_name].append(price)
     return service, grouped_prices
+
+
+def get_services_by_groups() -> dict:
+    service_groups = get_service_groups()
+    services_by_group = {}
+    for group in service_groups:
+        services_by_group[group] = get_services_by_group(group)
+    return services_by_group

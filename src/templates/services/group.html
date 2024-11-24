@@ -3,34 +3,97 @@
 {% block title %}{{ group.name }}{% endblock %}
 
 {% block content %}
-    <h1 class="h1">{{ group.name }}</h1>
-    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
-            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_groups' %}">Услуги стоматологии</a></li>
-        </ol>
-    </nav>
-    <p>{{ group.description }}</p>
-    <div class="row">
-        {% for detail in services %}
-        <div class="col-md-4 mb-4"> 
-            <div class="card h-100">
-                <div class="image-container" style="height: 245px; overflow: hidden;">
-                    <img
-                        src="{{ detail.service.image.url }}"
-                        class="card-img-top"
-                        alt="..."
-                        style="object-fit: cover; width: 100%; height: 100%;"
-                    >
+<!--
+<style>
+    .accordion-button {
+        background-color: white; /* Цвет фона по умолчанию */
+        color: black; /* Цвет текста по умолчанию */
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: #f8f9fa; /* Цвет фона при открытии аккордеона */
+        color: black; /* Цвет текста при открытом аккордеоне */
+    }
+
+    .accordion-button:focus {
+        box-shadow: none; /* Убираем обводку при фокусе */
+    }
+</style>
+-->
+<div class="row">
+    <div class="col-md-3">
+        <div class="accordion" id="accordionGroups">
+            {% for group, services in service_groups.items %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+                            <span class="group-name" data-href="{% url 'services_group' group.slug %}">
+                                <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_group' group.slug %}">
+                                    {{ group.name }}
+                                </a>
+                            </span>
+                            <span class="flex-grow-1"></span>
+                        </button>
+                    </h2>
+                    <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordionGroups">
+                        <div class="accordion-body">
+                            <ul>
+                                {% for detail in services %}
+                                <li>
+                                    <a href="{% url 'service' detail.service.slug %}">{{ detail.service.name }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">
-                        <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'service' detail.service.slug %}">{{ detail.service.name }}</a>
-                    </h5>
-                    <p class="card-text"><small class="text-body-secondary">от {{ detail.min_price }}</small></p>
+            {% endfor %}
+        </div>
+        
+        <script>
+            document.querySelectorAll('.group-name').forEach(groupName => {
+                groupName.addEventListener('click', function(event) {
+                    const url = this.dataset.href; // Получаем URL из data-атрибута
+                    window.location.href = url; // Переходим по ссылке
+                });
+                // Предотвращаем дальнейшее распространение события клика на кнопку
+                groupName.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            });
+        </script>
+    </div>
+    <div class="col-md-9">
+        <h1 class="h1">{{ group.name }}</h1>
+        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'main' %}">Главная</a></li>
+                <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_groups' %}">Услуги стоматологии</a></li>
+            </ol>
+        </nav>
+        <p>{{ group.description }}</p>
+        <div class="row">
+            {% for detail in services %}
+            <div class="col-md-4 mb-4"> 
+                <div class="card h-100">
+                    <div class="image-container" style="height: 245px; overflow: hidden;">
+                        <img
+                            src="{{ detail.service.image.url }}"
+                            class="card-img-top"
+                            alt="..."
+                            style="object-fit: cover; width: 100%; height: 100%;"
+                        >
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' detail.service.slug %}">{{ detail.service.name }}</a>
+                        </h5>
+                        <p class="card-text"><small class="text-body-secondary">от {{ detail.min_price }}</small></p>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
+</div>
 {% endblock %}

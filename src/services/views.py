@@ -7,6 +7,7 @@ from services.services import (
     get_service_by_slug,
     get_service_groups,
     get_services_by_group,
+    get_services_by_groups,
 )
 
 
@@ -27,11 +28,13 @@ class ServicesGroupView(TemplateResponseMixin, View):
 
     def get(self, request: HttpRequest, slug: str):
         group = get_group_by_slug(slug)
+        services_by_group = get_services_by_groups()
         return self.render_to_response(
             context={
                 'active_page': 'services',
                 'group': group,
                 'services': get_services_by_group(group),
+                'service_groups': services_by_group,
             },
         )
 
