@@ -2,16 +2,17 @@
 
 {% block title %}{{service.name}}{% endblock %}
 
-{% block breadcrumbs %}
-    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
-    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_groups' %}">Услуги стоматологии</a></li>
-    <li class="breadcrumb-item">
-        <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_group' service.group.slug %}">{{ service.group.name }}</a>
-    </li>
-{% endblock %}
-
 {% block content %}
-    <h1 class="h1 text-center">{{service.name}}</h1>
+    <h1 class="h1">{{service.name}}</h1>
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_groups' %}">Услуги стоматологии</a></li>
+            <li class="breadcrumb-item">
+                <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_group' service.group.slug %}">{{ service.group.name }}</a>
+            </li>
+        </ol>
+    </nav>
     <img
         src="{{ service.image.url }}"
         style="height: 375px; width: 500px; object-fit: cover; margin-right: 15px;" 
