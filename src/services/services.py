@@ -42,5 +42,7 @@ def get_services_by_groups() -> dict:
     service_groups = get_service_groups()
     services_by_group = {}
     for group in service_groups:
-        services_by_group[group] = get_services_by_group(group)
+        services = get_services_by_group(group)
+        if services != []:
+            services_by_group[group] = services
     return services_by_group
