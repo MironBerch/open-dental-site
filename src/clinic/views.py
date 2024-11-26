@@ -11,8 +11,6 @@ from clinic.services import (
     get_clinic_requisites,
 )
 
-#  from django.core.paginator import Paginator
-
 
 class RequisitesView(TemplateResponseMixin, View):
     template_name = 'clinic/requisites.html'

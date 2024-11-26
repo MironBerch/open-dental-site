@@ -42,13 +42,13 @@
         }
 
         .list-group a {
-            color: inherit; /* Сохраняет цвет текста родительского элемента */
-            text-decoration: none; /* Убирает подчеркивание */
+            color: black; /* Устанавливаем цвет текста черным */
+            text-decoration: none; /* Убираем подчеркивание */
         }
 
         .list-group a:hover {
-            text-decoration: underline; /* Добавляет подчеркивание при наведении */
-            color: inherit; /* Оставляет тот же цвет при наведении */
+            text-decoration: none; /* Убираем подчеркивание при наведении */
+            color: black; /* Сохраняем тот же цвет при наведении */
         }
     </style>
 
@@ -67,8 +67,10 @@
                     <li><a href="{% url 'prices' %}"><h4>Цены</h4></a></li>
                     {% for group in service_groups %}
                         <div>
+                            <a href="{% url 'services_group' group.slug %}" class="group-name" style="flex-grow: 1;">
+                                {{ group.name }}
+                            </a>
                             <button class="collapsible">
-                                {{ group.name }} 
                                 <div class="arrow"></div>
                             </button>
                             <ul class="service-list">
@@ -101,11 +103,21 @@
     <script>
         var coll = document.getElementsByClassName("collapsible");
         for (let i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
+            coll[i].addEventListener("click", function(event) {
                 // Переключаем видимость списка услуг
+                var content = this.nextElementSibling;
                 content.style.display = (content.style.display === "block") ? "none" : "block";
+                // Переворачиваем стрелочку
+                this.classList.toggle("active");
+            });
+        }
+
+        // Добавляем возможность перехода по клику на текст группы
+        var groupNames = document.getElementsByClassName("group-name");
+        for (let i = 0; i < groupNames.length; i++) {
+            groupNames[i].addEventListener("click", function() {
+                // Переход на страницу группы
+                window.location.href = groupNames[i].getAttribute("href");
             });
         }
     </script>

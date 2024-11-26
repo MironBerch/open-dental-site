@@ -6,7 +6,7 @@ from django.views.generic.base import TemplateResponseMixin
 
 from main.forms import SearchForm
 from main.services import get_search_results
-from services.models import ServiceGroup
+from services.models import ServiceGroup, Service
 from services.services import get_service_groups
 from staff.services import get_staff
 from works.services import get_works
@@ -72,7 +72,13 @@ class SitemapView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['service_groups'] = ServiceGroup.objects.all()
+        service_groups = ServiceGroup.objects.all()
+        filtered_service_groups = []
+        for service_group in service_groups:
+            services_by_group = Service.objects.filter(group=service_group, published=True)
+            filtered_service_groups.append(service_group) if services_by_group else None
+        print(filtered_service_groups)
+        context['service_groups'] = filtered_service_groups
         return context
 
 
