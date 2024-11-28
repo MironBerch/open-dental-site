@@ -56,7 +56,7 @@
                             <ul>
                                 {% for detail in services %}
                                 <li>
-                                    <a href="{% url 'service' detail.service.slug %}">{{ detail.service.name }}</a>
+                                    <a  class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' detail.service.slug %}">{{ detail.service.name }}</a>
                                 </li>
                                 {% endfor %}
                             </ul>
