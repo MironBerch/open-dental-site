@@ -163,16 +163,19 @@
         <div class="work-carousel-inner">
             {% for work in works %}
                 <div class="work-card">
-                    <div class="card text-bg-dark">
-                        <div class="image-container">
-                            <img src="{{ work.image.url }}" class="card-img-top" alt="...">
+                    <a href="{% url 'work' work.slug %}">
+                        <div class="card text-bg-dark">
+                            <div class="image-container">
+                                <img src="{{ work.image.url }}" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                <p class="card-text">6 фото</p>
+                                <h5 class="card-title">
+                                    <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{work.name}}</p>
+                                </h5>
+                            </div>
                         </div>
-                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                            <h5 class="card-title text-center">
-                                <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'work' work.slug %}">{{work.name}}</a>
-                            </h5>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
@@ -223,17 +226,19 @@
         <div class="staff-carousel-inner">
             {% for member in staff %}
                 <div class="staff-card">
-                    <div class="card text-bg-dark">
-                        <div class="staff-image-container">
-                            <img src="{{ member.image.url }}" class="card-img" alt="...">
+                    <a href="{% url 'staff' member.slug %}">
+                        <div class="card text-bg-dark">
+                            <div class="staff-image-container">
+                                <img src="{{ member.image.url }}" class="card-img" alt="...">
+                            </div>
+                            <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                <p class="card-text"><small>{{ member.roles }}</small></p>
+                                <h5 class="card-title">
+                                    <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ member.fio }}</p>
+                                </h5>
+                            </div>
                         </div>
-                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                            <h6 class="card-title">
-                                <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' member.slug %}">{{ member.fio }}</a>
-                            </h6>
-                            <p class="card-text"><small>{{ member.roles }}</small></p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>

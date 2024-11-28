@@ -80,12 +80,11 @@
                 <a href="{% url 'staff' member.slug %}">
                 <div class="card text-bg-dark">
                     <div class="image-container">
-                        
-                            <img
-                                src="{{ member.image.url }}"
-                                class="card-img"
-                                alt="..."
-                            >
+                        <img
+                            src="{{ member.image.url }}"
+                            class="card-img"
+                            alt="..."
+                        >
                     </div>
                     <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                         <h6 class="card-title">
@@ -93,7 +92,7 @@
                                 class="link-light link-offset-2 link-underline link-underline-opacity-0"
                             >
                                 {{member.fio}}
-                        </p>
+                            </p>
                         </h6>
                         <p class="card-text"><small>{{ member.roles }}</small></p>
                     </div>
