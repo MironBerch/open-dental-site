@@ -39,10 +39,11 @@
             display: none; /* Скрываем подсписки изначально */
             overflow: hidden; /* Убираем переполнение */
             background-color: #fff; /* Установите цвет фона на белый или нужный вам цвет */
-            border-left: 1px solid #ddd; /* Добавить левую границу (по желанию) */
             margin-bottom: 10px; /* Отступ снизу между группами */
             list-style-type: none; /* Убираем маркеры */
             padding: 0; /* Убираем отступы */
+            /* Удалите следующую строку для удаления границы */
+            /* border-left: 1px solid #ddd; */ 
         }
 
         .list-group {
@@ -73,16 +74,18 @@
                     <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'prices' %}"><h4>Цены</h4></a></li>
                     {% for group in service_groups %}
                         <div style="display: flex; align-items: center;">
-                            <a href="{% url 'services_group' group.slug %}" class="group-name link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" style="flex-grow: 1;">
+                            <a href="/services/terapevticheskoe-lechenie/" 
+                            class="group-name link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" 
+                            style="display: inline-block; margin-right: 10px; white-space: nowrap;">
                                 {{ group.name }}
                             </a>
-                            <button class="collapsible" style="border: none; background: none; padding: 0;">
+                            <button class="collapsible active" style="border: none; background: none; padding: 0;">
                                 <div class="arrow"></div>
                             </button>
                         </div>
                         <ul class="service-list">
                             {% for service in group.service_set.all %}
-                                <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' service.slug %}">{{ service.name }}</a></li>
+                                <li><a style="margin-left: 20px;" class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' service.slug %}">{{ service.name }}</a></li>
                             {% endfor %}
                         </ul>
                     {% endfor %}
