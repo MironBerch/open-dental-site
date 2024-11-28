@@ -17,17 +17,21 @@
         }
 
         .arrow {
-            margin-left: 5px; /* Отступ слева для стрелочки */
-            width: 10px;
-            height: 10px;
-            border-left: 2px solid transparent;
-            border-right: 2px solid transparent;
-            border-top: 4px solid #007bff; /* Цвет стрелочки */
+            margin-left: 10px; /* Отступ слева для стрелочки */
+            width: 0; 
+            height: 0; 
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #007bff; /* Цвет стрелочки */
             transition: transform 0.3s; /* Плавный переход при повороте */
         }
 
         .active .arrow {
             transform: rotate(180deg); /* Поворот стрелочки при активном состоянии */
+        }
+
+        .collapsible:hover .arrow {
+            border-top: 5px solid #0056b3; /* Изменяем цвет стрелочки при наведении */
         }
 
         .service-list {
@@ -41,59 +45,61 @@
             padding: 0; /* Убираем отступы */
         }
 
-        .list-group a {
-            color: black; /* Устанавливаем цвет текста черным */
-            text-decoration: none; /* Убираем подчеркивание */
+        .list-group {
+            list-style-type: none; /* Убираем маркеры у родительского списка */
+            padding: 0; /* Убираем отступы */
         }
 
-        .list-group a:hover {
-            text-decoration: none; /* Убираем подчеркивание при наведении */
-            color: black; /* Сохраняем тот же цвет при наведении */
+        .group-name {
+            display: inline-block; /* Позволяет элементу принимать ширину, основанную на его содержимом */
+            margin-right: 10px; /* Устанавливаем отступ справа */
+            white-space: nowrap; /* Предотвращает перенос текста */
         }
+        
     </style>
 
     <h1 class="h1">Карта сайта</h1>
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'main' %}">Главная</a></li>
         </ol>
     </nav>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <ul class="list-group">
-                    <li><a href="{% url 'services_groups' %}"><h4>Услуги</h4></a></li>
-                    <li><a href="{% url 'staff_list' %}"><h4>Сотрудники</h4></a></li>
-                    <li><a href="{% url 'prices' %}"><h4>Цены</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_groups' %}"><h4>Услуги</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_list' %}"><h4>Сотрудники</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'prices' %}"><h4>Цены</h4></a></li>
                     {% for group in service_groups %}
-                        <div>
-                            <a href="{% url 'services_group' group.slug %}" class="group-name" style="flex-grow: 1;">
+                        <div style="display: flex; align-items: center;">
+                            <a href="{% url 'services_group' group.slug %}" class="group-name link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" style="flex-grow: 1;">
                                 {{ group.name }}
                             </a>
-                            <button class="collapsible">
+                            <button class="collapsible" style="border: none; background: none; padding: 0;">
                                 <div class="arrow"></div>
                             </button>
-                            <ul class="service-list">
-                                {% for service in group.service_set.all %}
-                                    <li><a href="{% url 'service' service.slug %}">{{ service.name }}</a></li>
-                                {% endfor %}
-                            </ul>
                         </div>
+                        <ul class="service-list">
+                            {% for service in group.service_set.all %}
+                                <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' service.slug %}">{{ service.name }}</a></li>
+                            {% endfor %}
+                        </ul>
                     {% endfor %}
                 </ul>
             </div>
             <div class="col-md-6">
                 <ul class="list-group">
-                    <li><a href="{% url 'company' %}"><h4>Клиника</h4></a></li>
-                    <li><a href="{% url 'company' %}">О клинике</a></li>
-                    <li><a href="{% url 'licenses' %}">Лицензии</a></li>
-                    <li><a href="{% url 'requisites' %}">Реквизиты</a></li>
-                    <li><a href="{% url 'reviews' %}"><h4>Отзывы</h4></a></li>
-                    <li><a href="{% url 'contacts' %}"><h4>Контакты</h4></a></li>
-                    <li><a href="{% url 'gallery' %}"><h4>Наши работы</h4></a></li>
-                    <li><a href="{% url 'search_view' %}"><h4>Поиск</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'company' %}"><h4>Клиника</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'company' %}">О клинике</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'licenses' %}">Лицензии</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'requisites' %}">Реквизиты</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'reviews' %}"><h4>Отзывы</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'contacts' %}"><h4>Контакты</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'gallery' %}"><h4>Наши работы</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'search_view' %}"><h4>Поиск</h4></a></li>
                     {% if request.user.is_superuser or request.user.is_staff %}
-                        <li><a href="{% url 'admin:index' %}"><h4>Панель администратора</h4></a></li>
+                        <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'admin:index' %}"><h4>Панель администратора</h4></a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -101,21 +107,22 @@
     </div>
 
     <script>
-        var coll = document.getElementsByClassName("collapsible");
-        for (let i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function(event) {
-                // Переключаем видимость списка услуг
-                var content = this.nextElementSibling;
-                content.style.display = (content.style.display === "block") ? "none" : "block";
-                // Переворачиваем стрелочку
-                this.classList.toggle("active");
+        document.querySelectorAll('.collapsible').forEach(function(button) {
+            button.addEventListener("click", function(event) {
+                // Находим следующий элемент списка
+                var content = this.closest('div').nextElementSibling; // Используем closest для более точного выбора
+                if (content) { // Проверка на существование content
+                    content.style.display = (content.style.display === "block") ? "none" : "block";
+                    // Переворачиваем стрелочку
+                    this.classList.toggle("active");
+                }
             });
-        }
-
+        });
+    
         // Добавляем возможность перехода по клику на текст группы
         var groupNames = document.getElementsByClassName("group-name");
         for (let i = 0; i < groupNames.length; i++) {
-            groupNames[i].addEventListener("click", function() {
+            groupNames[i].addEventListener("click", function(event) {
                 // Переход на страницу группы
                 window.location.href = groupNames[i].getAttribute("href");
             });

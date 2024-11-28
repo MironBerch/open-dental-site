@@ -77,7 +77,6 @@ class SitemapView(TemplateView):
         for service_group in service_groups:
             services_by_group = Service.objects.filter(group=service_group, published=True)
             filtered_service_groups.append(service_group) if services_by_group else None
-        print(filtered_service_groups)
         context['service_groups'] = filtered_service_groups
         return context
 
