@@ -94,6 +94,10 @@
                 flex: 0 0 100%; /* 100% для отображения одной карточки на мобильных экранах */
                 max-width: 100%;
             }
+            .work-card {
+                flex: 0 0 100%; /* Отображаем 1 карточку на мобильных экранах */
+                max-width: 100%;
+            }
         }
 
         .navigation-button {
@@ -151,15 +155,8 @@
             background-color: #007bff; /* Синий фон при наведении */
             color: white; /* Белый текст при наведении */
         }
-
-        .prev-button {
-            left: 10px;
-        }
-
-        .next-button {
-            right: 10px;
-        }
     </style>
+
     <h2 class="h2">Наши работы</h2>
     <div class="work-carousel" id="workCarousel">
         <button class="btn prev-button navigation-button" onclick="slideWork('prev')"><</button>
@@ -186,9 +183,14 @@
         let currentWorkIndex = 0;
         const workCards = document.querySelectorAll('.work-card');
         const totalWorkCards = workCards.length;
-        const visibleWorkCards = 3; // Количество отображаемых карточек
-
+    
+        function getVisibleWorkCards() {
+            return window.innerWidth <= 768 ? 1 : 3; // Меняем количество видимых карточек в зависимости от ширины
+        }
+    
         function slideWork(direction) {
+            const visibleWorkCards = getVisibleWorkCards();
+    
             if (direction === 'next') {
                 currentWorkIndex++;
                 if (currentWorkIndex >= totalWorkCards - visibleWorkCards + 1) {
@@ -200,34 +202,25 @@
                     currentWorkIndex = totalWorkCards - visibleWorkCards; // Зациклить
                 }
             }
-
-            // Расчет смещения для плавного перехода
-            const offset = -((currentWorkIndex * 100) / visibleWorkCards); // Показываем указанное количество карточек
+    
+            const offset = -((currentWorkIndex * 100) / visibleWorkCards);
             const workCarouselInner = document.querySelector('.work-carousel-inner');
             workCarouselInner.style.transform = `translateX(${offset}%)`;
         }
-
+    
+        // Обработчик изменения размеров окна
+        window.addEventListener('resize', () => {
+            // Здесь мы просто получаем количество видимых карточек, 
+            // но не меняем текущее положение слайдера
+            getVisibleWorkCards();
+        });
     </script>
+    
+
     <h2 class="h2">Сотрудники</h2>
     <div class="staff-carousel" id="staffCarousel">
         <button class="btn prev-button navigation-button" onclick="slide('prev')"><</button>
         <div class="staff-carousel-inner">
-            {% for member in staff %}
-                <div class="staff-card">
-                    <div class="card text-bg-dark">
-                        <div class="staff-image-container">
-                            <img src="{{ member.image.url }}" class="card-img" alt="...">
-                        </div>
-                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                            <h6 class="card-title">
-                                <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' member.slug %}">{{ member.fio }}</a>
-                            </h6>
-                            <p class="card-text"><small>{{ member.roles }}</small></p>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            {# Дублируем карточки для создания эффекта бесконечного прокручивания #}
             {% for member in staff %}
                 <div class="staff-card">
                     <div class="card text-bg-dark">
@@ -251,10 +244,11 @@
         let currentIndex = 0;
         const cards = document.querySelectorAll('.staff-card');
         const totalCards = cards.length / 2; // Учитываем дублирование
-        const visibleCards = 4; // На ПК 4 карточки видимы
-
-        const carouselInner = document.querySelector('.staff-carousel-inner');
-        
+    
+        function getVisibleCards() {
+            return window.innerWidth <= 768 ? 1 : 4; // Меняем количество видимых карточек в зависимости от ширины
+        }
+    
         function slide(direction) {
             if (direction === 'next') {
                 currentIndex++;
@@ -267,24 +261,20 @@
                     currentIndex = totalCards - 1; // Зациклить
                 }
             }
-
-            // Расчет смещения для плавного перехода
-            const offset = -((currentIndex * 100) / visibleCards); // Показываем 4 карточки на ПК
+    
+            const visibleCards = getVisibleCards();
+            const offset = -((currentIndex * 100) / visibleCards);
+            const carouselInner = document.querySelector('.staff-carousel-inner');
             carouselInner.style.transform = `translateX(${offset}%)`;
         }
-
-        // Обновляем слайдер при нажатии на кнопки на мобильных устройствах, чтобы показывалась следующая карточка
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            const buttons = document.querySelectorAll('.navigation-button');
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    setTimeout(() => {
-                        slide(button.classList.contains('next-button') ? 'next' : 'prev');
-                    }, 300); // Задержка для плавности анимации
-                });
-            });
-        }
+    
+        // Обработчик изменения размеров окна
+        window.addEventListener('resize', () => {
+            // Аналогично работам, получаем количество видимых карточек
+            getVisibleCards();
+        });
     </script>
+    
 
     <h2 class="h2">Услуги</h2>
     {% for service in service_groups %}
@@ -295,5 +285,5 @@
             </div>
         </div>
     {% endfor %}
-  
+
 {% endblock %}
