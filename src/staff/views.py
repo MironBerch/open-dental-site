@@ -2,7 +2,7 @@ from django.http import HttpRequest
 from django.views.generic import View
 from django.views.generic.base import TemplateResponseMixin
 
-from staff.services import get_all_staff, get_staff_by_slug, get_staff_by_stage
+from staff.services import get_all_staff, get_staff_by_slug, get_staff_by_stage, get_staff_by_stage_title
 
 
 class StaffView(TemplateResponseMixin, View):
@@ -26,11 +26,9 @@ class StaffByStageView(TemplateResponseMixin, View):
 
     def get(self, request: HttpRequest, stage: str):
         staff = get_staff_by_stage(stage)
-        print(staff)
-        print(stage)
         return self.render_to_response(
             context={
-                'page_title': 'staff[0].stage' if staff != [] else '',
+                'page_title': get_staff_by_stage_title(stage),
                 'active_page': 'staff',
                 'staff': staff,
             },

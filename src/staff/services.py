@@ -29,8 +29,24 @@ def get_all_staff() -> dict[str, QuerySet[Staff]]:
 
 
 def get_staff_by_stage(stage: str) -> QuerySet[Staff]:
-    return Staff.objects.filter(stage=stage, published=True)
+    stage_mapping = {
+        'rukovoditeli': 'Руководитель',
+        'administratori': 'Администратор',
+        'mediki': 'Мед персонал',
+        'assistenti': 'Младщий мед персонал',
+    }
+    return Staff.objects.filter(stage=stage_mapping.get(stage, ''), published=True)
 
 
 def get_staff_by_slug(slug: str) -> Staff:
     return get_object_or_404(Staff, slug=slug)
+
+
+def get_staff_by_stage_title(stage: str) -> str:
+    stage_mapping = {
+        'rukovoditeli': 'Руководители',
+        'administratori': 'Администраторы',
+        'mediki': 'Мед персонал',
+        'assistenti': 'Младщий мед персонал',
+    }
+    return stage_mapping.get(stage, '')
