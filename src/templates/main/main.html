@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load custom_tags %}
+
 {% block title %}Главная{% endblock %}
 
 {% block content %}
@@ -226,7 +228,7 @@
         <div class="staff-carousel-inner">
             {% for member in staff %}
                 <div class="staff-card">
-                    <a href="{% url 'staff' member.slug %}">
+                    <a href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">
                         <div class="card text-bg-dark">
                             <div class="staff-image-container">
                                 <img src="{{ member.image.url }}" class="card-img" alt="...">

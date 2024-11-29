@@ -28,5 +28,9 @@ def get_all_staff() -> dict[str, QuerySet[Staff]]:
     return dict(grouped_staff)
 
 
+def get_staff_by_stage(stage: str) -> QuerySet[Staff]:
+    return Staff.objects.filter(stage=stage, published=True)
+
+
 def get_staff_by_slug(slug: str) -> Staff:
     return get_object_or_404(Staff, slug=slug)

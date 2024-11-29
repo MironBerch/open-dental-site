@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% load custom_tags %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+    <style>
+        .card {
+            transition: background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .card-img-overlay {
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-img-overlay {
+            transform: translateY(-5px);
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 128%;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        
+        .card-img {
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .image-container::after {
+            opacity: 1;
+        }
+    </style>
+
+
+    <h1>{{ page_title }}</h1>
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
+            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'staff_list' %}">Сотрудники</a></li>
+        </ol>
+    </nav>
+    
+    <h2>Руководители</h2>
+    <p>Руководители центра авторской стоматологии «Мастерская Улыбок» - популярные лица и голоса, узнаваемые во всем мире. Они – неиссякаемый источник идей, профессионализма и опыта. Во многом, благодаря руководству, клиника «Мастерская Улыбок» вышла на наивысший качественный уровень, став центром высокотехнологической стоматологической помощи.</p>
+    
+    <div class="row">
+        {% for member in staff %}
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">
+                <div class="card text-bg-dark">
+                    <div class="image-container">
+                        <img
+                            src="{{ member.image.url }}"
+                            class="card-img"
+                            alt="..."
+                        >
+                    </div>
+                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                        <h6 class="card-title">
+                            <p
+                                class="link-light link-offset-2 link-underline link-underline-opacity-0"
+                            >
+                                {{member.fio}}
+                            </p>
+                        </h6>
+                        <p class="card-text"><small>{{ member.roles }}</small></p>
+                    </div>
+                </div></a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

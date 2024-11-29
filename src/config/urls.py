@@ -17,7 +17,7 @@ from main.views import MainView, SearchAPIView, SearchView, SitemapView
 from prices.views import PricesView
 from reviews.views import ReviewsView
 from services.views import ServicesGroupsView, ServicesGroupView, ServiceView
-from staff.views import StaffDetailView, StaffView
+from staff.views import StaffDetailView, StaffView, StaffByStageView
 from works.views import WorksView, WorkView
 
 urlpatterns = [
@@ -109,7 +109,12 @@ urlpatterns = [
         name='staff_list',
     ),
     path(
-        route='company/staff/<slug>/',
+        route='company/staff/<stage>/',
+        view=StaffByStageView.as_view(),
+        name='staff_by_stage',
+    ),
+    path(
+        route='company/staff/<stage>/<slug>/',
         view=StaffDetailView.as_view(),
         name='staff',
     ),
