@@ -9,22 +9,45 @@ from main.services import get_search_results
 from services.models import ServiceGroup, Service
 from services.services import get_service_groups
 from staff.services import get_staff
+
 from works.services import get_works
+from django.contrib import messages
+
+from records.forms import CallRequestForm
 
 
 class MainView(TemplateResponseMixin, View):
     template_name = 'main/main.html'
+    form_class = CallRequestForm
 
     def get(self, request: HttpRequest):
-        service_groups = get_service_groups()
-        if len(service_groups) > 6:
-            service_groups = service_groups[:6]
         return self.render_to_response(
             context={
                 'active_page': '',
+                'form': self.form_class(),
                 'works': get_works(),
                 'staff': get_staff(),
-                'service_groups': service_groups,
+                'service_groups': get_service_groups(),
+            },
+        )
+
+    def post(self, request: HttpRequest, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'Заявка на звонок оставлена',
+            )
+            form.save()
+            return redirect('main')
+        return self.render_to_response(
+            context={
+                'active_page': '',
+                'form': self.form_class,
+                'works': get_works(),
+                'staff': get_staff(),
+                'service_groups': get_service_groups(),
             },
         )
 

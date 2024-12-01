@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load custom_tags %}
+{% load django_bootstrap5 %}
 
 {% block title %}Главная{% endblock %}
 
@@ -292,5 +293,15 @@
             </div>
         </div>
     {% endfor %}
+
+    <h2 class="h2">Оставьте заявку</h2>
+    <p>Наши администраторы на связи и готовы ответить на любые вопросы.</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="modal-body">
+            {% bootstrap_form form %}
+        </div>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Отправить</button>
+    </form>
 
 {% endblock %}
