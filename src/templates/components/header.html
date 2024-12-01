@@ -146,36 +146,39 @@
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Меню</h5>
+                <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Меню</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav flex-grow-1 pe-3 mt-3">
                     <li class="nav-item">
-                        <a href="{% url 'services_groups' %}" class="nav-link {% if active_page == 'services' %}link-secondary{% else %}link-body-emphasis{% endif %}">Услуги</a>
+                        <a href="{% url 'main' %}" class="nav-link {% if active_page == '' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'staff_list' %}" class="nav-link {% if active_page == 'staff' %}link-secondary{% else %}link-body-emphasis{% endif %}">Работники</a>
+                        <a href="{% url 'services_groups' %}" class="nav-link {% if active_page == 'services' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Услуги</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'prices' %}" class="nav-link {% if active_page == 'prices' %}link-secondary{% else %}link-body-emphasis{% endif %}">Цены</a>
+                        <a href="{% url 'staff_list' %}" class="nav-link {% if active_page == 'staff' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Работники</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'prices' %}" class="nav-link {% if active_page == 'prices' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Цены</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link {% if active_page == 'clinic' %}link-secondary{% else %}link-body-emphasis{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Клиника</a>
+                        <a class="nav-link {% if active_page == 'clinic' %}link-secondary{% else %}link-body-emphasis{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 24px;">Клиника</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'company' %}">О клинике</a></li>
-                            <li><a class="dropdown-item" href="{% url 'licenses' %}">Лицензии</a></li>
-                            <li><a class="dropdown-item" href="{% url 'requisites' %}">Реквизиты</a></li>
+                            <li><a class="dropdown-item" href="{% url 'company' %}" style="font-size: 24px;">О клинике</a></li>
+                            <li><a class="dropdown-item" href="{% url 'licenses' %}" style="font-size: 24px;">Лицензии</a></li>
+                            <li><a class="dropdown-item" href="{% url 'requisites' %}" style="font-size: 24px;">Реквизиты</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'gallery' %}" class="nav-link {% if active_page == 'works' %}link-secondary{% else %}link-body-emphasis{% endif %}">Наши работы</a>
+                        <a href="{% url 'gallery' %}" class="nav-link {% if active_page == 'works' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Наши работы</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'reviews' %}" class="nav-link {% if active_page == 'reviews' %}link-secondary{% else %}link-body-emphasis{% endif %}">Отзывы</a>
+                        <a href="{% url 'reviews' %}" class="nav-link {% if active_page == 'reviews' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Отзывы</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'contacts' %}" class="nav-link {% if active_page == 'contacts' %}link-secondary{% else %}link-body-emphasis{% endif %}">Контакты</a>
+                        <a href="{% url 'contacts' %}" class="nav-link {% if active_page == 'contacts' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Контакты</a>
                     </li>
                 </ul>
 
