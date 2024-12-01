@@ -10,7 +10,7 @@ from works.models import Work
 def get_search_results(query: str):
     query = query.upper()
 
-    SITES = {
+    sites = {
         'контакты': reverse('contacts'),
         'отзывы клиентов': reverse('reviews'),
         'лицензии и сертификаты': reverse('licenses'),
@@ -78,7 +78,7 @@ def get_search_results(query: str):
         results.append({'type': 'license', 'match_count': match_count, 'data': license})
 
     # Check for Pages
-    for page, url in SITES.items():
+    for page, url in sites.items():
         if page in query.lower():
             results.append({'type': 'page', 'match_count': 1, 'data': {'title': page, 'url': url}})
 

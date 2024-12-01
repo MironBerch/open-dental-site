@@ -26,6 +26,7 @@ class WorkAdmin(admin.ModelAdmin):
 
     view_image.short_description = 'Превью'
 
+
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
     list_display = (

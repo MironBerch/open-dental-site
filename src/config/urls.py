@@ -17,7 +17,7 @@ from main.views import MainView, SearchAPIView, SearchView, SitemapView
 from prices.views import PricesView
 from reviews.views import ReviewsView
 from services.views import ServicesGroupsView, ServicesGroupView, ServiceView
-from staff.views import StaffDetailView, StaffView, StaffByStageView
+from staff.views import StaffByStageView, StaffDetailView, StaffView
 from works.views import WorksView, WorkView
 
 urlpatterns = [

@@ -2,7 +2,12 @@ from django.http import HttpRequest
 from django.views.generic import View
 from django.views.generic.base import TemplateResponseMixin
 
-from staff.services import get_all_staff, get_staff_by_slug, get_staff_by_stage, get_staff_by_stage_title
+from staff.services import (
+    get_all_staff,
+    get_staff_by_slug,
+    get_staff_by_stage,
+    get_staff_by_stage_title,
+)
 
 
 class StaffView(TemplateResponseMixin, View):
