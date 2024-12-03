@@ -11,13 +11,27 @@
             <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'staff_list' %}">Сотрудники</a></li>
         </ol>
     </nav>
-    <img
-        src="{{ staff.image.url }}"
-        style="height: 375px; width: 500px; object-fit: cover; margin-right: 15px;" 
-        class="img-thumbnail mx-auto d-block"
-        alt="..."
-    >
-    <p>{{staff.roles}}</p>
-    <p>{{staff.stage}}</p>
-    <p>{{ staff.information|safe }}</p>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card no-hover" style="margin-bottom: 10px;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'rukovoditeli' %}">Руководители</a></li>
+                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'mediki' %}">Медики</a></li>
+                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'administratori' %}">Администраторы</a></li>
+                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'assistenti' %}">Ассистенты</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <img
+                src="{{ staff.image.url }}"
+                style="height: 375px; width: 500px; object-fit: cover; margin-right: 15px;" 
+                class="img-thumbnail mx-auto d-block"
+                alt="..."
+            >
+            <p>{{staff.roles}}</p>
+            <p>{{staff.stage}}</p>
+            <p>{{ staff.information|safe }}</p>
+        </div>
+    </div>
 {% endblock %}
