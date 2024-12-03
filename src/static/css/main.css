@@ -88,3 +88,13 @@ body {
 .bd-mode-toggle {
     z-index: 1500;
 }
+
+@font-face {
+    font-family: "myFont";
+    src: url("../fonts/Ubuntu/Ubuntu-Medium.ttf");
+}
+  
+html {
+    font-family: "myFont";
+}
+  
