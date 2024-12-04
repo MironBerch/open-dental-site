@@ -8,7 +8,7 @@ class BaseContextMiddleware(MiddlewareMixin):
         if hasattr(response, 'context_data'):
             response.context_data.update(
                 {
-                    'media': get_clinic_media(),
+                    'clinic_media': get_clinic_media(),
                     'contact': get_clinic_contact(),
                 }
             )
