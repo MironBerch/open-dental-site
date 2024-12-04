@@ -89,6 +89,10 @@ class Contact(models.Model):
     phone_numbers = models.CharField(verbose_name='Номера телефонов', max_length=255)
     email = models.EmailField(verbose_name='почта', max_length=255)
 
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
     def __str__(self):
         return self.address
 
@@ -109,6 +113,10 @@ class Media(models.Model):
         max_length=255,
         blank=True,
     )
+
+    class Meta:
+        verbose_name = 'Ссылки на социальные сети и контакты'
+        verbose_name_plural = 'Ссылки на социальные сети и контакты'
 
 
 class Policy(models.Model):
