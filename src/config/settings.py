@@ -31,7 +31,6 @@ INSTALLED_APPS = [
 
     # local
     'main.apps.MainConfig',
-    'reviews.apps.ReviewsConfig',
     'clinic.apps.ClinicConfig',
     'staff.apps.StaffConfig',
     'services.apps.ServicesConfig',

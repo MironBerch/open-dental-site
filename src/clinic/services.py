@@ -1,7 +1,7 @@
 from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404
 
-from clinic.models import About, Contact, Details, License, Media, Policy
+from clinic.models import About, Contact, Details, License, Media, Policy, Review
 
 
 def get_clinic_requisites() -> QuerySet[Details]:
@@ -40,3 +40,7 @@ def get_clinic_media() -> QuerySet[Media]:
 
 def get_clinic_policy() -> QuerySet[Policy]:
     return Policy.objects.first()
+
+
+def get_published_reviews() -> QuerySet[Review]:
+    return Review.objects.filter(published=True)

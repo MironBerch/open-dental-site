@@ -1,7 +1,10 @@
+from django.contrib import messages
 from django.http import HttpRequest
+from django.shortcuts import redirect
 from django.views.generic import View
 from django.views.generic.base import TemplateResponseMixin
 
+from clinic.forms import ReviewForm
 from clinic.services import (
     get_clinic_about,
     get_clinic_contacts,
@@ -9,6 +12,7 @@ from clinic.services import (
     get_clinic_licenses,
     get_clinic_policy,
     get_clinic_requisites,
+    get_published_reviews,
 )
 
 
@@ -80,5 +84,37 @@ class PolicyView(TemplateResponseMixin, View):
             context={
                 'active_page': 'clinic',
                 'policy': get_clinic_policy(),
+            },
+        )
+
+
+class ReviewsView(TemplateResponseMixin, View):
+    template_name = 'clinic/reviews.html'
+    form_class = ReviewForm
+
+    def get(self, request: HttpRequest, *args, **kwargs):
+        return self.render_to_response(
+            context={
+                'form': self.form_class(),
+                'active_page': 'reviews',
+                'reviews': get_published_reviews().order_by('-id'),
+            },
+        )
+
+    def post(self, request: HttpRequest, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'Отзыв успешно оставлен',
+            )
+            form.save()
+            return redirect('reviews')
+        return self.render_to_response(
+            context={
+                'form': self.form_class,
+                'active_page': 'reviews',
+                'reviews': get_published_reviews().order_by('-id'),
             },
         )

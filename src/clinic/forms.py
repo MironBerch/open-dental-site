@@ -3,7 +3,7 @@ from phonenumber_field.formfields import PhoneNumberField
 from django import forms
 from django.core.validators import RegexValidator
 
-from reviews.models import Review
+from clinic.models import Review
 
 
 class ReviewForm(forms.ModelForm):

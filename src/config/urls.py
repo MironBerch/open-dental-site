@@ -12,10 +12,10 @@ from clinic.views import (
     LicenseView,
     PolicyView,
     RequisitesView,
+    ReviewsView,
 )
 from main.views import MainView, SearchAPIView, SearchView, SitemapView
 from prices.views import PricesView
-from reviews.views import ReviewsView
 from services.views import ServicesGroupsView, ServicesGroupView, ServiceView
 from staff.views import StaffByStageView, StaffDetailView, StaffView
 from works.views import WorksView, WorkView
@@ -118,7 +118,6 @@ urlpatterns = [
         view=StaffDetailView.as_view(),
         name='staff',
     ),
-
     path(
         route='policy/',
         view=PolicyView.as_view(),
