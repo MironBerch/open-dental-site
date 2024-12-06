@@ -21,7 +21,7 @@ class StaffAdmin(admin.ModelAdmin):
     def view_image(self, obj):
         if obj.image:
             return format_html(
-                '<img src="{}" style="width: 100px; height: 75px;" />',
+                '<img src="{}" style="width: 160px; height: 230px;" />',
                 obj.image.url,
             )
         return "Нет изображения"
