@@ -81,13 +81,23 @@ class Contact(models.Model):
     address = models.CharField(
         verbose_name='адрес',
         max_length=255,
+        blank=True,
     )
     opening_hours = models.CharField(
         verbose_name='Часы работы',
         max_length=255,
+        blank=True,
     )
-    phone_numbers = models.CharField(verbose_name='Номера телефонов', max_length=255)
-    email = models.EmailField(verbose_name='почта', max_length=255)
+    phone_numbers = models.CharField(
+        verbose_name='Номера телефонов',
+        max_length=255,
+        blank=True,
+    )
+    email = models.EmailField(
+        verbose_name='почта',
+        max_length=255,
+        blank=True,
+    )
 
     class Meta:
         verbose_name = 'Контакт'
