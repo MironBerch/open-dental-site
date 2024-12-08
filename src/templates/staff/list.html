@@ -100,132 +100,139 @@
         <div class="col-md-3">
             <div class="card no-hover" style="margin-bottom: 10px;">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'rukovoditeli' %}">Руководители</a></li>
-                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'mediki' %}">Медики</a></li>
-                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'administratori' %}">Администраторы</a></li>
-                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'assistenti' %}">Ассистенты</a></li>
+                    {% if managers %}<li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'rukovoditeli' %}">Руководители</a></li>{% endif %}
+                    {% if medics %}<li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'mediki' %}">Медики</a></li>{% endif %}
+                    {% if administrators %}<li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'administratori' %}">Администраторы</a></li>{% endif %}
+                    {% if junior_medics %}<li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'assistenti' %}">Ассистенты</a></li>{% endif %}
                 </ul>
             </div>
         </div>
         <div class="col-md-9">
-            <h2>Руководители</h2>
-            <p></p>
-            
-            <div class="row">
-                {% for member in managers %}
-                    <div class="col-md-4 mb-4">
-                        <a href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">
-                        <div class="card text-bg-dark">
-                            <div class="image-container">
-                                <img
-                                    src="{{ member.image.url }}"
-                                    class="card-img"
-                                    alt="..."
-                                >
-                            </div>
-                            <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                <h6 class="card-title">
-                                    <p
-                                        class="link-light link-offset-2 link-underline link-underline-opacity-0"
+            {% if managers %}
+                <h2>Руководители</h2>
+                <p></p>
+                
+                <div class="row">
+                    {% for member in managers %}
+                        <div class="col-md-4 mb-4">
+                            <a href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">
+                            <div class="card text-bg-dark">
+                                <div class="image-container">
+                                    <img
+                                        src="{{ member.image.url }}"
+                                        class="card-img"
+                                        alt="..."
                                     >
-                                        {{member.fio}}
-                                    </p>
-                                </h6>
-                                <p class="card-text"><small>{{ member.roles }}</small></p>
-                            </div>
-                        </div></a>
-                    </div>
-                {% endfor %}
-            </div>
+                                </div>
+                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                    <h6 class="card-title">
+                                        <p
+                                            class="link-light link-offset-2 link-underline link-underline-opacity-0"
+                                        >
+                                            {{member.fio}}
+                                        </p>
+                                    </h6>
+                                    <p class="card-text"><small>{{ member.roles }}</small></p>
+                                </div>
+                            </div></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
             
-            
-            <h2>Мастера по улыбкам</h2>
-            <p></p>
-            
-            <div class="row">
-                {% for member in medics %}
-                    <div class="col-md-4 mb-4"> 
-                        <div class="card text-bg-dark">
-                            <div class="image-container">
-                                <img
-                                    src="{{ member.image.url }}"
-                                    class="card-img"
-                                    alt="..."
-                                >
-                            </div>
-                            <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                <h6 class="card-title">
-                                    <a 
-                                        class="link-light link-offset-2 link-underline link-underline-opacity-0" 
-                                        href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}"
+            {% if medics %}
+                <h2>Мастера по улыбкам</h2>
+                <p></p>
+                
+                <div class="row">
+                    {% for member in medics %}
+                        <div class="col-md-4 mb-4"> 
+                            <div class="card text-bg-dark">
+                                <div class="image-container">
+                                    <img
+                                        src="{{ member.image.url }}"
+                                        class="card-img"
+                                        alt="..."
                                     >
-                                        {{member.fio}}
-                                    </a>
-                                </h6>
-                                <p class="card-text"><small>{{ member.roles }}</small></p>
+                                </div>
+                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                    <h6 class="card-title">
+                                        <a 
+                                            class="link-light link-offset-2 link-underline link-underline-opacity-0" 
+                                            href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}"
+                                        >
+                                            {{member.fio}}
+                                        </a>
+                                    </h6>
+                                    <p class="card-text"><small>{{ member.roles }}</small></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
-            
-            <h2>Администраторы</h2>
-            <div class="row">
-                {% for member in administrators %}
-                    <div class="col-md-4 mb-4"> 
-                        <div class="card text-bg-dark">
-                            <div class="image-container">
-                                <img
-                                    src="{{ member.image.url }}"
-                                    class="card-img"
-                                    alt="..."
-                                >
-                            </div>
-                            <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                <h6 class="card-title">
-                                    <a 
-                                        class="link-light link-offset-2 link-underline link-underline-opacity-0" 
-                                        href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}"
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if administrators %}
+                <h2>Администраторы</h2>
+                <div class="row">
+                    {% for member in administrators %}
+                        <div class="col-md-4 mb-4"> 
+                            <div class="card text-bg-dark">
+                                <div class="image-container">
+                                    <img
+                                        src="{{ member.image.url }}"
+                                        class="card-img"
+                                        alt="..."
                                     >
-                                        {{member.fio}}
-                                    </a>
-                                </h6>
-                                <p class="card-text"><small>{{ member.roles }}</small></p>
+                                </div>
+                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                    <h6 class="card-title">
+                                        <a 
+                                            class="link-light link-offset-2 link-underline link-underline-opacity-0" 
+                                            href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}"
+                                        >
+                                            {{member.fio}}
+                                        </a>
+                                    </h6>
+                                    <p class="card-text"><small>{{ member.roles }}</small></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
-            
-            <h2>Помощники мастеров по улыбкам</h2>
-            <p></p>
-            
-            <div class="row">
-                {% for member in junior_medics %}
-                    <div class="col-md-4 mb-4"> 
-                        <div class="card text-bg-dark">
-                            <div class="image-container">
-                                <img
-                                    src="{{ member.image.url }}"
-                                    class="card-img"
-                                    alt="..."
-                                >
-                            </div>
-                            <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                <h6 class="card-title">
-                                    <a 
-                                        class="link-light link-offset-2 link-underline link-underline-opacity-0" 
-                                        href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}"
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if junior_medics %}
+                <h2>Помощники мастеров по улыбкам</h2>
+                <p></p>
+                
+                <div class="row">
+                    {% for member in junior_medics %}
+                        <div class="col-md-4 mb-4"> 
+                            <div class="card text-bg-dark">
+                                <div class="image-container">
+                                    <img
+                                        src="{{ member.image.url }}"
+                                        class="card-img"
+                                        alt="..."
                                     >
-                                        {{member.fio}}
-                                    </a>
-                                </h6>
-                                <p class="card-text"><small>{{ member.roles }}</small></p>
+                                </div>
+                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                    <h6 class="card-title">
+                                        <a 
+                                            class="link-light link-offset-2 link-underline link-underline-opacity-0" 
+                                            href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}"
+                                        >
+                                            {{member.fio}}
+                                        </a>
+                                    </h6>
+                                    <p class="card-text"><small>{{ member.roles }}</small></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

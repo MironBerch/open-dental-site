@@ -30,12 +30,17 @@ class StaffByStageView(TemplateResponseMixin, View):
     template_name = 'staff/stage.html'
 
     def get(self, request: HttpRequest, stage: str):
+        all_staff = get_all_staff()
         staff = get_staff_by_stage(stage)
         return self.render_to_response(
             context={
                 'page_title': get_staff_by_stage_title(stage),
                 'active_page': 'staff',
                 'staff': staff,
+                'managers':  all_staff.get('Руководитель', ''),
+                'administrators': all_staff.get('Администратор', ''),
+                'medics': all_staff.get('Мед персонал', ''),
+                'junior_medics': all_staff.get('Младщий мед персонал', ''),
             },
         )
 
@@ -44,9 +49,14 @@ class StaffDetailView(TemplateResponseMixin, View):
     template_name = 'staff/detail.html'
 
     def get(self, request: HttpRequest, stage: str, slug: str):
+        all_staff = get_all_staff()
         return self.render_to_response(
             context={
                 'active_page': 'staff',
                 'staff': get_staff_by_slug(slug=slug),
+                'managers':  all_staff.get('Руководитель', ''),
+                'administrators': all_staff.get('Администратор', ''),
+                'medics': all_staff.get('Мед персонал', ''),
+                'junior_medics': all_staff.get('Младщий мед персонал', ''),
             },
         )

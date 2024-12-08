@@ -15,10 +15,10 @@
         <div class="col-md-3">
             <div class="card no-hover" style="margin-bottom: 10px;">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'rukovoditeli' %}">Руководители</a></li>
-                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'mediki' %}">Медики</a></li>
-                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'administratori' %}">Администраторы</a></li>
-                    <li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'assistenti' %}">Ассистенты</a></li>
+                    {% if managers %}<li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'rukovoditeli' %}">Руководители</a></li>{% endif %}
+                    {% if medics %}<li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'mediki' %}">Медики</a></li>{% endif %}
+                    {% if administrators %}<li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'administratori' %}">Администраторы</a></li>{% endif %}
+                    {% if junior_medics %}<li class="list-group-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff_by_stage' 'assistenti' %}">Ассистенты</a></li>{% endif %}
                 </ul>
             </div>
         </div>
