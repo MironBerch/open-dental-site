@@ -27,7 +27,7 @@
         .image-container {
             position: relative;
             width: 100%;
-            padding-top: 128%;
+            padding-top: 128%; /* Maintain original height */
             overflow: hidden;
         }
 
@@ -35,19 +35,32 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: auto;
-            height: 100%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-        
-        .card-img {
-            object-fit: cover;
-            width: 100%;
-            height: auto;
+            width: 100%; /* Fill the width */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Cover the container */
+            object-position: center; /* Center the image */
+            transform: translate(-50%, -50%); /* Centering */
         }
 
-        .image-container::after {
+        .staff-image-container {
+            position: relative;
+            width: 100%;
+            height: 200px; /* Fixed height for all staff cards */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .staff-image-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%; /* Fill the width */
+            height: 100%; /* Fill the height */
+            object-fit: cover; /* Crop image */
+            object-position: center; /* Center the image */
+        }
+
+        .image-container::after,
+        .staff-image-container::after {
             content: '';
             position: absolute;
             top: 0;
@@ -59,22 +72,9 @@
             transition: opacity 0.3s;
         }
 
-        .card:hover .image-container::after {
+        .card:hover .image-container::after,
+        .card:hover .staff-image-container::after {
             opacity: 1;
-        }
-
-        .card:hover .image-container::after {
-            opacity: 1;
-        }
-
-        .card {
-            transition: background-color 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            background-color: rgba(0, 0, 0, 0.8);
         }
 
         /* Убираем только для карточки с меню */
@@ -88,12 +88,11 @@
         }
     </style>
 
-
     <h1>Сотрудники</h1>
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
-            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
+            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'main' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'company' %}">О клинике</a></li>
         </ol>
     </nav>
     <div class="row">
@@ -110,31 +109,20 @@
         <div class="col-md-9">
             {% if managers %}
                 <h2>Руководители</h2>
-                <p></p>
-                
                 <div class="row">
                     {% for member in managers %}
-                        <div class="col-md-4 mb-4">
-                            <a href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">
+                        <div class="col-md-4 mb-4"> 
                             <div class="card text-bg-dark">
                                 <div class="image-container">
-                                    <img
-                                        src="{{ member.image.url }}"
-                                        class="card-img"
-                                        alt="..."
-                                    >
+                                    <img src="{{ member.image.url }}" class="card-img" alt="...">
                                 </div>
                                 <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                                     <h6 class="card-title">
-                                        <p
-                                            class="link-light link-offset-2 link-underline link-underline-opacity-0"
-                                        >
-                                            {{member.fio}}
-                                        </p>
+                                        <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">{{ member.fio }}</a>
                                     </h6>
                                     <p class="card-text"><small>{{ member.roles }}</small></p>
                                 </div>
-                            </div></a>
+                            </div>
                         </div>
                     {% endfor %}
                 </div>
@@ -142,27 +130,16 @@
             
             {% if medics %}
                 <h2>Мастера по улыбкам</h2>
-                <p></p>
-                
                 <div class="row">
                     {% for member in medics %}
                         <div class="col-md-4 mb-4"> 
                             <div class="card text-bg-dark">
                                 <div class="image-container">
-                                    <img
-                                        src="{{ member.image.url }}"
-                                        class="card-img"
-                                        alt="..."
-                                    >
+                                    <img src="{{ member.image.url }}" class="card-img" alt="...">
                                 </div>
                                 <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                                     <h6 class="card-title">
-                                        <a 
-                                            class="link-light link-offset-2 link-underline link-underline-opacity-0" 
-                                            href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}"
-                                        >
-                                            {{member.fio}}
-                                        </a>
+                                        <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">{{ member.fio }}</a>
                                     </h6>
                                     <p class="card-text"><small>{{ member.roles }}</small></p>
                                 </div>
@@ -179,20 +156,11 @@
                         <div class="col-md-4 mb-4"> 
                             <div class="card text-bg-dark">
                                 <div class="image-container">
-                                    <img
-                                        src="{{ member.image.url }}"
-                                        class="card-img"
-                                        alt="..."
-                                    >
+                                    <img src="{{ member.image.url }}" class="card-img" alt="...">
                                 </div>
                                 <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                                     <h6 class="card-title">
-                                        <a 
-                                            class="link-light link-offset-2 link-underline link-underline-opacity-0" 
-                                            href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}"
-                                        >
-                                            {{member.fio}}
-                                        </a>
+                                        <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">{{ member.fio }}</a>
                                     </h6>
                                     <p class="card-text"><small>{{ member.roles }}</small></p>
                                 </div>
@@ -204,27 +172,16 @@
 
             {% if junior_medics %}
                 <h2>Помощники мастеров по улыбкам</h2>
-                <p></p>
-                
                 <div class="row">
                     {% for member in junior_medics %}
                         <div class="col-md-4 mb-4"> 
                             <div class="card text-bg-dark">
                                 <div class="image-container">
-                                    <img
-                                        src="{{ member.image.url }}"
-                                        class="card-img"
-                                        alt="..."
-                                    >
+                                    <img src="{{ member.image.url }}" class="card-img" alt="...">
                                 </div>
                                 <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                                     <h6 class="card-title">
-                                        <a 
-                                            class="link-light link-offset-2 link-underline link-underline-opacity-0" 
-                                            href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}"
-                                        >
-                                            {{member.fio}}
-                                        </a>
+                                        <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">{{ member.fio }}</a>
                                     </h6>
                                     <p class="card-text"><small>{{ member.roles }}</small></p>
                                 </div>

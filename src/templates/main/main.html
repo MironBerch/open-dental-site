@@ -158,6 +158,69 @@
             background-color: #007bff; /* Синий фон при наведении */
             color: white; /* Белый текст при наведении */
         }
+
+        .card {
+            transition: background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            background-color: rgba(211, 211, 211, 0.5); /* Сделаем белый фон более прозрачным */
+        }
+
+        .card-img-overlay {
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-img-overlay {
+            transform: translateY(-5px);
+        }
+
+        .work-card {
+            aspect-ratio: 1.5; /* Соотношение для работ */
+        }
+
+        .staff-image-container {
+            position: relative;
+            width: 100%;
+            height: 200px; /* Фиксированная высота для всех карточек сотрудников */
+            overflow: hidden; /* Скрыть лишние части изображения */
+        }
+
+        .staff-image-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%; /* Задайте ширину 100% */
+            height: 100%; /* Задайте высоту 100% */
+            object-fit: cover; /* Обрезка изображения по краям */
+            object-position: center; /* Центрирование изображения */
+        }
+
+        .card-img {
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container::after,
+        .staff-image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .image-container::after,
+        .card:hover .staff-image-container::after {
+            opacity: 1;
+        }
     </style>
 
     <h2 class="h2">Наши работы</h2>
@@ -169,7 +232,9 @@
                     <a href="{% url 'work' work.slug %}">
                         <div class="card text-bg-dark">
                             <div class="image-container">
-                                <img src="{{ work.image.url }}" class="card-img-top" alt="...">
+                                <div class="staff-image-container">
+                                    <img src="{{ member.image.url }}" class="card-img" alt="...">
+                                </div>
                             </div>
                             <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                                 <p class="card-text">6 фото</p>
