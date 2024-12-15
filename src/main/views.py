@@ -12,6 +12,7 @@ from services.models import Service, ServiceGroup
 from services.services import get_service_groups
 from staff.services import get_staff
 from works.services import get_works
+from clinic.services import get_clinic_licenses, get_published_reviews
 
 
 class MainView(TemplateResponseMixin, View):
@@ -26,6 +27,8 @@ class MainView(TemplateResponseMixin, View):
                 'works': get_works(),
                 'staff': get_staff(),
                 'service_groups': get_service_groups(),
+                'licenses': get_clinic_licenses(),
+                'reviews': get_published_reviews(),
             },
         )
 

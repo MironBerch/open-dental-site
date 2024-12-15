@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load static%}
 {% load custom_tags %}
 {% load django_bootstrap5 %}
 
@@ -221,34 +222,47 @@
         .card:hover .staff-image-container::after {
             opacity: 1;
         }
+
+        .map-card {
+            /* border: 2px solid #007bff; /* Blue border */
+            border-radius: 8px; /* Rounded corners */
+            padding: 15px; /* Padding inside the card */
+            margin-bottom: 20px; /* Space below the card */
+        }
+
+        .map-card:hover {
+            background-color: transparent;
+        }
     </style>
 
-    <h2 class="h2">Наши работы</h2>
-    <div class="work-carousel" id="workCarousel">
-        <button class="btn prev-button navigation-button" onclick="slideWork('prev')"><</button>
-        <div class="work-carousel-inner">
-            {% for work in works %}
-                <div class="work-card">
-                    <a href="{% url 'work' work.slug %}">
-                        <div class="card text-bg-dark">
-                            <div class="image-container">
-                                <div class="staff-image-container">
-                                    <img src="{{ member.image.url }}" class="card-img" alt="...">
+    {% if works %}
+        <h2 class="h2" style="margin-top: 10px;">Наши работы</h2>
+        <div class="work-carousel" id="workCarousel">
+            <button class="btn prev-button navigation-button" onclick="slideWork('prev')"><</button>
+            <div class="work-carousel-inner">
+                {% for work in works %}
+                    <div class="work-card">
+                        <a href="{% url 'work' work.slug %}">
+                            <div class="card text-bg-dark">
+                                <div class="image-container">
+                                    <div class="staff-image-container">
+                                        <img src="{{ member.image.url }}" class="card-img" alt="...">
+                                    </div>
+                                </div>
+                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                    <p class="card-text">6 фото</p>
+                                    <h5 class="card-title">
+                                        <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{work.name}}</p>
+                                    </h5>
                                 </div>
                             </div>
-                            <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                <p class="card-text">6 фото</p>
-                                <h5 class="card-title">
-                                    <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{work.name}}</p>
-                                </h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="btn next-button navigation-button" onclick="slideWork('next')">></button>
         </div>
-        <button class="btn next-button navigation-button" onclick="slideWork('next')">></button>
-    </div>
+    {% endif %}
     
     <script>
         let currentWorkIndex = 0;
@@ -287,31 +301,32 @@
         });
     </script>
     
-
-    <h2 class="h2">Сотрудники</h2>
-    <div class="staff-carousel" id="staffCarousel">
-        <button class="btn prev-button navigation-button" onclick="slide('prev')"><</button>
-        <div class="staff-carousel-inner">
-            {% for member in staff %}
-                <div class="staff-card">
-                    <a href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">
-                        <div class="card text-bg-dark">
-                            <div class="staff-image-container">
-                                <img src="{{ member.image.url }}" class="card-img" alt="...">
+    {% if staff %}
+        <h2 class="h2" style="margin-top: 10px;">Сотрудники</h2>
+        <div class="staff-carousel" id="staffCarousel">
+            <button class="btn prev-button navigation-button" onclick="slide('prev')"><</button>
+            <div class="staff-carousel-inner">
+                {% for member in staff %}
+                    <div class="staff-card">
+                        <a href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">
+                            <div class="card text-bg-dark">
+                                <div class="staff-image-container">
+                                    <img src="{{ member.image.url }}" class="card-img" alt="...">
+                                </div>
+                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                    <p class="card-text"><small>{{ member.roles }}</small></p>
+                                    <h5 class="card-title">
+                                        <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ member.fio }}</p>
+                                    </h5>
+                                </div>
                             </div>
-                            <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                <p class="card-text"><small>{{ member.roles }}</small></p>
-                                <h5 class="card-title">
-                                    <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ member.fio }}</p>
-                                </h5>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="btn next-button navigation-button" onclick="slide('next')">></button>
         </div>
-        <button class="btn next-button navigation-button" onclick="slide('next')">></button>
-    </div>
+    {% endif %}
 
     <script>
         let currentIndex = 0;
@@ -348,25 +363,102 @@
         });
     </script>
     
-
-    <h2 class="h2">Услуги</h2>
-    {% for service in service_groups %}
-        <div class="card" style="margin-bottom: 10px;">
-            <div class="card-body">
-                <h5 class="card-title"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_group' service.slug %}">{{ service.name }}</a></h5>
-                <p class="card-text">{{ service.description }}</p>
+    {% if service_groups %}
+        <h2 class="h2" style="margin-top: 10px;">Услуги</h2>
+        {% for service in service_groups %}
+            <div class="card" style="margin-bottom: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_group' service.slug %}">{{ service.name }}</a></h5>
+                    <p class="card-text">{{ service.description }}</p>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
 
-    <h2 class="h2">Оставьте заявку</h2>
+    {% if licenses %}
+        <h2 class="h2" style="margin-top: 10px;">Лицензии</h2>
+        {% for license in licenses %}
+            <div class="card d-flex flex-row">
+                <div class="card-body d-flex align-items-center">
+                    {% if license.image %}
+                        <img
+                            src="{{ license.image.url }}"
+                            class="img-thumbnail"
+                            style="height: 138px; width: 104px; object-fit: cover; margin-right: 15px;"
+                            alt="не удалось загрузить"
+                        >
+                    {% endif %}
+                    <div>
+                        <p class="card-title">{{ license.name }}</p>
+                        <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{{ license.image.pdf }}" class="card-link">
+                            <img
+                                src="{% static 'images/pdf.png' %}"
+                                style="height: 41px; width: 37px; object-fit: cover; margin-right: 15px;"
+                                alt="не удалось загрузить"
+                            >
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+    {% endif %}
+
+    {% if reviews %}
+        <h2 class="h2" style="margin-top: 10px;">Отзывы</h2>
+        {% for review in reviews %}
+            <div class="card" style="margin-bottom: 15px;">
+                <div class="card-body">
+                    <p class="card-text">
+                        <small class="text-body-secondary">{{review.created_at|date:"d F Y"}}</small>
+                    </p>
+                    <p class="card-text">{{review.message}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <h2 class="h2" style="margin-top: 10px;">Оставьте заявку</h2>
     <p>Наши администраторы на связи и готовы ответить на любые вопросы.</p>
-    <form method="post">
+    <form method="post" style="margin-bottom: 10px;">
         {% csrf_token %}
         <div class="modal-body">
             {% bootstrap_form form %}
         </div>
         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Отправить</button>
     </form>
+
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+    <div id="map"></div>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script type="text/javascript">
+        function init() {
+            var myMap = new ymaps.Map(
+                "map",
+                {
+                    center: [59.913078, 29.770747],
+                    zoom: 12,
+                    controls: [
+                        'zoomControl',
+                        'typeSelector',
+                        'trafficControl',
+                    ]
+                }
+            );
+            var myPlacemark = new ymaps.Placemark(
+                [59.913078, 29.770747],
+                {
+                    balloonContent: "Клиника"
+                }
+            );
+            myMap.geoObjects.add(myPlacemark);
+        }
+        ymaps.ready(init);
+    </script>
 
 {% endblock %}
