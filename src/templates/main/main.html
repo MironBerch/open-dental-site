@@ -405,17 +405,24 @@
     {% endif %}
 
     {% if reviews %}
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
         <h2 class="h2" style="margin-top: 10px;">Отзывы</h2>
-        {% for review in reviews %}
-            <div class="card" style="margin-bottom: 15px;">
-                <div class="card-body">
-                    <p class="card-text">
-                        <small class="text-body-secondary">{{review.created_at|date:"d F Y"}}</small>
-                    </p>
-                    <p class="card-text">{{review.message}}</p>
-                </div>
-            </div>
-        {% endfor %}
+        <swiper-container
+            slides-per-view="2"
+            grid-cols="2"
+            mousewheel-force-to-axis="true"
+        >
+            {% for review in reviews %}
+                <swiper-slide><div class="card" style="margin-bottom: 15px; margin-right: 10px;">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <small class="text-body-secondary">{{review.created_at|date:"d F Y"}}</small>
+                        </p>
+                        <p class="card-text">{{review.message}}</p>
+                    </div>
+                </div></swiper-slide>
+            {% endfor %}
+        </swiper-container>
     {% endif %}
 
     <h2 class="h2" style="margin-top: 10px;">Оставьте заявку</h2>
