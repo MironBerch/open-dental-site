@@ -158,32 +158,33 @@ INTERNAL_IPS = [ip[: ip.rfind('.')] + '.1' for ip in ips] + ['127.0.0.1', '10.0.
 
 
 # Ckeditor configuration
-customColorPalette = [
-        {
-            'color': 'hsl(4, 90%, 58%)',
-            'label': 'Red'
-        },
-        {
-            'color': 'hsl(340, 82%, 52%)',
-            'label': 'Pink'
-        },
-        {
-            'color': 'hsl(291, 64%, 42%)',
-            'label': 'Purple'
-        },
-        {
-            'color': 'hsl(262, 52%, 47%)',
-            'label': 'Deep Purple'
-        },
-        {
-            'color': 'hsl(231, 48%, 48%)',
-            'label': 'Indigo'
-        },
-        {
-            'color': 'hsl(207, 90%, 54%)',
-            'label': 'Blue'
-        },
-    ]
+CustomColorPalette = [
+    {
+        'color': 'hsl(4, 90%, 58%)',
+        'label': 'Red'
+    },
+    {
+        'color': 'hsl(340, 82%, 52%)',
+        'label': 'Pink'
+    },
+    {
+        'color': 'hsl(291, 64%, 42%)',
+        'label': 'Purple'
+    },
+    {
+        'color': 'hsl(262, 52%, 47%)',
+        'label': 'Deep Purple'
+    },
+    {
+        'color': 'hsl(231, 48%, 48%)',
+        'label': 'Indigo'
+    },
+    {
+        'color': 'hsl(207, 90%, 54%)',
+        'label': 'Blue'
+    },
+]
+
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': [
@@ -214,12 +215,12 @@ CKEDITOR_5_CONFIGS = {
                 'tableProperties', 'tableCellProperties'
             ],
             'tableProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
+                'borderColors': CustomColorPalette,
+                'backgroundColors': CustomColorPalette,
             },
             'tableCellProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
+                'borderColors': CustomColorPalette,
+                'backgroundColors': CustomColorPalette,
             }
         },
         'heading': {
@@ -306,12 +307,12 @@ CKEDITOR_5_CONFIGS = {
                 'tableCellProperties',
             ],
             'tableProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
+                'borderColors': CustomColorPalette,
+                'backgroundColors': CustomColorPalette,
             },
             'tableCellProperties': {
-                'borderColors': customColorPalette,
-                'backgroundColors': customColorPalette
+                'borderColors': CustomColorPalette,
+                'backgroundColors': CustomColorPalette,
             }
         },
     },
@@ -324,8 +325,6 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'staff'
-# CKEDITOR_5_FILE_STORAGE = 'content/ckeditor/'
-
 
 # INTERNAL IPS configuration
 
