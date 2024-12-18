@@ -1,0 +1,68 @@
+[
+    {
+        "model": "clinic.work",
+        "pk": 1,
+        "fields": {
+            "image": "work_previews/Ровненькие зубки нашего 10-летнего пациента/rovnenkie-zubki-nashego-10-letnego-pacienta.webp",
+            "name": "Ровненькие зубки нашего 10-летнего пациента",
+            "slug": "rovnenkie-zubki-nashego-10-letnego-pacienta",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">На фото ровненькие зубки нашего 10-летнего пациента</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Результат достигнут путём установки частичной брекет системы.</span><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Она направлена на исправление только 4-х зубов.</span><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">....</span><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Так как клыки ещё не прорезались, то пациент находится на наблюдении.</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Улыбка без стеснения обеспечена</span></p>",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.work",
+        "pk": 2,
+        "fields": {
+            "image": "work_previews/Пациентке на верхнюю челюсть установлено 9 керамических коронок E max./pacientke-na-verhnyuyu-chelyust-ustanovleno-9-keramicheskih-koronok-e-max.webp",
+            "name": "Пациентке на верхнюю челюсть установлено 9 керамических коронок E max.",
+            "slug": "pacientke-na-verhnyuyu-chelyust-ustanovleno-9-keramicheskih-koronok-e-max",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Пациентке на верхнюю челюсть установлено 9 керамических коронок E max.</span><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Такое преображение </span><img src=\"https://vk.com/emoji/e/f09f988d.png\" alt=\"😍\" width=\"16\" height=\"16\"><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Работа Багировой Алии Фикратовны</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Также Кислиным Кириллом Сергеевичем на нижней челюсти установлена коронка на импланте. К сожалению, на этом фото её не видно</span><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">(но она есть </span><img src=\"https://vk.com/emoji/e/f09f9889.png\" alt=\"😉\" width=\"16\" height=\"16\"><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">)</span></p>",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.work",
+        "pk": 3,
+        "fields": {
+            "image": "work_previews/СКРЫТЫЙ КАРИЕС/skrytyj-karies.webp",
+            "name": "СКРЫТЫЙ КАРИЕС",
+            "slug": "skrytyj-karies",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">СКРЫТЫЙ КАРИЕС</span></p>",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.work",
+        "pk": 4,
+        "fields": {
+            "image": "work_previews/Кабинетного отбеливания/kabinetnoe-otbelivanie.webp",
+            "name": "Кабинетного отбеливания",
+            "slug": "kabinetnogo-otbelivaniya",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">На фото результат кабинетного отбеливания.</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Пациент очень доволен!</span><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Мы, конечно же, тоже )</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">• Работу выполнил доктор Линников Алексей Владимирович</span></p>",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.work",
+        "pk": 5,
+        "fields": {
+            "image": "work_previews/Установка виниров на верхней челюсти/ustanovka-vinirov-na-verhnej-chelyusti.webp",
+            "name": "Установка виниров на верхней челюсти",
+            "slug": "ustanovka-vinirov-na-verhnej-chelyusti",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Установка виниров на верхней челюсти</span></p>",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.work",
+        "pk": 6,
+        "fields": {
+            "image": "work_previews/Две коронки, изменившие жизнь/dve-koronki-izmenivshie-zhizn.webp",
+            "name": "Две коронки, изменившие жизнь",
+            "slug": "dve-koronki-izmenivshie-zhizn",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">• ДВЕ КОРОНКИ, ИЗМЕНИВШИЕ ЖИЗНЬ•</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Пример того, как мы часто бываем заложниками установок, усложняя ситуации, решение которых ГОРАЗДО ПРОЩЕ, чем нам рисовал в сознании наш страх.</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Годы комплексов, неуверенности в себе исправили ДВЕ КЕРАМИЧЕСКИЕ КОРОНКИ </span><img src=\"https://vk.com/emoji/e/f09f918ff09f8fbb.png\" alt=\"👏🏻\" width=\"16\" height=\"16\"><img src=\"https://vk.com/emoji/e/f09f918ff09f8fbb.png\" alt=\"👏🏻\" width=\"16\" height=\"16\"><img src=\"https://vk.com/emoji/e/f09f918ff09f8fbb.png\" alt=\"👏🏻\" width=\"16\" height=\"16\"><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">• Улучшены форма и цвет своих зубов</span><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Конечно здесь ещё есть над чем работать, но изменения уже потрясающие!</span><br><br><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">Врач: Линников Алексей Владимирович</span></p>",
+            "published": true
+        }
+    }
+]
