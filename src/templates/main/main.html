@@ -235,6 +235,55 @@
         }
     </style>
 
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for member in staff %}
+                {% if forloop.counter0|divisibleby:4 %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="row">
+                {% endif %}
+                
+                <!-- Карточка -->
+                <div class="col-12 col-md-3"> <!-- Одна карточка занимает 12 колонок на мобильном и 3 (25%) на ПК -->
+                    <div class="card">
+                        <div class="staff-image-container">
+                            <img src="{{ member.image.url }}" class="card-img" alt="...">
+                        </div>
+                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                            <p class="card-text"><small>{{ member.roles }}</small></p>
+                            <h5 class="card-title">
+                                <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ member.fio }}</p>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+
+                {% if forloop.counter|divisibleby:4 or forloop.last %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const myCarouselElement = document.querySelector('#carouselExample');
+            const carousel = new bootstrap.Carousel(myCarouselElement, {
+                interval: 2000,
+                touch: true // Позволяет перетаскивать на мобильных устройствах
+            });
+        });
+    </script>
+
     {% if works %}
         <h2 class="h2" style="margin-top: 10px;">Наши работы</h2>
         <div class="work-carousel" id="workCarousel">
@@ -246,7 +295,7 @@
                             <div class="card text-bg-dark">
                                 <div class="image-container">
                                     <div class="staff-image-container">
-                                        <img src="{{ member.image.url }}" class="card-img" alt="...">
+                                        <img src="{{ work.image.url }}" class="card-img" alt="...">
                                     </div>
                                 </div>
                                 <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
