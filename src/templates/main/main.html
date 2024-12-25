@@ -233,19 +233,39 @@
         .map-card:hover {
             background-color: transparent;
         }
+        .staff-image-container {
+            position: relative;
+            width: 100%;
+            height: 200px; /* Высота для сотрудников */
+            overflow: hidden; /* Скрытие лишнего */
+        }
+    
+        .staff-image-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%; /* Пропорции изображения */
+            height: 100%; /* Фиксируем высоту */
+            object-fit: cover; /* Обрезка изображения */
+            object-position: center; /* Центрируем изображение */
+        }
+    
+        .swiper-slide {
+            display: flex; /* Используем flex для выравнивания */
+            justify-content: center; /* Целевое выравнивание по центру */
+            align-items: flex-start; /* Прижимаем карточки к верху */
+        }
+    
+        .card {
+            width: 100%; /* Полная ширина карточки в слайде */
+        }
     </style>
 
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+    <div class="swiper-container" style="padding-top: 30px; padding-bottom: 30px;"> <!-- Отступы для красоты -->
+        <div class="swiper-wrapper">
             {% for member in staff %}
-                {% if forloop.counter0|divisibleby:4 %}
-                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                        <div class="row">
-                {% endif %}
-                
-                <!-- Карточка -->
-                <div class="col-12 col-md-3"> <!-- Одна карточка занимает 12 колонок на мобильном и 3 (25%) на ПК -->
-                    <div class="card">
+                <div class="swiper-slide">
+                    <div class="card" style="width: 100%;"> <!-- Задаем ширину карточек на полный размер слайда -->
                         <div class="staff-image-container">
                             <img src="{{ member.image.url }}" class="card-img" alt="...">
                         </div>
@@ -257,32 +277,40 @@
                         </div>
                     </div>
                 </div>
-
-                {% if forloop.counter|divisibleby:4 or forloop.last %}
-                        </div>
-                    </div>
-                {% endif %}
             {% endfor %}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        
+        <!-- Кнопки навигации -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const myCarouselElement = document.querySelector('#carouselExample');
-            const carousel = new bootstrap.Carousel(myCarouselElement, {
-                interval: 2000,
-                touch: true // Позволяет перетаскивать на мобильных устройствах
+            const swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1, // Отображаем 1 слайд на мобильных устройствах
+                spaceBetween: 10, // Пространство между слайдами
+                loop: true, // Зациклить
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    576: {
+                        slidesPerView: 1 // 1 слайд на мобильных устройствах
+                    },
+                    992: {
+                        slidesPerView: 4 // 4 слайда на ПК
+                    }
+                }
             });
         });
     </script>
+    
 
     {% if works %}
         <h2 class="h2" style="margin-top: 10px;">Наши работы</h2>
@@ -349,69 +377,7 @@
             getVisibleWorkCards();
         });
     </script>
-    
-    {% if staff %}
-        <h2 class="h2" style="margin-top: 10px;">Сотрудники</h2>
-        <div class="staff-carousel" id="staffCarousel">
-            <button class="btn prev-button navigation-button" onclick="slide('prev')"><</button>
-            <div class="staff-carousel-inner">
-                {% for member in staff %}
-                    <div class="staff-card">
-                        <a href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">
-                            <div class="card text-bg-dark">
-                                <div class="staff-image-container">
-                                    <img src="{{ member.image.url }}" class="card-img" alt="...">
-                                </div>
-                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                    <p class="card-text"><small>{{ member.roles }}</small></p>
-                                    <h5 class="card-title">
-                                        <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ member.fio }}</p>
-                                    </h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-            <button class="btn next-button navigation-button" onclick="slide('next')">></button>
-        </div>
-    {% endif %}
 
-    <script>
-        let currentIndex = 0;
-        const cards = document.querySelectorAll('.staff-card');
-        const totalCards = cards.length / 2; // Учитываем дублирование
-    
-        function getVisibleCards() {
-            return window.innerWidth <= 768 ? 1 : 4; // Меняем количество видимых карточек в зависимости от ширины
-        }
-    
-        function slide(direction) {
-            if (direction === 'next') {
-                currentIndex++;
-                if (currentIndex >= totalCards) {
-                    currentIndex = 0; // Зациклить
-                }
-            } else {
-                currentIndex--;
-                if (currentIndex < 0) {
-                    currentIndex = totalCards - 1; // Зациклить
-                }
-            }
-    
-            const visibleCards = getVisibleCards();
-            const offset = -((currentIndex * 100) / visibleCards);
-            const carouselInner = document.querySelector('.staff-carousel-inner');
-            carouselInner.style.transform = `translateX(${offset}%)`;
-        }
-    
-        // Обработчик изменения размеров окна
-        window.addEventListener('resize', () => {
-            // Аналогично работам, получаем количество видимых карточек
-            getVisibleCards();
-        });
-    </script>
-    
     {% if service_groups %}
         <h2 class="h2" style="margin-top: 10px;">Услуги</h2>
         {% for service in service_groups %}
