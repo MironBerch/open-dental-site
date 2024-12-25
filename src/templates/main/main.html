@@ -259,6 +259,15 @@
         .card {
             width: 100%; /* Полная ширина карточки в слайде */
         }
+
+        .star {
+            font-size: 20px; /* Размер звезды */
+            color: gray; /* Цвет по умолчанию (серая звезда) */
+        }
+    
+        .star.gold {
+            color: gold; /* Золотая звезда */
+        }
     </style>
 
     <div class="swiper-container" style="padding-top: 30px; padding-bottom: 30px;"> <!-- Отступы для красоты -->
@@ -428,14 +437,25 @@
             mousewheel-force-to-axis="true"
         >
             {% for review in reviews %}
-                <swiper-slide><div class="card" style="margin-bottom: 15px; margin-right: 10px;">
-                    <div class="card-body">
-                        <p class="card-text">
-                            <small class="text-body-secondary">{{review.created_at|date:"d F Y"}}</small>
-                        </p>
-                        <p class="card-text">{{review.message}}</p>
+                <swiper-slide>
+                    <div class="card" style="margin-bottom: 15px; margin-right: 10px;">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <small class="text-body-secondary">{{ review.created_at|date:"d F Y" }}</small>
+                            </p>
+                            <p class="card-text">
+                                {% for i in "12345" %}
+                                    {% if forloop.counter <= review.rating %}
+                                        <span class="star gold">★</span> <!-- Золотая звезда -->
+                                    {% else %}
+                                        <span class="star">☆</span> <!-- Серая звезда -->
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                            <p class="card-text">{{ review.message }}</p>
+                        </div>
                     </div>
-                </div></swiper-slide>
+                </swiper-slide>
             {% endfor %}
         </swiper-container>
     {% endif %}

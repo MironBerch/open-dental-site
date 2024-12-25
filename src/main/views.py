@@ -13,7 +13,6 @@ from services.models import Service, ServiceGroup
 from services.services import get_service_groups
 from staff.services import get_staff
 from works.services import get_works
-from services.services import get_service_groups
 
 
 class MainView(TemplateResponseMixin, View):
