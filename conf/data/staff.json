@@ -1,0 +1,110 @@
+[
+    {
+        "model": "clinic.staff",
+        "pk": 1,
+        "fields": {
+            "image": "staff/Багирова Алия Фикратовна/Багирова_Алия_Фикратовна.webp",
+            "fio": "Багирова Алия Фикратовна",
+            "slug": "bagirova-aliya-fikratovna",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">График работы: пятница 10:00 - 21:00</span></p>",
+            "roles": "СТОМАТОЛОГ ТЕРАПЕВТ / ОРТОПЕД",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.staff",
+        "pk": 2,
+        "fields": {
+            "image": "staff/Кислин Кирилл Сергеевич/Кислин_Кирилл_Сергеевич.webp",
+            "fio": "Кислин Кирилл Сергеевич",
+            "slug": "kislin-kirill-sergeevich",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">График работы: понедельник / среда / пятница 09:00 - 21:00</span></p>",
+            "roles": "СТОМАТОЛОГ ХИРУРГ / ИМПЛАНТОЛОГ / ОРТОПЕД / ТЕРАПЕВТ",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.staff",
+        "pk": 3,
+        "fields": {
+            "image": "staff/Гаврилюк Степан Александрович/Гаврилюк_Степан_Александрович.webp",
+            "fio": "Гаврилюк Степан Александрович",
+            "slug": "gavrilyuk-stepan-aleksandrovich",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">График работы: понедельник / среда / пятница 09:00 - 21:00</span></p>",
+            "roles": "СТОМАТОЛОГ ТЕРАПЕВТ / ХИРУРГ / ОРТОПЕД",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.staff",
+        "pk": 4,
+        "fields": {
+            "image": "staff/Линников Алексей Владимирович/Линников_Алексей_Владимирович.webp",
+            "fio": "Линников Алексей Владимирович",
+            "slug": "linnikov-aleksej-vladimirovich",
+            "information": "<p>&nbsp;</p>",
+            "roles": "СТОМАТОЛОГ ТЕРАПЕВТ / ДЕТСКИЙ СТОМАТОЛОГ / ОРТОПЕД",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.staff",
+        "pk": 5,
+        "fields": {
+            "image": "staff/Бушина Анна/Бушина_Анна.webp",
+            "fio": "Бушина Анна",
+            "slug": "bushina-anna",
+            "information": "<p>&nbsp;</p>",
+            "roles": "АССИСТЕНТ СТОМАТОЛОГА",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.staff",
+        "pk": 6,
+        "fields": {
+            "image": "staff/Румянцева Наталья/Румянцева_Наталья.webp",
+            "fio": "Румянцева Наталья",
+            "slug": "rumyanceva-natalya",
+            "information": "<p>&nbsp;</p>",
+            "roles": "АССИСТЕНТ СТОМАТОЛОГА",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.staff",
+        "pk": 7,
+        "fields": {
+            "image": "staff/Юмаева Юлия Александровна/Юмаева_Юлия_Александровна.webp",
+            "fio": "Юмаева Юлия Александровна",
+            "slug": "yumaeva-yuliya-aleksandrovna",
+            "information": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(0,0,0);\">График работы: понедельник / вторник / четверг / суббота 09:00 - 21:00</span></p>",
+            "roles": "ДЕТСКИЙ СТОМАТОЛОГ / ТЕРАПЕВТ",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.staff",
+        "pk": 8,
+        "fields": {
+            "image": "staff/Цветикова Ольга Николаевна/Цветикова_Ольга_Николаевна.webp",
+            "fio": "Цветикова Ольга Николаевна",
+            "slug": "cvetikova-olga-nikolaevna",
+            "information": "<p>&nbsp;</p>",
+            "roles": "ВРАЧ СТОМАТОЛОГ ТЕРАПЕВТ / ХИРУРГ / ДЕТСКИЙ СТОМАТОЛОГ",
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.staff",
+        "pk": 9,
+        "fields": {
+            "image": "staff/Романченко Татьяна Викторовна/Романченко_Татьяна_Викторовна.webp",
+            "fio": "Романченко Татьяна Викторовна",
+            "slug": "romanchenko-tatyana-viktorovna",
+            "information": "<p>&nbsp;</p>",
+            "roles": "ВРАЧ СТОМАТОЛОГ ОБЩЕЙ ПРАКТИКИ",
+            "published": true
+        }
+    }
+]
