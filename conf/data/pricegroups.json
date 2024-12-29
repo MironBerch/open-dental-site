@@ -1,0 +1,37 @@
+[
+    {
+        "model": "clinic.pricegroup",
+        "pk": 1,
+        "fields": {
+            "name": "Ортодонтия"
+        }
+    },
+    {
+        "model": "clinic.pricegroup",
+        "pk": 2,
+        "fields": {
+            "name": "Детский приём"
+        }
+    },
+    {
+        "model": "clinic.pricegroup",
+        "pk": 3,
+        "fields": {
+            "name": "Взрослый приём"
+        }
+    },
+    {
+        "model": "clinic.pricegroup",
+        "pk": 4,
+        "fields": {
+            "name": "Протезирование"
+        }
+    },
+    {
+        "model": "clinic.pricegroup",
+        "pk": 5,
+        "fields": {
+            "name": "Имплантация"
+        }
+    }
+]

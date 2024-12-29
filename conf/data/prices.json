@@ -1,0 +1,409 @@
+[
+    {
+        "model": "clinic.price",
+        "pk": 1,
+        "fields": {
+            "name": "Осмотр, консультанция",
+            "cost": 600,
+            "constant": true,
+            "group": 2,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 2,
+        "fields": {
+            "name": "Кариес молочных зубов",
+            "cost": 4350,
+            "constant": false,
+            "group": 2,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 3,
+        "fields": {
+            "name": "Пульпит молочных зубов",
+            "cost": 6850,
+            "constant": false,
+            "group": 2,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 4,
+        "fields": {
+            "name": "Герметизация фиссур",
+            "cost": 2850,
+            "constant": false,
+            "group": 2,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 5,
+        "fields": {
+            "name": "Профессиональная гигиена полости рта",
+            "cost": 3850,
+            "constant": false,
+            "group": 2,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 6,
+        "fields": {
+            "name": "Удаление молочных зубов",
+            "cost": 2350,
+            "constant": false,
+            "group": 2,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 7,
+        "fields": {
+            "name": "Пластика уздечки губы/языка",
+            "cost": 5000,
+            "constant": false,
+            "group": 2,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 8,
+        "fields": {
+            "name": "Консультанция с состовлением плана лечения",
+            "cost": 600,
+            "constant": true,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 9,
+        "fields": {
+            "name": "ОПТГ (ортопантомограмма / панорамный снимок)",
+            "cost": 1000,
+            "constant": true,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 10,
+        "fields": {
+            "name": "KT компьютерная томография или 3D орто (объёмный снимок)",
+            "cost": 3000,
+            "constant": false,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 11,
+        "fields": {
+            "name": "ТРГ (телерентгенограмма)",
+            "cost": 1000,
+            "constant": true,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 12,
+        "fields": {
+            "name": "Удаление ретинированного зуба/ зуба мудрости (8-ки)",
+            "cost": 5500,
+            "constant": false,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 13,
+        "fields": {
+            "name": "Удаление зуба",
+            "cost": 2700,
+            "constant": false,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 14,
+        "fields": {
+            "name": "Закрытие рецессии хирургическим методом",
+            "cost": 10000,
+            "constant": false,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 15,
+        "fields": {
+            "name": "Лечение корневого канала",
+            "cost": 6700,
+            "constant": false,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 16,
+        "fields": {
+            "name": "Лечение кариеса",
+            "cost": 6600,
+            "constant": false,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 17,
+        "fields": {
+            "name": "Лечение повышенной чувствтительности зубов",
+            "cost": 300,
+            "constant": true,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 18,
+        "fields": {
+            "name": "Профессиональная гигиена полости рта (5 этапов)",
+            "cost": 5500,
+            "constant": false,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 19,
+        "fields": {
+            "name": "Отбеливание зубов: (кабинетное)  (1 челюсть)",
+            "cost": 15000,
+            "constant": false,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 20,
+        "fields": {
+            "name": "Эстетическая реставрация зуба",
+            "cost": 10000,
+            "constant": false,
+            "group": 3,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 21,
+        "fields": {
+            "name": "Снятие оттисков",
+            "cost": 800,
+            "constant": true,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 22,
+        "fields": {
+            "name": "Культевая вкладка",
+            "cost": 6000,
+            "constant": false,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 23,
+        "fields": {
+            "name": "Фиксация",
+            "cost": 300,
+            "constant": true,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 24,
+        "fields": {
+            "name": "Временная коронка / винир",
+            "cost": 5000,
+            "constant": false,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 25,
+        "fields": {
+            "name": "Керамический винир E-max",
+            "cost": 25000,
+            "constant": false,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 26,
+        "fields": {
+            "name": "Керамическая коронка",
+            "cost": 22000,
+            "constant": false,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 27,
+        "fields": {
+            "name": "Металлокерамическая коронка",
+            "cost": 15000,
+            "constant": false,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 28,
+        "fields": {
+            "name": "Коронка из диоксида циркония",
+            "cost": 23000,
+            "constant": false,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 29,
+        "fields": {
+            "name": "Частичный съёмный протез (импортные зубы)",
+            "cost": 25000,
+            "constant": false,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 30,
+        "fields": {
+            "name": "Нейлоновый протез",
+            "cost": 40000,
+            "constant": false,
+            "group": 4,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 31,
+        "fields": {
+            "name": "Имплантат: пр-во Израиль",
+            "cost": 30000,
+            "constant": false,
+            "group": 5,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 32,
+        "fields": {
+            "name": "Имплантат: пр-во Швеция",
+            "cost": 50000,
+            "constant": false,
+            "group": 5,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 33,
+        "fields": {
+            "name": "Металлокерамическая коронка (имплантат)",
+            "cost": 25000,
+            "constant": false,
+            "group": 5,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 34,
+        "fields": {
+            "name": "Безметалловая керамическая коронка с каркасом на основе диоксида циркония",
+            "cost": 30000,
+            "constant": false,
+            "group": 5,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 35,
+        "fields": {
+            "name": "Операция \"синус-лифт\" (костная пластика)",
+            "cost": 50000,
+            "constant": false,
+            "group": 5,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 36,
+        "fields": {
+            "name": "Консультация врача ортодонта",
+            "cost": 700,
+            "constant": true,
+            "group": 1,
+            "published": true
+        }
+    },
+    {
+        "model": "clinic.price",
+        "pk": 37,
+        "fields": {
+            "name": "Диагностика с составлением плана лечения",
+            "cost": 5000,
+            "constant": false,
+            "group": 1,
+            "published": true
+        }
+    }
+]
