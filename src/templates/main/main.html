@@ -435,10 +435,11 @@
             slides-per-view="2"
             grid-cols="2"
             mousewheel-force-to-axis="true"
+            space-between="10"
         >
             {% for review in reviews %}
                 <swiper-slide>
-                    <div class="card" style="margin-bottom: 15px; margin-right: 10px;">
+                    <div class="card">
                         <div class="card-body">
                             <p class="card-text">
                                 <small class="text-body-secondary">{{ review.created_at|date:"d F Y" }}</small>
