@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static%}
+{% load static %}
 {% load custom_tags %}
 {% load django_bootstrap5 %}
 
@@ -15,7 +15,7 @@
         }
 
         .card:hover {
-            background-color: rgba(211, 211, 211, 0.5); /* Сделаем белый фон более прозрачным */
+            background-color: rgba(211, 211, 211, 0.5);
         }
 
         .card-img-overlay {
@@ -26,19 +26,20 @@
             transform: translateY(-5px);
         }
 
-        .work-card {
-            aspect-ratio: 1.5; /* Соотношение для работ */
+        .work-card, .staff-card {
+            aspect-ratio: 1.5;
+            padding: 0.5rem;
         }
 
-        .image-container {
+        .image-container, .staff-image-container {
             position: relative;
             width: 100%;
-            padding-top: 66.67%; /* Соотношение сторон 3:2 для работ */
             overflow: hidden;
         }
 
         .staff-image-container {
             padding-top: 128%; /* Соотношение сторон для сотрудников */
+            height: 200px; /* Фиксированная высота для всех карточек сотрудников */
         }
 
         .image-container img,
@@ -46,235 +47,45 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: auto;
-            height: 100%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        .card-img {
-            object-fit: cover;
             width: 100%;
-            height: auto;
-        }
-
-        .image-container::after,
-        .staff-image-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover .image-container::after,
-        .card:hover .staff-image-container::after {
-            opacity: 1;
-        }
-
-        .staff-carousel {
-            overflow: hidden;
-            position: relative;
-            touch-action: pan-y; /* Разрешить вертикальную прокрутку */
-        }
-
-        .staff-carousel-inner {
-            display: flex;
-            transition: transform 0.3s ease;
-        }
-
-        .staff-card {
-            flex: 0 0 25%; /* 25% для отображения 4 карточек на больших экранах */
-            max-width: 25%;
-            padding: 0.5rem;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
         }
 
         @media (max-width: 768px) {
-            .staff-card {
-                flex: 0 0 100%; /* 100% для отображения одной карточки на мобильных экранах */
+            .staff-card, .work-card {
+                flex: 0 0 100%;
                 max-width: 100%;
             }
-            .work-card {
-                flex: 0 0 100%; /* Отображаем 1 карточку на мобильных экранах */
-                max-width: 100%;
-            }
-        }
-
-        .navigation-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1;
-        }
-
-        .prev-button, .next-button {
-            background-color: #007bff; /* Синий цвет для кнопок */
-            color: white; /* Белый текст для стрелочек */
-            border: none;
-        }
-
-        .prev-button {
-            left: 10px;
-        }
-
-        .next-button {
-            right: 10px;
-        }
-        .work-carousel {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .work-carousel-inner {
-            display: flex;
-            transition: transform 0.3s ease;
-        }
-
-        .work-card {
-            min-width: 33.33%; /* Отображаем три карточки на разных экранах */
-            box-sizing: border-box;
-            padding: 10px;
-        }
-
-        .navigation-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1;
-        }
-
-        .prev-button, .next-button {
-            background-color: white; /* Белый цвет для кнопок */
-            color: #007bff; /* Синий текст для стрелочек */
-            border: 1px solid #007bff; /* Синяя рамка */
-            transition: background-color 0.3s, color 0.3s; /* Плавный переход */
-        }
-
-        .prev-button:hover, .next-button:hover {
-            background-color: #007bff; /* Синий фон при наведении */
-            color: white; /* Белый текст при наведении */
-        }
-
-        .card {
-            transition: background-color 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            background-color: rgba(211, 211, 211, 0.5); /* Сделаем белый фон более прозрачным */
-        }
-
-        .card-img-overlay {
-            transition: transform 0.3s;
-        }
-
-        .card:hover .card-img-overlay {
-            transform: translateY(-5px);
-        }
-
-        .work-card {
-            aspect-ratio: 1.5; /* Соотношение для работ */
-        }
-
-        .staff-image-container {
-            position: relative;
-            width: 100%;
-            height: 200px; /* Фиксированная высота для всех карточек сотрудников */
-            overflow: hidden; /* Скрыть лишние части изображения */
-        }
-
-        .staff-image-container img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%; /* Задайте ширину 100% */
-            height: 100%; /* Задайте высоту 100% */
-            object-fit: cover; /* Обрезка изображения по краям */
-            object-position: center; /* Центрирование изображения */
-        }
-
-        .card-img {
-            object-fit: cover;
-            width: 100%;
-            height: auto;
-        }
-
-        .image-container::after,
-        .staff-image-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover .image-container::after,
-        .card:hover .staff-image-container::after {
-            opacity: 1;
         }
 
         .map-card {
-            /* border: 2px solid #007bff; /* Blue border */
-            border-radius: 8px; /* Rounded corners */
-            padding: 15px; /* Padding inside the card */
-            margin-bottom: 20px; /* Space below the card */
-        }
-
-        .map-card:hover {
-            background-color: transparent;
-        }
-        .staff-image-container {
-            position: relative;
-            width: 100%;
-            height: 200px; /* Высота для сотрудников */
-            overflow: hidden; /* Скрытие лишнего */
-        }
-    
-        .staff-image-container img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%; /* Пропорции изображения */
-            height: 100%; /* Фиксируем высоту */
-            object-fit: cover; /* Обрезка изображения */
-            object-position: center; /* Центрируем изображение */
-        }
-    
-        .swiper-slide {
-            display: flex; /* Используем flex для выравнивания */
-            justify-content: center; /* Целевое выравнивание по центру */
-            align-items: flex-start; /* Прижимаем карточки к верху */
-        }
-    
-        .card {
-            width: 100%; /* Полная ширина карточки в слайде */
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
         }
 
         .star {
-            font-size: 20px; /* Размер звезды */
-            color: gray; /* Цвет по умолчанию (серая звезда) */
+            font-size: 20px;
+            color: gray;
         }
-    
+
         .star.gold {
-            color: gold; /* Золотая звезда */
+            color: gold;
+        }
+
+        #map {
+            width: 100%;
+            height: 500px;
         }
     </style>
 
-    <div class="swiper-container" style="padding-top: 30px; padding-bottom: 30px;"> <!-- Отступы для красоты -->
+    <div class="swiper-container" style="padding-top: 30px; padding-bottom: 30px;">
         <div class="swiper-wrapper">
             {% for member in staff %}
                 <div class="swiper-slide">
-                    <div class="card" style="width: 100%;"> <!-- Задаем ширину карточек на полный размер слайда -->
+                    <div class="card">
                         <div class="staff-image-container">
                             <img src="{{ member.image.url }}" class="card-img" alt="...">
                         </div>
@@ -289,7 +100,6 @@
             {% endfor %}
         </div>
         
-        <!-- Кнопки навигации -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
@@ -297,29 +107,24 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const swiper = new Swiper('.swiper-container', {
-                slidesPerView: 1, // Отображаем 1 слайд на мобильных устройствах
-                spaceBetween: 10, // Пространство между слайдами
-                loop: true, // Зациклить
+                slidesPerView: 1,
+                spaceBetween: 10,
+                loop: true,
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
                 breakpoints: {
                     576: {
-                        slidesPerView: 1 // 1 слайд на мобильных устройствах
+                        slidesPerView: 1
                     },
                     992: {
-                        slidesPerView: 4 // 4 слайда на ПК
+                        slidesPerView: 4
                     }
                 }
             });
         });
     </script>
-    
 
     {% if works %}
         <h2 class="h2" style="margin-top: 10px;">Наши работы</h2>
@@ -331,9 +136,7 @@
                         <a href="{% url 'work' work.slug %}">
                             <div class="card text-bg-dark">
                                 <div class="image-container">
-                                    <div class="staff-image-container">
-                                        <img src="{{ work.image.url }}" class="card-img" alt="...">
-                                    </div>
+                                    <img src="{{ work.image.url }}" class="card-img" alt="...">
                                 </div>
                                 <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                                     <p class="card-text">6 фото</p>
@@ -354,37 +157,19 @@
         let currentWorkIndex = 0;
         const workCards = document.querySelectorAll('.work-card');
         const totalWorkCards = workCards.length;
-    
+
         function getVisibleWorkCards() {
-            return window.innerWidth <= 768 ? 1 : 3; // Меняем количество видимых карточек в зависимости от ширины
+            return window.innerWidth <= 768 ? 1 : 3;
         }
-    
+
         function slideWork(direction) {
             const visibleWorkCards = getVisibleWorkCards();
-    
-            if (direction === 'next') {
-                currentWorkIndex++;
-                if (currentWorkIndex >= totalWorkCards - visibleWorkCards + 1) {
-                    currentWorkIndex = 0; // Зациклить
-                }
-            } else {
-                currentWorkIndex--;
-                if (currentWorkIndex < 0) {
-                    currentWorkIndex = totalWorkCards - visibleWorkCards; // Зациклить
-                }
-            }
-    
+            currentWorkIndex = direction === 'next' ? (currentWorkIndex + 1) % (totalWorkCards - visibleWorkCards + 1) : (currentWorkIndex - 1 + totalWorkCards) % (totalWorkCards - visibleWorkCards + 1);
             const offset = -((currentWorkIndex * 100) / visibleWorkCards);
-            const workCarouselInner = document.querySelector('.work-carousel-inner');
-            workCarouselInner.style.transform = `translateX(${offset}%)`;
+            document.querySelector('.work-carousel-inner').style.transform = `translateX(${offset}%)`;
         }
-    
-        // Обработчик изменения размеров окна
-        window.addEventListener('resize', () => {
-            // Здесь мы просто получаем количество видимых карточек, 
-            // но не меняем текущее положение слайдера
-            getVisibleWorkCards();
-        });
+
+        window.addEventListener('resize', getVisibleWorkCards);
     </script>
 
     {% if service_groups %}
@@ -405,21 +190,12 @@
             <div class="card d-flex flex-row">
                 <div class="card-body d-flex align-items-center">
                     {% if license.image %}
-                        <img
-                            src="{{ license.image.url }}"
-                            class="img-thumbnail"
-                            style="height: 138px; width: 104px; object-fit: cover; margin-right: 15px;"
-                            alt="не удалось загрузить"
-                        >
+                        <img src="{{ license.image.url }}" class="img-thumbnail" style="height: 138px; width: 104px; object-fit: cover; margin-right: 15px;" alt="не удалось загрузить">
                     {% endif %}
                     <div>
                         <p class="card-title">{{ license.name }}</p>
-                        <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{{ license.image.pdf }}" class="card-link">
-                            <img
-                                src="{% static 'images/pdf.png' %}"
-                                style="height: 41px; width: 37px; object-fit: cover; margin-right: 15px;"
-                                alt="не удалось загрузить"
-                            >
+                        <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ license.image.pdf }}" class="card-link">
+                            <img src="{% static 'images/pdf.png' %}" style="height: 41px; width: 37px; object-fit: cover; margin-right: 15px;" alt="не удалось загрузить">
                         </a>
                     </div>
                 </div>
@@ -431,26 +207,15 @@
     {% if reviews %}
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
         <h2 class="h2" style="margin-top: 10px;">Отзывы</h2>
-        <swiper-container
-            slides-per-view="2"
-            grid-cols="2"
-            mousewheel-force-to-axis="true"
-            space-between="10"
-        >
+        <swiper-container slides-per-view="2" grid-cols="2" mousewheel-force-to-axis="true" space-between="10">
             {% for review in reviews %}
                 <swiper-slide>
                     <div class="card">
                         <div class="card-body">
-                            <p class="card-text">
-                                <small class="text-body-secondary">{{ review.created_at|date:"d F Y" }}</small>
-                            </p>
+                            <p class="card-text"><small class="text-body-secondary">{{ review.created_at|date:"d F Y" }}</small></p>
                             <p class="card-text">
                                 {% for i in "12345" %}
-                                    {% if forloop.counter <= review.rating %}
-                                        <span class="star gold">★</span> <!-- Золотая звезда -->
-                                    {% else %}
-                                        <span class="star">☆</span> <!-- Серая звезда -->
-                                    {% endif %}
+                                    <span class="star {% if forloop.counter <= review.rating %}gold{% endif %}">★</span>
                                 {% endfor %}
                             </p>
                             <p class="card-text">{{ review.message }}</p>
@@ -471,35 +236,16 @@
         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Отправить</button>
     </form>
 
-    <style>
-        #map {
-            width: 100%;
-            height: 500px;
-        }
-    </style>
     <div id="map"></div>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script type="text/javascript">
+    <script>
         function init() {
-            var myMap = new ymaps.Map(
-                "map",
-                {
-                    center: [59.913078, 29.770747],
-                    zoom: 12,
-                    controls: [
-                        'zoomControl',
-                        'typeSelector',
-                        'trafficControl',
-                    ]
-                }
-            );
-            var myPlacemark = new ymaps.Placemark(
-                [59.913078, 29.770747],
-                {
-                    balloonContent: "Клиника"
-                }
-            );
-            myMap.geoObjects.add(myPlacemark);
+            var myMap = new ymaps.Map("map", {
+                center: [59.913078, 29.770747],
+                zoom: 12,
+                controls: ['zoomControl', 'typeSelector', 'trafficControl']
+            });
+            myMap.geoObjects.add(new ymaps.Placemark([59.913078, 29.770747], { balloonContent: "Клиника" }));
         }
         ymaps.ready(init);
     </script>
