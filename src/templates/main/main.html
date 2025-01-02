@@ -26,24 +26,14 @@
             transform: translateY(-5px);
         }
 
-        .work-card, .staff-card {
-            aspect-ratio: 1.5;
-            padding: 0.5rem;
-        }
+        .work-card {padding: 0.5rem;}
 
-        .image-container, .staff-image-container {
+        .image-container, .staff-image-container, .work-image-container {
             position: relative;
             width: 100%;
             overflow: hidden;
         }
-
-        .staff-image-container {
-            padding-top: 128%; /* Соотношение сторон для сотрудников */
-            height: 200px; /* Фиксированная высота для всех карточек сотрудников */
-        }
-
-        .image-container img,
-        .staff-image-container img {
+        .image-container img {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -53,12 +43,6 @@
             transform: translate(-50%, -50%);
         }
 
-        @media (max-width: 768px) {
-            .staff-card, .work-card {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-        }
 
         .map-card {
             border-radius: 8px;
@@ -81,7 +65,8 @@
         }
     </style>
 
-    <div class="swiper-container" style="padding-top: 30px; padding-bottom: 30px;">
+    <h2 class="h2" style="margin-top: 10px;">Наши работники</h2>
+    <div class="swiper-container staff-swiper" style="padding-top: 30px; padding-bottom: 30px;">
         <div class="swiper-wrapper">
             {% for member in staff %}
                 <div class="swiper-slide">
@@ -99,28 +84,17 @@
                 </div>
             {% endfor %}
         </div>
-        
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const swiper = new Swiper('.swiper-container', {
+            const staffSwiper = new Swiper('.staff-swiper', {
                 slidesPerView: 1,
                 spaceBetween: 10,
                 loop: true,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
                 breakpoints: {
-                    576: {
-                        slidesPerView: 1
-                    },
-                    992: {
-                        slidesPerView: 4
-                    }
+                    576: {slidesPerView: 1},
+                    992: {slidesPerView: 4}
                 }
             });
         });
@@ -128,50 +102,54 @@
 
     {% if works %}
         <h2 class="h2" style="margin-top: 10px;">Наши работы</h2>
-        <div class="work-carousel" id="workCarousel">
-            <button class="btn prev-button navigation-button" onclick="slideWork('prev')"><</button>
-            <div class="work-carousel-inner">
+        <div class="swiper-container work-swiper" id="workCarousel" style="padding-top: 30px; padding-bottom: 30px;">
+            <div class="swiper-wrapper">
                 {% for work in works %}
-                    <div class="work-card">
-                        <a href="{% url 'work' work.slug %}">
-                            <div class="card text-bg-dark">
-                                <div class="image-container">
-                                    <img src="{{ work.image.url }}" class="card-img" alt="...">
+                    <div class="swiper-slide">
+                        <div class="work-card">
+                            <a href="{% url 'work' work.slug %}">
+                                <div class="card text-bg-dark">
+                                    <div class="work-image-container">
+                                        <img src="{{ work.image.url }}" class="card-img" alt="...">
+                                    </div>
+                                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                        <p class="card-text">6 фото</p>
+                                        <h5 class="card-title">
+                                            <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ work.name }}</p>
+                                        </h5>
+                                    </div>
                                 </div>
-                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                    <p class="card-text">6 фото</p>
-                                    <h5 class="card-title">
-                                        <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{work.name}}</p>
-                                    </h5>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
-            <button class="btn next-button navigation-button" onclick="slideWork('next')">></button>
         </div>
     {% endif %}
-    
+
     <script>
-        let currentWorkIndex = 0;
-        const workCards = document.querySelectorAll('.work-card');
-        const totalWorkCards = workCards.length;
-
-        function getVisibleWorkCards() {
-            return window.innerWidth <= 768 ? 1 : 3;
-        }
-
-        function slideWork(direction) {
-            const visibleWorkCards = getVisibleWorkCards();
-            currentWorkIndex = direction === 'next' ? (currentWorkIndex + 1) % (totalWorkCards - visibleWorkCards + 1) : (currentWorkIndex - 1 + totalWorkCards) % (totalWorkCards - visibleWorkCards + 1);
-            const offset = -((currentWorkIndex * 100) / visibleWorkCards);
-            document.querySelector('.work-carousel-inner').style.transform = `translateX(${offset}%)`;
-        }
-
-        window.addEventListener('resize', getVisibleWorkCards);
+        document.addEventListener("DOMContentLoaded", function() {
+            const workSwiper = new Swiper('.work-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                loop: true,
+                navigation: {
+                    nextEl: '.work-button-next',
+                    prevEl: '.work-button-prev',
+                },
+                breakpoints: {
+                    576: {
+                        slidesPerView: 1
+                    },
+                    992: {
+                        slidesPerView: 3 // 3 карточки для работ
+                    }
+                }
+            });
+        });
     </script>
 
+    
     {% if service_groups %}
         <h2 class="h2" style="margin-top: 10px;">Услуги</h2>
         {% for service in service_groups %}
