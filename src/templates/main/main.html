@@ -138,18 +138,13 @@
                     prevEl: '.work-button-prev',
                 },
                 breakpoints: {
-                    576: {
-                        slidesPerView: 1
-                    },
-                    992: {
-                        slidesPerView: 3 // 3 карточки для работ
-                    }
+                    576: {slidesPerView: 1},
+                    992: {slidesPerView: 3}
                 }
             });
         });
     </script>
 
-    
     {% if service_groups %}
         <h2 class="h2" style="margin-top: 10px;">Услуги</h2>
         {% for service in service_groups %}
@@ -159,26 +154,6 @@
                     <p class="card-text">{{ service.description }}</p>
                 </div>
             </div>
-        {% endfor %}
-    {% endif %}
-
-    {% if licenses %}
-        <h2 class="h2" style="margin-top: 10px;">Лицензии</h2>
-        {% for license in licenses %}
-            <div class="card d-flex flex-row">
-                <div class="card-body d-flex align-items-center">
-                    {% if license.image %}
-                        <img src="{{ license.image.url }}" class="img-thumbnail" style="height: 138px; width: 104px; object-fit: cover; margin-right: 15px;" alt="не удалось загрузить">
-                    {% endif %}
-                    <div>
-                        <p class="card-title">{{ license.name }}</p>
-                        <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ license.image.pdf }}" class="card-link">
-                            <img src="{% static 'images/pdf.png' %}" style="height: 41px; width: 37px; object-fit: cover; margin-right: 15px;" alt="не удалось загрузить">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <br>
         {% endfor %}
     {% endif %}
 
@@ -209,7 +184,7 @@
         </swiper-container>
     {% endif %}
 
-    <h2 class="h2" style="margin-top: 10px;">Оставьте заявку</h2>
+    <h2 class="h2" style="margin-top: 20px;">Оставьте заявку</h2>
     <p>Наши администраторы на связи и готовы ответить на любые вопросы.</p>
     <form method="post" style="margin-bottom: 10px;">
         {% csrf_token %}
