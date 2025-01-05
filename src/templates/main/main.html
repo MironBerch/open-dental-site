@@ -63,6 +63,24 @@
             width: 100%;
             height: 500px;
         }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .review-details {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .star-rating {
+            display: flex;
+            align-items: center;
+        }
     </style>
 
     <h2 class="h2" style="margin-top: 10px;">Наши работники</h2>
@@ -163,19 +181,25 @@
         <swiper-container slides-per-view="2" grid-cols="2" mousewheel-force-to-axis="true" space-between="10">
             {% for review in reviews %}
                 <swiper-slide>
-                    <div class="card">
+                    <div class="card" style="margin-bottom: 15px;">
                         <div class="card-body">
-                            <p class="card-text"><small class="text-body-secondary">{{ review.created_at|date:"d F Y" }}</small></p>
-                            <p class="card-text"><small class="text-body-secondary">{{review.name}}</small></p>
-                            <p class="card-text">
-                                {% for i in "12345" %}
-                                    {% if forloop.counter <= review.rating %}
-                                        <span class="star gold">★</span>
-                                    {% else %}
-                                        <span class="star">☆</span>
-                                    {% endif %}
-                                {% endfor %}
-                            </p>
+                            <div class="review-header">
+                                <div class="review-details">
+                                    <p class="card-text" style="margin-bottom: 0px;">
+                                        <small class="text-body-secondary">{{ review.created_at|date:"d F Y" }}</small>
+                                    </p>
+                                    <p class="card-text">{{ review.name }}</p>
+                                </div>
+                                <div class="star-rating">
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= review.rating %}
+                                            <span class="star gold">★</span>
+                                        {% else %}
+                                            <span class="star">☆</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
                             <p class="card-text">{{ review.message }}</p>
                         </div>
                     </div>
