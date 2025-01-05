@@ -208,6 +208,32 @@
         </swiper-container>
     {% endif %}
 
+    {% if licenses %}
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+        <h2 class="h2" style="margin-top: 10px;">Лицензии и сертификаты</h2>
+        <swiper-container slides-per-view="4" grid-cols="4" mousewheel-force-to-axis="true" space-between="10">
+            {% for license in licenses %}
+                <swiper-slide>
+                    <div class="card d-flex flex-row">
+                        <div class="card-body d-flex align-items-center">
+                            {% if license.image %}
+                                <img src="{{ license.image.url }}" class="img-thumbnail" style="height: 138px; width: 104px; object-fit: cover; margin-right: 15px;" alt="не удалось загрузить">
+                            {% endif %}
+                            <div>
+                                <p class="card-title">{{ license.name }}</p>
+                                {% if license.pdf %}
+                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ license.image.pdf }}" class="card-link">
+                                        <img src="{% static 'images/pdf.png' %}" style="height: 41px; width: 37px; object-fit: cover; margin-right: 15px;" alt="не удалось загрузить">
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </swiper-slide>
+            {% endfor %}
+        </swiper-container>
+    {% endif %}
+
     <h2 class="h2" style="margin-top: 20px;">Оставьте заявку</h2>
     <p>Наши администраторы на связи и готовы ответить на любые вопросы.</p>
     <form method="post" style="margin-bottom: 10px;">

@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views.generic import TemplateView, View
 from django.views.generic.base import TemplateResponseMixin
 
-from clinic.services import get_published_reviews
+from clinic.services import get_published_reviews, get_clinic_licenses
 from main.forms import SearchForm
 from main.services import get_search_results
 from records.forms import CallRequestForm
@@ -28,6 +28,7 @@ class MainView(TemplateResponseMixin, View):
                 'staff': get_staff(),
                 'service_groups': get_service_groups(),
                 'reviews': get_published_reviews(),
+                'licenses': get_clinic_licenses(),
             },
         )
 
@@ -49,6 +50,7 @@ class MainView(TemplateResponseMixin, View):
                 'staff': get_staff(),
                 'service_groups': get_service_groups(),
                 'reviews': get_published_reviews(),
+                'licenses': get_clinic_licenses(),
             },
         )
 
