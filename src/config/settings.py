@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_bootstrap5',
     'debug_toolbar',
+    'cachalot',
 
     # local
     'main.apps.MainConfig',
@@ -330,3 +331,12 @@ CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'staff'
 
 hostname, _, ips = gethostbyname_ex(gethostname())
 INTERNAL_IPS = [ip[: ip.rfind('.')] + '.1' for ip in ips] + ['127.0.0.1', '10.0.2.2']
+
+
+# Cache
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379',
+    },
+}

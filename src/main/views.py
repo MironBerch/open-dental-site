@@ -14,7 +14,6 @@ from services.services import get_service_groups
 from staff.services import get_staff
 from works.services import get_works
 
-
 class MainView(TemplateResponseMixin, View):
     template_name = 'main/main.html'
     form_class = CallRequestForm
