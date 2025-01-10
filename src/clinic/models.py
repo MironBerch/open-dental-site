@@ -147,8 +147,13 @@ def get_review_image_upload_path(instance: 'Review', filename: str) -> str:
 
 class Review(models.Model):
     name = models.CharField(verbose_name='имя', max_length=255)
-    email = models.EmailField(verbose_name='почта', max_length=255)
-    phone = PhoneNumberField(verbose_name='номер телефона', blank=True)
+    email = models.EmailField(
+        verbose_name='почта',
+        null=True,
+        blank=True,
+        max_length=255,
+    )
+    phone = PhoneNumberField(verbose_name='номер телефона', blank=True, null=True)
 
     message = models.TextField(verbose_name='сообщение', blank=True, null=True)
 
