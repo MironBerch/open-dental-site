@@ -6,7 +6,18 @@ admin.site.register(About)
 admin.site.register(Details)
 admin.site.register(Media)
 admin.site.register(Policy)
-admin.site.register(Review)
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'rating',
+        'created_at',
+        'published',
+    )
+    list_filter = ('rating', 'published', )
+
 
 
 @admin.register(License)

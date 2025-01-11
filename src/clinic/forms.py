@@ -9,7 +9,7 @@ from clinic.models import Review
 
 class ReviewForm(forms.ModelForm):
     phone = PhoneNumberField(
-        label='121',
+        label='Номер телефона',
         validators=[
             RegexValidator(
                 regex=r'^\+?[0-9]{7,15}$',
