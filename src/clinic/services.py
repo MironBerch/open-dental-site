@@ -31,7 +31,7 @@ def get_clinic_contact() -> QuerySet[Contact]:
 
 
 def get_clinic_license_by_slug(slug: str) -> QuerySet[License]:
-    return get_object_or_404(License, slug=slug)
+    return get_object_or_404(License, slug=slug, published=True)
 
 
 def get_clinic_media() -> QuerySet[Media]:

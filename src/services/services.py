@@ -9,11 +9,11 @@ def get_service_groups() -> QuerySet[ServiceGroup]:
 
 
 def get_group_by_slug(slug: str) -> ServiceGroup:
-    return get_object_or_404(ServiceGroup, slug=slug)
+    return get_object_or_404(ServiceGroup, slug=slug, published=True)
 
 
 def get_services_by_group(group: ServiceGroup) -> QuerySet[Service]:
-    services = Service.objects.filter(group=group)
+    services = Service.objects.filter(group=group, published=True)
     service_details = []
     for service in services:
         min_price = service.get_min_price()
@@ -27,7 +27,7 @@ def get_services_by_group(group: ServiceGroup) -> QuerySet[Service]:
 
 
 def get_service_by_slug(slug: str) -> tuple[Service, dict[str, list]]:
-    service = get_object_or_404(Service, slug=slug)
+    service = get_object_or_404(Service, slug=slug, published=True)
     prices = service.prices.select_related('group').all()
     grouped_prices = {}
     for price in prices:

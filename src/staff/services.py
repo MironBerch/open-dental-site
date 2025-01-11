@@ -12,7 +12,7 @@ def get_staff() -> QuerySet[Staff]:
 
 def get_all_staff() -> dict[str, QuerySet[Staff]]:
     grouped_staff = defaultdict(list)
-    staff_queryset = Staff.objects.annotate(
+    staff_queryset = Staff.objects.filter(published=True).annotate(
         position_order=Case(
             When(stage=PositionChoices.MANAGER, then=1),
             When(stage=PositionChoices.ADMINISTRATOR, then=2),
@@ -39,7 +39,7 @@ def get_staff_by_stage(stage: str) -> QuerySet[Staff]:
 
 
 def get_staff_by_slug(slug: str) -> Staff:
-    return get_object_or_404(Staff, slug=slug)
+    return get_object_or_404(Staff, slug=slug, published=True)
 
 
 def get_staff_by_stage_title(stage: str) -> str:
