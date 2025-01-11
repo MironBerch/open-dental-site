@@ -97,7 +97,7 @@ class ReviewsView(TemplateResponseMixin, View):
             context={
                 'form': self.form_class(),
                 'active_page': 'reviews',
-                'reviews': get_published_reviews().order_by('-id'),
+                'reviews': get_published_reviews().order_by('-created_at'),
             },
         )
 

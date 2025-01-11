@@ -1,4 +1,5 @@
 from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.widgets import RegionalPhoneNumberWidget
 
 from django import forms
 from django.core.validators import RegexValidator
@@ -8,7 +9,7 @@ from clinic.models import Review
 
 class ReviewForm(forms.ModelForm):
     phone = PhoneNumberField(
-        label='Номер телефона',
+        label='121',
         validators=[
             RegexValidator(
                 regex=r'^\+?[0-9]{7,15}$',
@@ -16,6 +17,7 @@ class ReviewForm(forms.ModelForm):
             ),
         ],
         required=False,
+        widget=RegionalPhoneNumberWidget(attrs={'placeholder': ''})
     )
 
     class Meta:
@@ -24,7 +26,6 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': ''}),
             'email': forms.EmailInput(attrs={'placeholder': ''}),
-            'phone': forms.TextInput(attrs={'placeholder': ''}),
             'message': forms.Textarea(attrs={'rows': 4, 'placeholder': ''}),
             'rating': forms.Select(
                 choices=[(i, i) for i in range(1, 6)],
@@ -34,7 +35,8 @@ class ReviewForm(forms.ModelForm):
         }
         labels = {
             'name': 'Ваше имя*',
-            'email': 'Почта*',
+            'email': 'Почта',
+            'phone': 'Номер телефона',
             'message': 'Сообщение*',
             'rating': 'Оценка*',
             'image': 'Фото',

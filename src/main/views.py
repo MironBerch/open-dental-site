@@ -27,7 +27,7 @@ class MainView(TemplateResponseMixin, View):
                 'works': get_works(),
                 'staff': get_staff(),
                 'service_groups': get_service_groups(),
-                'reviews': get_published_reviews(),
+                'reviews': get_published_reviews().order_by('-created_at'),
                 'licenses': get_clinic_licenses(),
             },
         )
@@ -49,7 +49,7 @@ class MainView(TemplateResponseMixin, View):
                 'works': get_works(),
                 'staff': get_staff(),
                 'service_groups': get_service_groups(),
-                'reviews': get_published_reviews(),
+                'reviews': get_published_reviews().order_by('-created_at'),
                 'licenses': get_clinic_licenses(),
             },
         )
