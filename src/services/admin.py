@@ -20,3 +20,4 @@ class ServiceAdmin(admin.ModelAdmin):
         'group',
         'published',
     )
+    list_filter = ('group', 'published', )

@@ -9,7 +9,7 @@ def get_service_groups() -> QuerySet[ServiceGroup]:
 
 
 def get_group_by_slug(slug: str) -> ServiceGroup:
-    return get_object_or_404(ServiceGroup, slug=slug, published=True)
+    return get_object_or_404(ServiceGroup, slug=slug)
 
 
 def get_services_by_group(group: ServiceGroup) -> QuerySet[Service]:
