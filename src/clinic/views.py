@@ -6,6 +6,7 @@ from django.views.generic.base import TemplateResponseMixin
 
 from clinic.forms import ReviewForm
 from clinic.services import (
+    get_all_staff,
     get_clinic_about,
     get_clinic_contacts,
     get_clinic_license_by_slug,
@@ -116,5 +117,17 @@ class ReviewsView(TemplateResponseMixin, View):
                 'form': self.form_class,
                 'active_page': 'reviews',
                 'reviews': get_published_reviews().order_by('-id'),
+            },
+        )
+
+
+class StaffView(TemplateResponseMixin, View):
+    template_name = 'clinic/staff.html'
+
+    def get(self, request: HttpRequest):
+        return self.render_to_response(
+            context={
+                'active_page': 'staff',
+                'staff':  get_all_staff(),
             },
         )

@@ -13,11 +13,11 @@ from clinic.views import (
     PolicyView,
     RequisitesView,
     ReviewsView,
+    StaffView,
 )
 from main.views import MainView, SearchAPIView, SearchView, SitemapView
 from prices.views import PricesView
 from services.views import ServicesGroupsView, ServicesGroupView, ServiceView
-from staff.views import StaffByStageView, StaffDetailView, StaffView
 from works.views import WorksView, WorkView
 
 urlpatterns = [
@@ -106,16 +106,6 @@ urlpatterns = [
     path(
         route='company/staff/',
         view=StaffView.as_view(),
-        name='staff_list',
-    ),
-    path(
-        route='company/staff/<stage>/',
-        view=StaffByStageView.as_view(),
-        name='staff_by_stage',
-    ),
-    path(
-        route='company/staff/<stage>/<slug>/',
-        view=StaffDetailView.as_view(),
         name='staff',
     ),
     path(

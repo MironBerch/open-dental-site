@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     # local
     'main.apps.MainConfig',
     'clinic.apps.ClinicConfig',
-    'staff.apps.StaffConfig',
     'services.apps.ServicesConfig',
     'works.apps.WorksConfig',
     'prices.apps.PricesConfig',

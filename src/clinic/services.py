@@ -1,7 +1,17 @@
-from django.db.models import QuerySet
+from django.db.models import Case, QuerySet, When
 from django.shortcuts import get_object_or_404
 
-from clinic.models import About, Contact, Details, License, Media, Policy, Review
+from clinic.models import (
+    About,
+    Contact,
+    Details,
+    License,
+    Media,
+    Policy,
+    PositionChoices,
+    Review,
+    Staff,
+)
 
 
 def get_clinic_requisites() -> QuerySet[Details]:
@@ -44,3 +54,19 @@ def get_clinic_policy() -> QuerySet[Policy]:
 
 def get_published_reviews() -> QuerySet[Review]:
     return Review.objects.filter(published=True)
+
+
+def get_staff() -> QuerySet[Staff]:
+    return Staff.objects.all()
+
+
+def get_all_staff() -> QuerySet[Staff]:
+    return Staff.objects.filter(published=True).annotate(
+        position_order=Case(
+            When(stage=PositionChoices.MANAGER, then=1),
+            When(stage=PositionChoices.ADMINISTRATOR, then=2),
+            When(stage=PositionChoices.MEDIC, then=3),
+            When(stage=PositionChoices.JUNIOR_MEDIC, then=4),
+            default=5,
+        )
+    ).order_by('position_order')

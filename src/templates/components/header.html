@@ -158,7 +158,7 @@
                         <a href="{% url 'services_groups' %}" class="nav-link {% if active_page == 'services' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Услуги</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'staff_list' %}" class="nav-link {% if active_page == 'staff' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Работники</a>
+                        <a href="{% url 'staff' %}" class="nav-link {% if active_page == 'staff' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Работники</a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'prices' %}" class="nav-link {% if active_page == 'prices' %}link-secondary{% else %}link-body-emphasis{% endif %}" style="font-size: 24px;">Цены</a>
@@ -327,7 +327,7 @@
                 </li>
                 <li>
                     <a 
-                        href="{% url 'staff_list' %}"
+                        href="{% url 'staff' %}"
                         class="nav-link px-2 {% if active_page == 'staff' %}link-secondary{% else %}link-body-emphasis{% endif %}"
                     >
                         Работники
