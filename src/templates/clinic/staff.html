@@ -96,27 +96,20 @@
         </ol>
     </nav>
     <div class="row">
-        <div class="col-md-12">
-            {% if managers %}
-                <h2>Руководители</h2>
-                <div class="row">
-                    {% for member in managers %}
-                        <div class="col-md-4 mb-4"> 
-                            <div class="card">
-                                <div class="image-container">
-                                    <img src="{{ member.image.url }}" class="card-img" alt="...">
-                                </div>
-                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                    <h6 class="card-title">
-                                        <a class="link-light link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' stage=member.stage|map_stage slug=member.slug %}">{{ member.fio }}</a>
-                                    </h6>
-                                    <p class="card-text"><small>{{ member.roles }}</small></p>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
+        {% for person in staff %}
+            <div class="col-md-3">
+                <div class="card" id="{{ person.slug }}" style="margin-bottom: 10px;">
+                    <div class="image-container">
+                        <img src="{{ person.image.url }}" class="card-img" alt="...">
+                    </div>
                 </div>
-            {% endif %}
-        </div>
+            </div>
+            <div class="col-md-9">
+                <h4>{{ person.fio }}</h4>
+                <h5>{{ person.stage }}, {{ person.roles }}</h5>
+                {{ person.information|safe }}
+            </div>
+            <hr>
+        {% endfor %}
     </div>
 {% endblock %}
