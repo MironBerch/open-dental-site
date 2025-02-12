@@ -234,16 +234,6 @@
         </swiper-container>
     {% endif %}
 
-    <h2 class="h2" style="margin-top: 20px;">Оставьте заявку</h2>
-    <p>Наши администраторы на связи и готовы ответить на любые вопросы.</p>
-    <form method="post" style="margin-bottom: 10px;">
-        {% csrf_token %}
-        <div class="modal-body">
-            {% bootstrap_form form %}
-        </div>
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Отправить</button>
-    </form>
-
     <div id="map"></div>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script>

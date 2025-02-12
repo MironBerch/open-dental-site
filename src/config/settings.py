@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'services.apps.ServicesConfig',
     'works.apps.WorksConfig',
     'prices.apps.PricesConfig',
-    'records.apps.RecordsConfig',
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.http import HttpRequest, JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -8,7 +7,6 @@ from django.views.generic.base import TemplateResponseMixin
 from clinic.services import get_clinic_licenses, get_published_reviews, get_staff
 from main.forms import SearchForm
 from main.services import get_search_results
-from records.forms import CallRequestForm
 from services.models import Service, ServiceGroup
 from services.services import get_service_groups
 from works.services import get_works
@@ -16,35 +14,11 @@ from works.services import get_works
 
 class MainView(TemplateResponseMixin, View):
     template_name = 'main/main.html'
-    form_class = CallRequestForm
 
     def get(self, request: HttpRequest):
         return self.render_to_response(
             context={
                 'active_page': '',
-                'form': self.form_class(),
-                'works': get_works(),
-                'staff': get_staff(),
-                'service_groups': get_service_groups(),
-                'reviews': get_published_reviews().order_by('-created_at'),
-                'licenses': get_clinic_licenses(),
-            },
-        )
-
-    def post(self, request: HttpRequest, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            messages.add_message(
-                request,
-                messages.SUCCESS,
-                'Заявка на звонок оставлена',
-            )
-            form.save()
-            return redirect('main')
-        return self.render_to_response(
-            context={
-                'active_page': '',
-                'form': self.form_class,
                 'works': get_works(),
                 'staff': get_staff(),
                 'service_groups': get_service_groups(),
