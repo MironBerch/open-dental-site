@@ -11,17 +11,9 @@
             position: relative;
             overflow: hidden;
         }
-        
-        .card:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
 
         .card-img-overlay {
             transition: transform 0.3s;
-        }
-
-        .card:hover .card-img-overlay {
-            transform: translateY(-5px);
         }
 
         .image-container {
@@ -57,34 +49,6 @@
             height: 100%; /* Fill the height */
             object-fit: cover; /* Crop image */
             object-position: center; /* Center the image */
-        }
-
-        .image-container::after,
-        .staff-image-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover .image-container::after,
-        .card:hover .staff-image-container::after {
-            opacity: 1;
-        }
-
-        /* Убираем только для карточки с меню */
-        .card.no-hover {
-            transition: none; /* Убираем плавный переход */
-            background-color: transparent; /* Текущий фон */
-        }
-
-        .card.no-hover:hover {
-            background-color: transparent; /* Убираем эффект hover */
         }
     </style>
 

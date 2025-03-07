@@ -43,7 +43,6 @@
             transform: translate(-50%, -50%);
         }
 
-
         .map-card {
             border-radius: 8px;
             padding: 15px;
@@ -83,86 +82,104 @@
         }
     </style>
 
-    <h2 class="h2" style="margin-top: 10px;">Наши работники</h2>
-    <div class="swiper-container staff-swiper" style="padding-top: 30px; padding-bottom: 30px;">
-        <div class="swiper-wrapper">
-            {% for member in staff %}
-                <div class="swiper-slide">
-                    <div class="card">
-                        <div class="staff-image-container">
-                            <img src="{{ member.image.url }}" class="card-img" alt="...">
-                        </div>
-                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                            <p class="card-text"><small>{{ member.roles }}</small></p>
-                            <h5 class="card-title">
-                                <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ member.fio }}</p>
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="d-flex justify-content-center">
+                <img 
+                    src="{% static 'images/caries.png' %}"
+                    style="height: 64px; width: 64px; object-fit: cover;"
+                >
+            </div>
+            <div class="d-flex justify-content-center"><p class="mt-2">Лучшие стоматологи</p></div>
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex justify-content-center">
+                <img 
+                    src="{% static 'images/equep.png' %}"
+                    style="height: 64px; width: 64px; object-fit: cover;"
+                >
+            </div>
+            <div class="d-flex justify-content-center"><p class="mt-2">Передовое оборудование</p></div>
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex justify-content-center">
+                <img 
+                    src="{% static 'images/doctors.png' %}"
+                    style="height: 64px; width: 64px; object-fit: cover;"
+                >
+            </div>
+            <div class="d-flex justify-content-center"><p class="mt-2">Комфорт и забота</p></div>
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const staffSwiper = new Swiper('.staff-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 10,
-                loop: true,
-                breakpoints: {
-                    576: {slidesPerView: 1},
-                    992: {slidesPerView: 4}
-                }
-            });
-        });
-    </script>
+    <h2 class="h2" style="margin-top: 10px;">Наши работники</h2>
+    <swiper-container 
+        slides-per-view="1"
+        space-between="10"
+        grid-cols="2"
+        loop="true"
+        mousewheel-force-to-axis="true"
+        breakpoints='{
+            "992": {
+                "slidesPerView": 4,
+                "spaceBetween": 10
+            }
+        }'
+    >
+        {% for member in staff %}
+            <swiper-slide>
+                <div class="card">
+                    <div class="staff-image-container">
+                        <img src="{{ member.image.url }}" class="card-img" alt="...">
+                    </div>
+                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                        <p class="card-text"><small>{{ member.roles }}</small></p>
+                        <h5 class="card-title">
+                            <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ member.fio }}</p>
+                        </h5>
+                    </div>
+                </div>
+            </swiper-slide>
+        {% endfor %}
+    </swiper-container>
 
     {% if works %}
         <h2 class="h2" style="margin-top: 10px;">Наши работы</h2>
-        <div class="swiper-container work-swiper" id="workCarousel" style="padding-top: 30px; padding-bottom: 30px;">
-            <div class="swiper-wrapper">
-                {% for work in works %}
-                    <div class="swiper-slide">
-                        <div class="work-card">
-                            <a href="{% url 'work' work.slug %}">
-                                <div class="card text-bg-dark">
-                                    <div class="work-image-container">
-                                        <img src="{{ work.image.url }}" class="card-img" alt="...">
-                                    </div>
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
-                                        <p class="card-text">6 фото</p>
-                                        <h5 class="card-title">
-                                            <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ work.name }}</p>
-                                        </h5>
-                                    </div>
+        <swiper-container 
+            slides-per-view="1"
+            space-between="10"
+            grid-cols="2"
+            loop="true"
+            mousewheel-force-to-axis="true"
+            breakpoints='{
+                "992": {
+                    "slidesPerView": 3,
+                    "spaceBetween": 10
+                }
+            }'
+        >
+            {% for work in works %}
+                <swiper-slide>
+                    <div class="work-card">
+                        <a href="{% url 'work' work.slug %}">
+                            <div class="card text-bg-dark">
+                                <div class="work-image-container">
+                                    <img src="{{ work.image.url }}" class="card-img" alt="...">
                                 </div>
-                            </a>
-                        </div>
+                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
+                                    <p class="card-text">6 фото</p>
+                                    <h5 class="card-title">
+                                        <p class="link-light link-offset-2 link-underline link-underline-opacity-0">{{ work.name }}</p>
+                                    </h5>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
+                </swiper-slide>
+            {% endfor %}
+        </swiper-container>
         <br>
     {% endif %}
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const workSwiper = new Swiper('.work-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 10,
-                loop: true,
-                navigation: {
-                    nextEl: '.work-button-next',
-                    prevEl: '.work-button-prev',
-                },
-                breakpoints: {
-                    576: {slidesPerView: 1},
-                    992: {slidesPerView: 3}
-                }
-            });
-        });
-    </script>
 
     {% if service_groups %}
         <h2 class="h2" style="margin-top: 10px;">Услуги</h2>
@@ -178,9 +195,19 @@
     {% endif %}
 
     {% if reviews %}
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
         <h2 class="h2" style="margin-top: 10px;">Отзывы</h2>
-        <swiper-container slides-per-view="2" grid-cols="2" mousewheel-force-to-axis="true" space-between="10">
+        <swiper-container 
+            slides-per-view="1"
+            space-between="10"
+            grid-cols="2"
+            mousewheel-force-to-axis="true"
+            breakpoints='{
+                "700": {
+                    "slidesPerView": 2,
+                    "spaceBetween": 10
+                }
+            }'
+        >
             {% for review in reviews %}
                 <swiper-slide>
                     <div class="card" style="margin-bottom: 15px;">
@@ -214,7 +241,26 @@
     {% if licenses %}
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
         <h2 class="h2" style="margin-top: 10px;">Лицензии и сертификаты</h2>
-        <swiper-container slides-per-view="4" grid-cols="4" mousewheel-force-to-axis="true" space-between="10">
+        <swiper-container 
+            slides-per-view="1"
+            space-between="10"
+            grid-cols="2"
+            mousewheel-force-to-axis="true"
+            breakpoints='{
+                "600": {
+                    "slidesPerView": 2,
+                    "spaceBetween": 10
+                },
+                "995": {
+                    "slidesPerView": 3,
+                    "spaceBetween": 10
+                },
+                "1200": {
+                    "slidesPerView": 4,
+                    "spaceBetween": 10
+                }
+            }'
+        >
             {% for license in licenses %}
                 <swiper-slide>
                     <div class="card d-flex flex-row">
@@ -251,5 +297,5 @@
         }
         ymaps.ready(init);
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 {% endblock %}
