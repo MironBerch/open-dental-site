@@ -288,7 +288,7 @@
                             <div>
                                 <p class="card-title">{{ license.name }}</p>
                                 {% if license.pdf %}
-                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ license.image.pdf }}" class="card-link">
+                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ license.pdf.url }}" class="card-link">
                                         <img src="{% static 'images/pdf.png' %}" style="height: 41px; width: 37px; object-fit: cover; margin-right: 15px;" alt="не удалось загрузить">
                                     </a>
                                 {% endif %}
