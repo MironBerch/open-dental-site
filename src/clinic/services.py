@@ -56,6 +56,11 @@ def get_published_reviews() -> QuerySet[Review]:
     return Review.objects.filter(published=True)
 
 
+def get_reviews_for_main_page() -> QuerySet[Review]:
+    reviews = Review.objects.filter(published=True, rating=5).order_by('-created_at')
+    return [review for review in reviews if len(review.message) < 300]
+
+
 def get_staff() -> QuerySet[Staff]:
     return Staff.objects.all()
 

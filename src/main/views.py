@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic import TemplateView, View
 from django.views.generic.base import TemplateResponseMixin
 
-from clinic.services import get_clinic_licenses, get_published_reviews, get_staff
+from clinic.services import get_clinic_licenses, get_staff, get_reviews_for_main_page
 from main.forms import SearchForm
 from main.services import get_search_results
 from services.models import Service, ServiceGroup
@@ -22,7 +22,7 @@ class MainView(TemplateResponseMixin, View):
                 'works': get_works(),
                 'staff': get_staff(),
                 'service_groups': get_service_groups(),
-                'reviews': get_published_reviews().order_by('-created_at'),
+                'reviews': get_reviews_for_main_page(),
                 'licenses': get_clinic_licenses(),
             },
         )
