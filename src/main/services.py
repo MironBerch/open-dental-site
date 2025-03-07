@@ -18,7 +18,7 @@ def get_search_results(query: str):
         'реквизиты': reverse('requisites'),
         'услуги': reverse('services_groups'),
         'цены': reverse('prices'),
-        'персонал специалисты сотрудники': reverse('staff_list'),
+        'персонал специалисты сотрудники': reverse('staff'),
         'клиника': reverse('company'),
         'галерея наши работы': reverse('gallery'),
         'карта сайта': reverse('site_map'),
@@ -86,7 +86,7 @@ def get_search_results(query: str):
     for result in results:
         try:
             if result['type'] == 'staff':
-                result['data']['url'] = reverse('staff', args=[result['data']['slug']])
+                result['data']['url'] = reverse('staff') + f'#{result['data']['slug']}'
             if result['type'] == 'service_group':
                 result['data']['url'] = reverse('services_group', args=[result['data']['slug']])
             if result['type'] == 'service':
