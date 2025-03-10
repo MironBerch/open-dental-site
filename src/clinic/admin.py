@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from clinic.models import About, Contact, License, Media, Policy, Review, Staff, Price, PriceGroup
+from clinic.models import About, Contact, License, Media, Policy, Price, PriceGroup, Review, Staff
 
 admin.site.register(About)
 admin.site.register(Media)

@@ -5,6 +5,7 @@ from django.views.generic import View
 from django.views.generic.base import TemplateResponseMixin
 
 from clinic.forms import ReviewForm
+from clinic.models import PriceGroup
 from clinic.services import (
     get_all_staff,
     get_clinic_about,
@@ -14,7 +15,6 @@ from clinic.services import (
     get_clinic_policy,
     get_published_reviews,
 )
-from clinic.models import PriceGroup
 
 
 class AboutView(TemplateResponseMixin, View):
@@ -82,6 +82,7 @@ class ReviewsView(TemplateResponseMixin, View):
     form_class = ReviewForm
 
     def get(self, request: HttpRequest, *args, **kwargs):
+        print(get_published_reviews())
         return self.render_to_response(
             context={
                 'form': self.form_class(),
@@ -122,7 +123,7 @@ class StaffView(TemplateResponseMixin, View):
 
 
 class PricesView(TemplateResponseMixin, View):
-    template_name = 'prices/list.html'
+    template_name = 'clinic/prices.html'
 
     def get(self, request: HttpRequest):
         return self.render_to_response(

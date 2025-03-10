@@ -11,9 +11,9 @@ from clinic.views import (
     LicensesView,
     LicenseView,
     PolicyView,
+    PricesView,
     ReviewsView,
     StaffView,
-    PricesView,
 )
 from main.views import MainView, SearchAPIView, SearchView, SitemapView
 from services.views import ServicesGroupsView, ServicesGroupView, ServiceView
