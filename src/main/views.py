@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic import TemplateView, View
 from django.views.generic.base import TemplateResponseMixin
 
-from clinic.services import get_clinic_licenses, get_staff, get_reviews_for_main_page
+from clinic.services import get_clinic_licenses, get_reviews_for_main_page, get_staff
 from main.forms import SearchForm
 from main.services import get_search_results
 from services.models import Service, ServiceGroup

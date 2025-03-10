@@ -1,16 +1,7 @@
 from django.db.models import Case, QuerySet, When
 from django.shortcuts import get_object_or_404
 
-from clinic.models import (
-    About,
-    Contact,
-    License,
-    Media,
-    Policy,
-    PositionChoices,
-    Review,
-    Staff,
-)
+from clinic.models import About, Contact, License, Media, Policy, PositionChoices, Review, Staff
 
 
 def get_clinic_about() -> QuerySet[About]:

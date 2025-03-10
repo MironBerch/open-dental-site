@@ -19,7 +19,6 @@ class ReviewAdmin(admin.ModelAdmin):
     list_filter = ('rating', 'published', )
 
 
-
 @admin.register(License)
 class ServiceGroupAdmin(admin.ModelAdmin):
     prepopulated_fields = {

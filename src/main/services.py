@@ -1,9 +1,7 @@
-from clinic.models import Staff
-
 from django.db.models import Q
 from django.urls import reverse
 
-from clinic.models import License
+from clinic.models import License, Staff
 from services.models import Service, ServiceGroup
 from works.models import Work
 
