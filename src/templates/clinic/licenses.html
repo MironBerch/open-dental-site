@@ -12,16 +12,20 @@
             <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
         </ol>
     </nav>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     {% for license in licenses %}
         <div class="card d-flex flex-row">
             <div class="card-body d-flex align-items-center">
                 {% if license.image %}
-                    <img
-                        src="{{ license.image.url }}"
-                        class="img-thumbnail"
-                        style="height: 138px; width: 104px; object-fit: cover; margin-right: 15px;"
-                        alt="не удалось загрузить"
-                    >
+                    <a href="{{ license.image.url }}" data-fancybox="license" data-caption="{{ license.name }}">
+                        <img
+                            src="{{ license.image.url }}" 
+                            class="img-thumbnail" 
+                            style="height: 138px; width: 104px; object-fit: cover; margin-right: 15px;" 
+                            alt="не удалось загрузить"
+                        >
+                    </a>
                 {% endif %}
                 <div>
                     <p class="card-title">{{ license.name }}</p>
