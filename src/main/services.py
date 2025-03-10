@@ -15,7 +15,6 @@ def get_search_results(query: str):
         'контакты': reverse('contacts'),
         'отзывы клиентов': reverse('reviews'),
         'лицензии и сертификаты': reverse('licenses'),
-        'реквизиты': reverse('requisites'),
         'услуги': reverse('services_groups'),
         'цены': reverse('prices'),
         'персонал специалисты сотрудники': reverse('staff'),

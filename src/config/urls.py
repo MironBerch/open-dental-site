@@ -11,7 +11,6 @@ from clinic.views import (
     LicensesView,
     LicenseView,
     PolicyView,
-    RequisitesView,
     ReviewsView,
     StaffView,
 )
@@ -73,11 +72,6 @@ urlpatterns = [
     ),
 
     # Company
-    path(
-        route='company/requisites/',
-        view=RequisitesView.as_view(),
-        name='requisites',
-    ),
     path(
         route='company/',
         view=AboutView.as_view(),

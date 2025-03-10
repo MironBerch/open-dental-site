@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404
 from clinic.models import (
     About,
     Contact,
-    Details,
     License,
     Media,
     Policy,
@@ -12,13 +11,6 @@ from clinic.models import (
     Review,
     Staff,
 )
-
-
-def get_clinic_requisites() -> QuerySet[Details]:
-    try:
-        return Details.objects.first()
-    except Exception:
-        return None
 
 
 def get_clinic_about() -> QuerySet[About]:

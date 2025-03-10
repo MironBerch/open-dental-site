@@ -12,21 +12,8 @@ from clinic.services import (
     get_clinic_license_by_slug,
     get_clinic_licenses,
     get_clinic_policy,
-    get_clinic_requisites,
     get_published_reviews,
 )
-
-
-class RequisitesView(TemplateResponseMixin, View):
-    template_name = 'clinic/requisites.html'
-
-    def get(self, request: HttpRequest):
-        return self.render_to_response(
-            context={
-                'active_page': 'clinic',
-                'requisites': get_clinic_requisites(),
-            },
-        )
 
 
 class AboutView(TemplateResponseMixin, View):

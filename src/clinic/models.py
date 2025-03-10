@@ -67,27 +67,6 @@ class About(models.Model):
         verbose_name_plural = 'О клинике'
 
 
-class Details(models.Model):
-    full_name = models.CharField(verbose_name='Полное наименование', max_length=255)
-    abbreviated_name = models.CharField(verbose_name='Сокращенное наименование', max_length=255)
-    INN_KPP = models.CharField(verbose_name='ИНН/КПП', max_length=255)
-    OGRN = models.CharField(verbose_name='ОГРН', max_length=255)
-    legal_address = models.CharField(verbose_name='Юридический адрес', max_length=255)
-    actual_address = models.CharField(verbose_name='Фактический адрес', max_length=255)
-    telephone = models.CharField(verbose_name='Телефон', max_length=255)
-    fax = models.CharField(verbose_name='факс', max_length=255)
-    email = models.CharField(verbose_name='Электронная почта', max_length=255)
-    website = models.CharField(verbose_name='Сайт', max_length=255)
-    bank_details = models.CharField(verbose_name='Банковские реквизиты', max_length=255)
-
-    class Meta:
-        verbose_name = 'реквизиты'
-        verbose_name_plural = 'реквизиты'
-
-    def __str__(self):
-        return self.full_name
-
-
 class Contact(models.Model):
     address = models.CharField(
         verbose_name='адрес',
