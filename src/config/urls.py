@@ -13,9 +13,9 @@ from clinic.views import (
     PolicyView,
     ReviewsView,
     StaffView,
+    PricesView,
 )
 from main.views import MainView, SearchAPIView, SearchView, SitemapView
-from prices.views import PricesView
 from services.views import ServicesGroupsView, ServicesGroupView, ServiceView
 from works.views import WorksView, WorkView
 

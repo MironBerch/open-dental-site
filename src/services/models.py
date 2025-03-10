@@ -2,7 +2,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 from django.db import models
 
-from prices.models import Price
+from clinic.models import Price
 
 
 def get_license_image_upload_path(instance: 'Service', filename: str) -> str:

@@ -14,6 +14,7 @@ from clinic.services import (
     get_clinic_policy,
     get_published_reviews,
 )
+from clinic.models import PriceGroup
 
 
 class AboutView(TemplateResponseMixin, View):
@@ -116,5 +117,17 @@ class StaffView(TemplateResponseMixin, View):
             context={
                 'active_page': 'staff',
                 'staff':  get_all_staff(),
+            },
+        )
+
+
+class PricesView(TemplateResponseMixin, View):
+    template_name = 'prices/list.html'
+
+    def get(self, request: HttpRequest):
+        return self.render_to_response(
+            context={
+                'active_page': 'prices',
+                'price_groups': PriceGroup.objects.prefetch_related('price_set').all()
             },
         )
