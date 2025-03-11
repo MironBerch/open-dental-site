@@ -4,129 +4,73 @@
 
 {% block content %}
     <style>
-        .collapsible {
-            background: none; /* Убираем фон */
-            color: #007bff; /* Цвет ссылки */
-            cursor: pointer; /* Указатель, показывающий, что это кликабельный элемент */
-            padding: 10px;
-            border: none; /* Убираем рамку */
-            text-align: left;
-            font-size: 15px;
-            display: flex; /* Используем flexbox для выравнивания */
-            align-items: center; /* Центрирование по вертикали */
-        }
-
-        .arrow {
-            margin-left: 10px; /* Отступ слева для стрелочки */
-            width: 0; 
-            height: 0; 
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid #007bff; /* Цвет стрелочки */
-            transition: transform 0.3s; /* Плавный переход при повороте */
-        }
-
-        .active .arrow {
+        .active {
             transform: rotate(180deg); /* Поворот стрелочки при активном состоянии */
-        }
-
-        .collapsible:hover .arrow {
-            border-top: 5px solid #0056b3; /* Изменяем цвет стрелочки при наведении */
         }
 
         .service-list {
             padding-left: 20px; /* Отступ для списка услуг */
-            display: none; /* Скрываем подсписки изначально */
             overflow: hidden; /* Убираем переполнение */
             margin-bottom: 10px; /* Отступ снизу между группами */
             list-style-type: none; /* Убираем маркеры */
             padding: 0; /* Убираем отступы */
-            /* Удалите следующую строку для удаления границы */
-            /* border-left: 1px solid #ddd; */ 
         }
 
         .list-group {
-            list-style-type: none; /* Убираем маркеры у родительского списка */
             padding: 0; /* Убираем отступы */
         }
 
         .group-name {
             display: inline-block; /* Позволяет элементу принимать ширину, основанную на его содержимом */
             margin-right: 10px; /* Устанавливаем отступ справа */
-            white-space: nowrap; /* Предотвращает перенос текста */
         }
-        
+
+        .group-item {
+            margin-left: 20px; /* Отступ для групп */
+        }
     </style>
 
     <h1 class="h1">Карта сайта</h1>
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'main' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'main' %}">Главная</a></li>
         </ol>
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <ul class="list-group">
-                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_groups' %}"><h4>Услуги</h4></a></li>
-                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' %}"><h4>Сотрудники</h4></a></li>
-                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'prices' %}"><h4>Цены</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_groups' %}">Услуги</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' %}">Сотрудники</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'prices' %}">Цены</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_groups' %}">Услуги</a></li>
                     {% for group in service_groups %}
-                        <div style="display: flex; align-items: center;">
-                            <a href="/services/terapevticheskoe-lechenie/" 
-                            class="group-name link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" 
-                            style="display: inline-block; margin-right: 10px; white-space: nowrap;">
-                                {{ group.name }}
+                        <li class="group-item" style="list-style-type: none;">
+                            <a 
+                                href="/services/terapevticheskoe-lechenie/" 
+                                class="group-name link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" 
+                                style="display: inline-block; margin-right: 10px; white-space: nowrap;">
+                                    {{ group.name }}
                             </a>
-                            <button class="collapsible active" style="border: none; background: none; padding: 0;">
-                                <div class="arrow"></div>
-                            </button>
-                        </div>
-                        <ul class="service-list">
-                            {% for service in group.service_set.all %}
-                                <li><a style="margin-left: 20px;" class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' service.slug %}">{{ service.name }}</a></li>
-                            {% endfor %}
-                        </ul>
+                            <ul class="service-list">
+                                {% for service in group.service_set.all %}
+                                    <li><a style="margin-left: 20px;" class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' service.slug %}">{{ service.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
                     {% endfor %}
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <ul class="list-group">
-                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'company' %}"><h4>Клиника</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'company' %}">Клиника</a></li>
                     <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'company' %}">О клинике</a></li>
                     <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'licenses' %}">Лицензии</a></li>
-                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'reviews' %}"><h4>Отзывы</h4></a></li>
-                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'contacts' %}"><h4>Контакты</h4></a></li>
-                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'gallery' %}"><h4>Наши работы</h4></a></li>
-                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'search_view' %}"><h4>Поиск</h4></a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'reviews' %}">Отзывы</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'contacts' %}">Контакты</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'gallery' %}">Наши работы</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'search_view' %}">Поиск</a></li>
                     {% if request.user.is_superuser or request.user.is_staff %}
-                        <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'admin:index' %}"><h4>Панель администратора</h4></a></li>
+                        <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'admin:index' %}">Панель администратора</a></li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </div>
-
-    <script>
-        document.querySelectorAll('.collapsible').forEach(function(button) {
-            button.addEventListener("click", function(event) {
-                // Находим следующий элемент списка
-                var content = this.closest('div').nextElementSibling; // Используем closest для более точного выбора
-                if (content) { // Проверка на существование content
-                    content.style.display = (content.style.display === "block") ? "none" : "block";
-                    // Переворачиваем стрелочку
-                    this.classList.toggle("active");
-                }
-            });
-        });
-    
-        // Добавляем возможность перехода по клику на текст группы
-        var groupNames = document.getElementsByClassName("group-name");
-        for (let i = 0; i < groupNames.length; i++) {
-            groupNames[i].addEventListener("click", function(event) {
-                // Переход на страницу группы
-                window.location.href = groupNames[i].getAttribute("href");
-            });
-        }
-    </script>
 {% endblock %}

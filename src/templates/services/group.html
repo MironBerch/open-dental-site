@@ -36,7 +36,7 @@
                         </h2>
                         <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordionGroups">
                             <div class="accordion-body">
-                                <ul>
+                                <ul style="margin-bottom: 0px;">
                                     {% for detail in services %}
                                     <li>
                                         <a  class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' detail.service.slug %}">{{ detail.service.name }}</a>
