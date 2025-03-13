@@ -5,90 +5,92 @@
 {% block title %}Поиск{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="mb-4">Поиск</h1>
-        
-        <form method="POST" action="{% url 'search_view' %}" class="form-inline mb-4">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <button type="submit" class="btn btn-primary ml-2">Поиск</button>
-        </form>
+    <h1 class="h1">Поиск</h1>
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+        </ol>
+    </nav>
+    <form method="POST" action="{% url 'search_view' %}" class="form-inline mb-4">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary ml-2">Поиск</button>
+    </form>
 
-        {% if results %}
-            <h2 class="mt-4">Результаты поиска:</h2>
-            <ul class="list-group">
-                {% for result in results %}
-                    <div class="card" style="margin-bottom: 10px;">
-                        <div class="card-body">
-                            {% if result.type == 'staff' %}
-                                <h5 class="card-title"><strong><a style="padding-bottom: 20px;" class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' %}#{{ result.data.slug }}">{{ result.data.fio }}</a></strong></h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">
-                                    <nav >
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'staff' %}">Сотрудники</a></li>
-                                        </ol>
-                                    </nav>
-                                </h6>
-                            {% endif %}
-                            {% if result.type == 'service_group' %}
-                                <h5 class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_group' result.data.slug %}">{{ result.data.name }}</a></strong></h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">
-                                    <nav >
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_groups' %}">Услуги стоматологии</a></li>
-                                        </ol>
-                                    </nav>
-                                </h6>
-                            {% endif %}
-                            {% if result.type == 'service' %}
-                                <h5 class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' result.data.slug %}">{{ result.data.name }}</a></strong></h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">
-                                    <nav >
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
-                                            <li class="breadcrumb-item">
-                                                <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_group' result.data.group__slug %}">{{ result.data.group__name }}</a>
-                                            </li>
-                                        </ol>
-                                    </nav>
-                                </h6>
-                            {% endif %}
-                            {% if result.type == 'work' %}
-                                <h5 class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'work' result.data.slug %}">{{ result.data.name }}</a></strong></h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">
-                                    <nav >
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'gallery' %}">Наши работы</a></li>
-                                        </ol>
-                                    </nav>
-                                </h6>
-                            {% endif %}
-                            {% if result.type == 'license' %}
-                                <h5 class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'license' result.data.slug %}">{{ result.data.name }}</a></strong></h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">
-                                    <nav >
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
-                                            <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
-                                        </ol>
-                                    </nav>
-                                </h6>
-                            {% endif %}
-                            {% if result.type == 'page' %}
-                                <h5 class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ result.data.url }}">{{ result.data.title }}</a></strong></h5>
-                            {% endif %}
-                            
-                        </div>
+    {% if results %}
+        <h2 class="mt-4">Результаты поиска:</h2>
+        <ul class="list-group">
+            {% for result in results %}
+                <div class="card" style="margin-bottom: 10px;">
+                    <div class="card-body">
+                        {% if result.type == 'staff' %}
+                            <p class="card-title"><strong><a style="padding-bottom: 20px;" class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'staff' %}#{{ result.data.slug }}">{{ result.data.fio }}</a></strong></p>
+                            <p class="card-subtitle mb-2 text-body-secondary">
+                                <nav >
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'staff' %}">Сотрудники</a></li>
+                                    </ol>
+                                </nav>
+                            </p>
+                        {% endif %}
+                        {% if result.type == 'service_group' %}
+                            <p class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'services_group' result.data.slug %}">{{ result.data.name }}</a></strong></p>
+                            <p class="card-subtitle mb-2 text-body-secondary">
+                                <nav >
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_groups' %}">Услуги стоматологии</a></li>
+                                    </ol>
+                                </nav>
+                            </p>
+                        {% endif %}
+                        {% if result.type == 'service' %}
+                            <p class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' result.data.slug %}">{{ result.data.name }}</a></strong></p>
+                            <p class="card-subtitle mb-2 text-body-secondary">
+                                <nav >
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
+                                        <li class="breadcrumb-item">
+                                            <a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'services_group' result.data.group__slug %}">{{ result.data.group__name }}</a>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </p>
+                        {% endif %}
+                        {% if result.type == 'work' %}
+                            <p class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'work' result.data.slug %}">{{ result.data.name }}</a></strong></p>
+                            <p class="card-subtitle mb-2 text-body-secondary">
+                                <nav >
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'gallery' %}">Наши работы</a></li>
+                                    </ol>
+                                </nav>
+                            </p>
+                        {% endif %}
+                        {% if result.type == 'license' %}
+                            <p class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'license' result.data.slug %}">{{ result.data.name }}</a></strong></p>
+                            <p class="card-subtitle mb-2 text-body-secondary">
+                                <nav >
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
+                                        <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'company' %}">О клинике</a></li>
+                                    </ol>
+                                </nav>
+                            </p>
+                        {% endif %}
+                        {% if result.type == 'page' %}
+                            <p class="card-title"><strong><a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ result.data.url }}">{{ result.data.title }}</a></strong></p>
+                        {% endif %}
                     </div>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="mt-4">Нет результатов для вашего запроса.</p>
-        {% endif %}
-    </div>
+                </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="mt-4">Нет результатов для вашего запроса.</p>
+    {% endif %}
+    
 {% endblock %}

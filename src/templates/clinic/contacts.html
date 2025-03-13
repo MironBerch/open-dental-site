@@ -9,39 +9,28 @@
             <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0"  href="{% url 'main' %}">Главная</a></li>
         </ol>
     </nav>
-    <style>
-        #map {
-            width: 100%;
-            height: 400px;
-        }
-    </style>
-    <div id="map"></div>
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script type="text/javascript">
-        function init() {
-            var myMap = new ymaps.Map(
-                "map",
-                {
-                    center: [59.913078, 29.770747],
-                    zoom: 12,
-                    controls: [
-                        'zoomControl', // Уровень масштабирования
-                        'typeSelector', // Выбор типа карты (схема, спутник и т.д.)
-                        'trafficControl', // Контроль трафика (если необходимо)
-                        // Добавьте любые другие элементы управления, которые хотите оставить
-                    ]
-                }
-            );
-            var myPlacemark = new ymaps.Placemark(
-                [59.913078, 29.770747],
-                {
-                    balloonContent: "Клиника"
-                }
-            );
-            myMap.geoObjects.add(myPlacemark);
-        }
-        ymaps.ready(init);
-    </script>
+    <div style="position:relative;overflow:hidden;width:100%;">
+        <a 
+            href="https://yandex.ru/maps/org/dentaliya/1245233699/?utm_medium=mapframe&utm_source=maps" 
+            style="color:#eee;font-size:12px;position:absolute;top:0px;">
+            Денталия
+        </a>
+        <a 
+            href="https://yandex.ru/maps/10875/lomonosov/category/dental_clinic/184106132/?utm_medium=mapframe&utm_source=maps" 
+            style="color:#eee;font-size:12px;position:absolute;top:14px;"
+        >
+            Стоматологическая клиника в Ломоносове
+        </a>
+        <iframe
+            src="https://yandex.ru/map-widget/v1/?ll=29.771311%2C59.912941&mode=poi&poi%5Bpoint%5D=29.770746%2C59.913079&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1245233699&z=17.68"
+            width="100%"
+            height="400"
+            frameborder="1"
+            allowfullscreen="true"
+            style="position:relative;"
+        >
+        </iframe>
+    </div>
     <br>
     {% for contact in contacts %}
         <div class="card d-flex flex-row">
