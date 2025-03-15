@@ -47,7 +47,7 @@
                     {% for group in service_groups %}
                         <li class="group-item" style="list-style-type: none;">
                             <a 
-                                href="/services/terapevticheskoe-lechenie/" 
+                                href="{% url 'services_group' group.slug %}" 
                                 class="group-name link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" 
                                 style="display: inline-block; margin-right: 10px; white-space: nowrap;">
                                     {{ group.name }}
