@@ -240,6 +240,7 @@ class Price(models.Model):
         unique=True,
     )
     cost = models.PositiveIntegerField(verbose_name='цена')
+    constant = models.BooleanField(default=False, verbose_name='постоянная')
 
     group = models.ForeignKey(
         PriceGroup,

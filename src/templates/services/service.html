@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load custom_tags %}
+
 {% block title %}{{service.name}}{% endblock %}
 
 {% block content %}
@@ -34,7 +36,7 @@
                         {% for price in prices %}
                             <div class="card" style="margin-bottom: 10px;">
                                 <div class="card-body">
-                                    <p class="card-title">{{ price.name }} - {{ price.cost }} руб.</p>
+                                    <p class="card-title">{{ price.name }} - {% if price.constant == False %}от {% endif %}{{ price.cost|rubles_formatted }}</p>
                                 </div>
                             </div>
                         {% endfor %}

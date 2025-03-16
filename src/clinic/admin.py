@@ -14,10 +14,11 @@ class PriceAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'cost',
+        'constant',
         'group__name',
         'published',
     )
-    list_filter = ('group__name', )
+    list_filter = ('group__name', 'constant')
 
 
 @admin.register(Review)

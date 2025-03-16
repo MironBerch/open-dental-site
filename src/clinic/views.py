@@ -68,7 +68,7 @@ class ContactsView(TemplateResponseMixin, View):
 class PolicyView(TemplateResponseMixin, View):
     template_name = 'clinic/policy.html'
 
-    def get(self, request: HttpRequest, slug: str):
+    def get(self, request: HttpRequest):
         return self.render_to_response(
             context={
                 'active_page': 'clinic',

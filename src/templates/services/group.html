@@ -9,8 +9,8 @@
         }
 
         @media (max-width: 1000px) {
-            .col-md-3 {
-                width: 100%; /* Ширина аккордеона на мобильных устройствах */
+            .col-md-3, .col-md-9 {
+                width: 100%; /* Ширина аккордеона и контента на мобильных устройствах */
                 margin-bottom: 15px; /* Отступ снизу для аккуратно стилизованного вида */
             }
 
@@ -20,7 +20,7 @@
         }
     </style>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-12"> <!-- Добавлен класс col-12 -->
             <div style="margin-bottom: 10px;" class="accordion" id="accordionGroups">
                 {% for group, services in service_groups.items %}
                     <div class="accordion-item">
@@ -62,7 +62,7 @@
                 });
             </script>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 col-12"> <!-- Добавлен класс col-12 -->
             <h1 class="h1">{{ group.name }}</h1>
             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -73,7 +73,7 @@
             <p>{{ group.description }}</p>
             <div class="row">
                 {% for detail in services %}
-                <div class="col-md-4 mb-4"> 
+                <div class="col-md-4 col-12 mb-4"> <!-- Добавлен класс col-12 -->
                     <div class="card h-100">
                         <div class="image-container" style="height: 245px; overflow: hidden;">
                             <img

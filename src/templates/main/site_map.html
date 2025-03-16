@@ -66,6 +66,7 @@
                     <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'contacts' %}">Контакты</a></li>
                     <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'gallery' %}">Наши работы</a></li>
                     <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'search_view' %}">Поиск</a></li>
+                    <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'policy' %}">Политика конфиденциальности</a></li>
                     {% if request.user.is_superuser or request.user.is_staff %}
                         <li><a class="link-body-emphasis link-offset-2 link-underline link-underline-opacity-0" href="{% url 'admin:index' %}">Панель администратора</a></li>
                     {% endif %}
