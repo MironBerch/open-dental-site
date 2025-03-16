@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.db.models import QuerySet
 from django.shortcuts import get_object_or_404
 
@@ -5,7 +6,7 @@ from works.models import Photo, Work
 
 
 def get_works() -> QuerySet[Work]:
-    return Work.objects.filter()
+    return Work.objects.annotate(photo_count=Count('photos')).filter(published=True)
 
 
 def get_work_by_slug(slug: str) -> Work:
