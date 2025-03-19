@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load custom_tags %}
+
 {% block title %}{{ group.name }}{% endblock %}
 
 {% block content %}
@@ -84,10 +86,13 @@
                             >
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title text-center">
+                            <h5 class="card-title">
                                 <a class="link-offset-2 link-underline link-underline-opacity-0" href="{% url 'service' detail.service.slug %}">{{ detail.service.name }}</a>
                             </h5>
-                            <p class="card-text"><small class="text-body-secondary">от {{ detail.min_price }}</small></p>
+                            <p class="card-text">{{ detail.service.short_information }}</p>
+                            {% if detail.min_price %}
+                                <p class="card-text"><b>от {{ detail.min_price|rubles_formatted }}</b></p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
