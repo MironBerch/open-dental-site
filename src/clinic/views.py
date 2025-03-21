@@ -82,7 +82,6 @@ class ReviewsView(TemplateResponseMixin, View):
     form_class = ReviewForm
 
     def get(self, request: HttpRequest, *args, **kwargs):
-        print(get_published_reviews())
         return self.render_to_response(
             context={
                 'form': self.form_class(),
