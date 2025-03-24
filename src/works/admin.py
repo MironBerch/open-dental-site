@@ -4,6 +4,11 @@ from django.utils.html import format_html
 from works.models import Photo, Work
 
 
+class PhotoInline(admin.TabularInline):
+    model = Photo
+    extra = 1
+
+
 @admin.register(Work)
 class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {
@@ -15,6 +20,7 @@ class WorkAdmin(admin.ModelAdmin):
         'view_image',
     )
     list_filter = ('published', )
+    inlines = (PhotoInline, )
 
     def view_image(self, obj):
         if obj.image:

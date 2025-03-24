@@ -133,18 +133,23 @@
             display: none;
         }
     }
+    .navbar-toggler {
+        margin-left: auto; /* Перемещает кнопку вправо */
+    }
 </style>
 
 
 <nav class="navbar bg-body-tertiary fixed-top">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div>
             <a class="navbar-brand" href="{% url 'main' %}"><img src="{% static 'images/logo.webp' %}" alt="Логотип" style="height: 50px;"></a>
         </div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h3 class="offcanvas-title" id="offcanvasNavbarLabel">Меню</h3>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -186,7 +191,10 @@
                         <input type="text" class="form-control" placeholder="Поиск" id="search-input" aria-label="Поиск" autocomplete="off">
                         <div id="suggestions"></div>
                     </div>
-                    <button class="btn btn-primary w-100 mt-2">Записаться на услугу</button> <!-- Кнопка во всю ширину -->
+                    <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                        <p style="font-size: 24px; margin: 0;">📞 {{ contact.phone_numbers }}</p>
+                    </div>
+                    <p style="margin-top: 10;">☝️ Звоните по любым вопросам</p>
                 </div>
 
                 <hr>
@@ -238,9 +246,8 @@
         
         <!-- Центр: адрес, номера телефонов и социальные иконки -->
         <div class="center-container">
-            <div>{{contact.address}}</div>
             <div class="contact-info" id="phoneDropdown">
-                📞 +7 (123) 456-78-90
+                <div>{{contact.address}}</div>
                 <div class="contact-card" id="contactCard">
                     <strong>Контактная информация</strong>
                     <br>
@@ -277,8 +284,8 @@
                 {% endif %}
             </div>
         </div>
-        <div>
-            <button class="btn btn-primary">Записаться на услугу</button>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <p style="font-size: 24px; margin: 0;">📞 {{ contact.phone_numbers }}</p>
         </div>
     </div>
 </div>
