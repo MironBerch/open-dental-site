@@ -94,6 +94,7 @@
                 <img 
                     src="{% static 'images/caries.png' %}"
                     style="height: 64px; width: 64px; object-fit: cover;"
+                    alt="не удалось загрузить"
                 >
             </div>
             <div class="d-flex justify-content-center"><p class="mt-2">Лучшие стоматологи</p></div>
@@ -103,6 +104,7 @@
                 <img 
                     src="{% static 'images/equep.png' %}"
                     style="height: 64px; width: 64px; object-fit: cover;"
+                    alt="не удалось загрузить"
                 >
             </div>
             <div class="d-flex justify-content-center"><p class="mt-2">Передовое оборудование</p></div>
@@ -112,6 +114,7 @@
                 <img 
                     src="{% static 'images/doctors.png' %}"
                     style="height: 64px; width: 64px; object-fit: cover;"
+                    alt="не удалось загрузить"
                 >
             </div>
             <div class="d-flex justify-content-center"><p class="mt-2">Комфорт и забота</p></div>
@@ -137,7 +140,7 @@
                 <div class="card">
                     <a href="{% url 'staff' %}#{{ member.slug }}">
                         <div class="staff-image-container">
-                            <img src="{{ member.image.url }}" class="card-img" alt="...">
+                            <img src="{{ member.image.url }}" class="card-img" alt="не удалось загрузить">
                         </div>
                         <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                             <p class="card-text text-white" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"><small>{{ member.roles }}</small></p>
@@ -172,7 +175,7 @@
                         <a href="{% url 'work' work.slug %}">
                             <div class="card text-bg-dark">
                                 <div class="work-image-container">
-                                    <img src="{{ work.image.url }}" class="card-img" alt="...">
+                                    <img src="{{ work.image.url }}" class="card-img" alt="не удалось загрузить">
                                 </div>
                                 <div class="card-img-overlay d-flex flex-column justify-content-end" style="padding: 1rem;">
                                     <p class="card-text" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">{{ work.photo_count }} фото</p>
@@ -311,6 +314,7 @@
             frameborder="1"
             allowfullscreen="true"
             style="position:relative;"
+            title="Денталия на карте"
         >
         </iframe>
     </div>
