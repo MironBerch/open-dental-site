@@ -52,6 +52,7 @@ services:
       - ./conf/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
       - static_volume:/app/src/static
       - media_volume:/app/src/media
+      - ./logs/nginx:/var/log/nginx
     ports:
       - "80:80"
     depends_on:
