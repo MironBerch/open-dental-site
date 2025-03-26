@@ -139,22 +139,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# SMTP
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL')
-EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER')
-EMAIL_HOST = environ.get('EMAIL_HOST')
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
-
-# INTERNAL IPS configuration
-
-hostname, _, ips = gethostbyname_ex(gethostname())
-INTERNAL_IPS = [ip[: ip.rfind('.')] + '.1' for ip in ips] + ['127.0.0.1', '10.0.2.2']
-
-
 # Ckeditor configuration
 CustomColorPalette = [
     {
