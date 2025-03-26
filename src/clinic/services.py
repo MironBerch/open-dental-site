@@ -1,5 +1,4 @@
 from django.db.models import Case, QuerySet, When
-from django.shortcuts import get_object_or_404
 
 from clinic.models import About, Contact, License, Media, Policy, PositionChoices, Review, Staff
 
@@ -21,10 +20,6 @@ def get_clinic_contacts() -> QuerySet[License]:
 
 def get_clinic_contact() -> QuerySet[Contact]:
     return Contact.objects.first()
-
-
-def get_clinic_license_by_slug(slug: str) -> QuerySet[License]:
-    return get_object_or_404(License, slug=slug, published=True)
 
 
 def get_clinic_media() -> QuerySet[Media]:

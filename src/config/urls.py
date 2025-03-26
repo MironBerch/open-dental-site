@@ -9,7 +9,6 @@ from clinic.views import (
     AboutView,
     ContactsView,
     LicensesView,
-    LicenseView,
     PolicyView,
     PricesView,
     ReviewsView,
@@ -81,11 +80,6 @@ urlpatterns = [
         route='company/licenses/',
         view=LicensesView.as_view(),
         name='licenses',
-    ),
-    path(
-        route='company/licenses/<slug>/',
-        view=LicenseView.as_view(),
-        name='license',
     ),
     path(
         route='company/contacts/',
