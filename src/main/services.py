@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.urls import reverse
 
-from clinic.models import License, Staff
+from clinic.models import Staff
 from services.models import Service, ServiceGroup
 from works.models import Work
 
@@ -12,7 +12,7 @@ def get_search_results(query: str):
     sites = {
         'контакты': reverse('contacts'),
         'отзывы клиентов': reverse('reviews'),
-        'лицензии и сертификаты': reverse('licenses'),
+        'лицензии': reverse('licenses'),
         'услуги': reverse('services_groups'),
         'цены': reverse('prices'),
         'персонал специалисты сотрудники': reverse('staff'),
@@ -66,15 +66,6 @@ def get_search_results(query: str):
                        work['information'].lower().count(query.lower()))
         results.append({'type': 'work', 'match_count': match_count, 'data': work})
 
-    # Licenses results
-    license_results = License.objects.filter(published=True).filter(
-        name__iregex=query
-    ).values('id', 'name', 'slug')
-
-    for license in license_results:
-        match_count = license['name'].lower().count(query.lower())
-        results.append({'type': 'license', 'match_count': match_count, 'data': license})
-
     # Check for Pages
     for page, url in sites.items():
         if page in query.lower():
@@ -90,8 +81,6 @@ def get_search_results(query: str):
                 result['data']['url'] = reverse('service', args=[result['data']['slug']])
             if result['type'] == 'work':
                 result['data']['url'] = reverse('work', args=[result['data']['slug']])
-            if result['type'] == 'license':
-                result['data']['url'] = reverse('license', args=[result['data']['slug']])
         except Exception:
             pass
 
