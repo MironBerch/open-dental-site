@@ -13,7 +13,7 @@ class BaseContextMiddleware(MiddlewareMixin):
                 {
                     'clinic_media': get_clinic_media(),
                     'contact': get_clinic_contact(),
-                    'yandex_metrika': mark_safe(environ.get('YANDEX_METRIKA', None)),
+                    'yandex_metrika': mark_safe(environ.get('YANDEX_METRIKA', '')),
                 }
             )
         return response
