@@ -1,5 +1,4 @@
-from django.db.models import Count
-from django.db.models import QuerySet
+from django.db.models import Count, QuerySet
 from django.shortcuts import get_object_or_404
 
 from works.models import Photo, Work
