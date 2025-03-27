@@ -3,6 +3,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 
 from clinic.models import Price
+from main.fields import WebPImageField
 
 
 def get_license_image_upload_path(instance: 'Service', filename: str) -> str:
@@ -44,7 +45,7 @@ class Service(models.Model):
         null=True,
     )
 
-    image = models.ImageField(
+    image = WebPImageField(
         verbose_name='фото документа',
         blank=True,
         null=True,

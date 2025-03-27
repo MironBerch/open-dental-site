@@ -2,13 +2,15 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 from django.db import models
 
+from main.fields import WebPImageField
+
 
 def get_staff_image_upload_path(instance: 'Work', filename: str) -> str:
     return f'works/{instance.id}/{filename}'
 
 
 class Work(models.Model):
-    image = models.ImageField(
+    image = WebPImageField(
         verbose_name='Превью',
         upload_to='works/previews/',
         blank=True,
@@ -41,7 +43,7 @@ class Work(models.Model):
 
 class Photo(models.Model):
     work = models.ForeignKey(Work, related_name='photos', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=get_staff_image_upload_path)
+    image = WebPImageField(upload_to=get_staff_image_upload_path)
 
     class Meta:
         verbose_name = 'фото'

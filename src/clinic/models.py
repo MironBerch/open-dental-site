@@ -4,6 +4,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
+from main.fields import WebPImageField
+
 
 def get_license_image_upload_path(instance: 'License', filename: str) -> str:
     return f'license/{instance.name}/image/{filename}'
@@ -28,7 +30,7 @@ class License(models.Model):
     name = models.CharField(verbose_name='название лицензии', max_length=255)
     slug = models.SlugField(max_length=255)
 
-    image = models.ImageField(
+    image = WebPImageField(
         verbose_name='фото документа',
         blank=True,
         null=True,
@@ -155,7 +157,7 @@ class Review(models.Model):
         ]
     )
 
-    image = models.ImageField(
+    image = WebPImageField(
         verbose_name='фото',
         blank=True,
         null=True,
@@ -179,7 +181,7 @@ class Review(models.Model):
 
 
 class Staff(models.Model):
-    image = models.ImageField(
+    image = WebPImageField(
         verbose_name='фото работника',
         blank=True,
         null=True,
