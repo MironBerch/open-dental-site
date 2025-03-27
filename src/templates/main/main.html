@@ -7,6 +7,10 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
     <style>
         .card {
             transition: background-color 0.3s;
@@ -251,9 +255,6 @@
 
     {% if licenses %}
         <h2 class="h2" style="margin-top: 10px;">Лицензии и сертификаты</h2>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
         <swiper-container 
             slides-per-view="1"
             space-between="10"
@@ -318,5 +319,4 @@
         >
         </iframe>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 {% endblock %}
