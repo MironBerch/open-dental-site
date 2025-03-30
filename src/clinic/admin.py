@@ -34,9 +34,20 @@ class ReviewAdmin(admin.ModelAdmin):
 
 @admin.register(License)
 class ServiceGroupAdmin(admin.ModelAdmin):
-    prepopulated_fields = {
-        'slug': ('name', ),
-    }
+    list_display = (
+        'name',
+        'published',
+        'view_image',
+    )
+    list_filter = ('published', )
+
+    def view_image(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" style="width: 160px; height: 230px;" />',
+                obj.image.url,
+            )
+        return "Нет изображения"
 
 
 @admin.register(Contact)

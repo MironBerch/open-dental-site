@@ -28,7 +28,6 @@ class PositionChoices(models.TextChoices):
 
 class License(models.Model):
     name = models.CharField(verbose_name='название лицензии', max_length=255)
-    slug = models.SlugField(max_length=255)
 
     image = WebPImageField(
         verbose_name='фото документа',
