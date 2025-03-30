@@ -27,8 +27,10 @@ def convert_to_webp(image_field, quality=90, resize=None):
     buffer = BytesIO()
     # Сохраняем в WebP с указанным качеством
     img.save(buffer, format='WEBP', quality=quality)
-    # Формируем новое имя файла
-    filename = os.path.splitext(image_field.name)[0] + '.webp'
+    # Получаем только имя файла без пути
+    original_name = os.path.basename(image_field.name)
+    # Меняем расширение на .webp
+    filename = os.path.splitext(original_name)[0] + '.webp'
     # Создаем Django-совместимый файловый объект
     webp_file = ContentFile(buffer.getvalue())
     return filename, webp_file
@@ -38,10 +40,16 @@ class WebPImageField(models.ImageField):
     """
     Поле для автоматической конвертации изображений в WebP
     """
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('max_length', 255)
+        super().__init__(*args, **kwargs)
+
     def pre_save(self, model_instance, add):
         file = super().pre_save(model_instance, add)
         if file and not file.name.lower().endswith('.webp'):
             # Конвертируем только если это не WebP
             filename, webp_file = convert_to_webp(file)
+            # Сохраняем в той же директории, что указана в upload_to
             file.save(filename, webp_file, save=False)
         return file
