@@ -10,6 +10,7 @@ def get_search_results(query: str):
     query = query.upper()
 
     sites = {
+        'политика конфиденциальности': reverse('policy'),
         'контакты': reverse('contacts'),
         'отзывы клиентов': reverse('reviews'),
         'лицензии': reverse('licenses'),
@@ -68,7 +69,7 @@ def get_search_results(query: str):
 
     # Check for Pages
     for page, url in sites.items():
-        if page in query.lower():
+        if query.lower() in page:
             results.append({'type': 'page', 'match_count': 1, 'data': {'title': page, 'url': url}})
 
     for result in results:
