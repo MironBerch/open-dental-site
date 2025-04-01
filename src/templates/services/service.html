@@ -15,14 +15,16 @@
             </li>
         </ol>
     </nav>
+    {% if service.service.image %}
     <img
         src="{{ service.image.url }}"
         style="height: 375px; width: 500px; object-fit: cover; margin-right: 15px;" 
         class="img-thumbnail mx-auto d-block"
         alt="..."
     >
+    {% endif %}
     <p>{{ service.information|safe }}</p>
-    <h2>Цены:</h2>
+    {% if prices.items %}<h2>Цены:</h2>{% endif %}
     <div class="accordion" id="accordionExample">
         {% for group, prices in prices.items %}
             <div class="accordion-item">
