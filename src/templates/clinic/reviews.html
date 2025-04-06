@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% load django_bootstrap5 %}
 
 {% block title %}Отзывы{% endblock %}
+
+{% block links %}
+    <link href="{% static 'css/reviews.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,55 +47,6 @@
             </button>
         </div>
     </div>
-
-    <style>
-        @media (max-width: 1000px) {
-            .card-body {
-                flex-direction: column; /* Переключаемся на столбик для узких экранов */
-                align-items: flex-start; /* Выравниваем элементы по левому краю */
-            }
-            .card-body .btn {
-                margin-top: 10px; /* Отступ сверху для кнопки */
-            }
-        }
-
-        @media (min-width: 1001px) {
-            .card-body {
-                flex-direction: row; /* Горизонтальное расположение для широких экранов */
-                align-items: center; /* Выравниваем элементы по центру вертикально */
-            }
-            .card-body .btn {
-                max-width: 300px;
-            }
-        }
-
-        .star {
-            font-size: 20px;
-            color: gray;
-        }
-
-        .star.gold {
-            color: gold;
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        .review-details {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .star-rating {
-            display: flex;
-            align-items: center;
-        }
-    </style>
 
     {% for review in reviews %}
         <div class="card" style="margin-bottom: 15px;">

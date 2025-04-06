@@ -1,0 +1,24 @@
+.active {
+    transform: rotate(180deg); /* Поворот стрелочки при активном состоянии */
+}
+
+.service-list {
+    padding-left: 20px; /* Отступ для списка услуг */
+    overflow: hidden; /* Убираем переполнение */
+    margin-bottom: 10px; /* Отступ снизу между группами */
+    list-style-type: none; /* Убираем маркеры */
+    padding: 0; /* Убираем отступы */
+}
+
+.list-group {
+    padding: 0; /* Убираем отступы */
+}
+
+.group-name {
+    display: inline-block; /* Позволяет элементу принимать ширину, основанную на его содержимом */
+    margin-right: 10px; /* Устанавливаем отступ справа */
+}
+
+.group-item {
+    margin-left: 20px; /* Отступ для групп */
+}

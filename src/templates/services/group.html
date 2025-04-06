@@ -1,26 +1,16 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% load custom_tags %}
 
 {% block title %}{{ group.name }}{% endblock %}
 
+{% block links %}
+    <link href="{% static 'css/services_group.css' %}" rel="stylesheet">
+{% endblock %}
+
+
 {% block content %}
-    <style>
-        .accordion {
-            margin-bottom: 20px; /* Отступ между аккордеоном и другим содержимым */
-        }
-
-        @media (max-width: 1000px) {
-            .col-md-3, .col-md-9 {
-                width: 100%; /* Ширина аккордеона и контента на мобильных устройствах */
-                margin-bottom: 15px; /* Отступ снизу для аккуратно стилизованного вида */
-            }
-
-            .accordion-button {
-                text-align: left; /* Выравниваем текст влево */
-            }
-        }
-    </style>
     <div class="row">
         <div class="col-md-3 col-12"> <!-- Добавлен класс col-12 -->
             <div style="margin-bottom: 10px;" class="accordion" id="accordionGroups">
@@ -50,19 +40,6 @@
                     </div>
                 {% endfor %}
             </div>
-            
-            <script>
-                document.querySelectorAll('.group-name').forEach(groupName => {
-                    groupName.addEventListener('click', function(event) {
-                        const url = this.dataset.href; // Получаем URL из data-атрибута
-                        window.location.href = url; // Переходим по ссылке
-                    });
-                    // Предотвращаем дальнейшее распространение события клика на кнопку
-                    groupName.addEventListener('click', function(event) {
-                        event.stopPropagation();
-                    });
-                });
-            </script>
         </div>
         <div class="col-md-9 col-12"> <!-- Добавлен класс col-12 -->
             <h1 class="h1">{{ group.name }}</h1>
@@ -102,4 +79,8 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/services_group.js' %}"></script>
 {% endblock %}

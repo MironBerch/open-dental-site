@@ -1,0 +1,70 @@
+.card {
+    transition: background-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.card-img-overlay {
+    transition: transform 0.3s;
+}
+
+.card:hover .card-img-overlay {
+    transform: translateY(-5px);
+}
+
+/* Стиль для карточек работ с соотношением сторон */
+.work-card {
+    aspect-ratio: 1.5; /* Соотношение ширины к высоте 1.5 */
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 66.67%; /* Соотношение сторон 3:2 можно изменить по желанию */
+    overflow: hidden;
+}
+
+.image-container img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.card-img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover .image-container::after {
+    opacity: 1;
+}
+
+.card-body {
+    position: relative; /* Чтобы текст располагался над изображением */
+    z-index: 1; /* Обеспечить, что текст остается сверху */
+}
+
+.card-title, .card-text {
+    color: white;
+}

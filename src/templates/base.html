@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
         <link href="{% static 'css/main.css' %}" rel="stylesheet">
+        <link href="{% static 'css/header.css' %}" rel="stylesheet">
         {% block links %}{% endblock %}
     </head>
     <body>
@@ -22,6 +23,7 @@
         </div>
         {% include 'components/theme.html' %}
         {% include 'components/footer.html' %}
+        <script src="{% static 'js/header.js' %}"></script>
         <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'js/color-modes.js' %}"></script>
         <script src="https://lidrekon.ru/slep/js/uhpv-hover-full.min.js"></script>
