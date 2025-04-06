@@ -1,7 +1,7 @@
 $(document).ready(function() {
     function fetchSuggestions(query, $suggestionsContainer) {
         $.ajax({
-            url: "{% url 'search' %}",  // Убедитесь, что этот URL корректен
+            url: $("#search-url").data("url"),  // Убедитесь, что этот URL корректен
             data: { 'query': query },
             dataType: 'json',
             success: function(data) {
