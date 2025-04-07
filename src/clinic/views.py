@@ -129,7 +129,7 @@ class PricesView(TemplateResponseMixin, View):
 
 
 class ServicesGroupsView(TemplateResponseMixin, View):
-    template_name = 'services_groups.html'
+    template_name = 'clinic/services_groups.html'
 
     def get(self, request: HttpRequest):
         return self.render_to_response(
@@ -141,7 +141,7 @@ class ServicesGroupsView(TemplateResponseMixin, View):
 
 
 class ServicesGroupView(TemplateResponseMixin, View):
-    template_name = 'services_group.html'
+    template_name = 'clinic/services_group.html'
 
     def get(self, request: HttpRequest, slug: str):
         group = get_group_by_slug(slug)
@@ -157,7 +157,7 @@ class ServicesGroupView(TemplateResponseMixin, View):
 
 
 class ServiceView(TemplateResponseMixin, View):
-    template_name = 'services_service.html'
+    template_name = 'clinic/service.html'
 
     def get(self, request: HttpRequest, slug: str):
         service, prices = get_service_by_slug(slug)
@@ -171,7 +171,7 @@ class ServiceView(TemplateResponseMixin, View):
 
 
 class WorksView(TemplateResponseMixin, View):
-    template_name = 'works_list.html'
+    template_name = 'clinic/works.html'
 
     def get(self, request: HttpRequest):
         return self.render_to_response(
@@ -183,7 +183,7 @@ class WorksView(TemplateResponseMixin, View):
 
 
 class WorkView(TemplateResponseMixin, View):
-    template_name = 'works_detail.html'
+    template_name = 'clinic/work.html'
 
     def get(self, request: HttpRequest, slug: str):
         return self.render_to_response(
