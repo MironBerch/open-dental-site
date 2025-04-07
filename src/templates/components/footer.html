@@ -1,12 +1,18 @@
 <div class="container">
     <footer class="py-5">
         <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p>© 2024</p>
-            <ul class="list-unstyled d-flex">
+            <p class="text-center text-sm-start mb-3 mb-sm-0">© 2024</p>
+            <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-2 gap-sm-3">
                 {% csrf_token %}
-                <li class="ms-3"><a class="link-body-emphasis" id="specialButton" id='glazd'>Версия для слабовидящих</a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="{% url 'policy' %}">Политика конфиденциальности</a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="{% url 'site_map' %}">Карта сайта</a></li>
+                <li>
+                    <a class="link-body-emphasis text-nowrap" id="specialButton">Версия для слабовидящих</a>
+                </li>
+                <li>
+                    <a class="link-body-emphasis" href="{% url 'policy' %}">Политика конфиденциальности</a>
+                </li>
+                <li>
+                    <a class="link-body-emphasis" href="{% url 'site_map' %}">Карта сайта</a>
+                </li>
             </ul>
         </div>
     </footer>
