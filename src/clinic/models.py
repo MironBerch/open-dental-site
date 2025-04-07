@@ -7,16 +7,28 @@ from django.db import models
 from main.fields import WebPImageField
 
 
+def get_service_image_upload_path(instance: 'Service', filename: str) -> str:
+    return f'services/{instance.name}/{filename}'
+
+
+def get_work_image_upload_path(instance: 'Work', filename: str) -> str:
+    return f'work_previews/{instance.name}/{filename}'
+
+
+def get_photo_image_upload_path(instance: 'Photo', filename: str) -> str:
+    return f'works/{instance.work.name}/{filename}'
+
+
+def get_staff_image_upload_path(instance: 'Staff', filename: str) -> str:
+    return f'staff/{instance.fio}/{filename}'
+
+
 def get_license_image_upload_path(instance: 'License', filename: str) -> str:
     return f'license/{instance.name}/image/{filename}'
 
 
 def get_license_pdf_upload_path(instance: 'License', filename: str) -> str:
     return f'license/{instance.name}/pdf/{filename}'
-
-
-def get_staff_image_upload_path(instance: 'Staff', filename: str) -> str:
-    return f'staff/{instance.fio}/{filename}'
 
 
 class PositionChoices(models.TextChoices):
@@ -132,10 +144,6 @@ class Policy(models.Model):
         verbose_name_plural = 'Соглашения на обработку данных'
 
 
-def get_review_image_upload_path(instance: 'Review', filename: str) -> str:
-    return f'review/{instance.email}/{filename}'
-
-
 class Review(models.Model):
     name = models.CharField(verbose_name='имя', max_length=255)
     email = models.EmailField(
@@ -154,13 +162,6 @@ class Review(models.Model):
             MinValueValidator(1),
             MaxValueValidator(5),
         ]
-    )
-
-    image = WebPImageField(
-        verbose_name='фото',
-        blank=True,
-        null=True,
-        upload_to=get_review_image_upload_path,
     )
 
     published = models.BooleanField(
@@ -265,10 +266,6 @@ class Price(models.Model):
         return f'{self.name} [{self.group.name}] - {self.cost})'
 
 
-def get_license_image_upload_path(instance: 'Service', filename: str) -> str:
-    return f'services/{instance.name}/{filename}'
-
-
 class ServiceGroup(models.Model):
     name = models.CharField(verbose_name='название', unique=True, max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
@@ -308,7 +305,7 @@ class Service(models.Model):
         verbose_name='фото документа',
         blank=True,
         null=True,
-        upload_to=get_license_image_upload_path,
+        upload_to=get_service_image_upload_path,
     )
 
     prices = models.ManyToManyField(
@@ -343,14 +340,10 @@ class Service(models.Model):
         return self.prices.aggregate(models.Min('cost'))['cost__min']
 
 
-def get_staff_image_upload_path(instance: 'Work', filename: str) -> str:
-    return f'works/{instance.id}/{filename}'
-
-
 class Work(models.Model):
     image = WebPImageField(
         verbose_name='Превью',
-        upload_to='works/previews/',
+        upload_to=get_work_image_upload_path,
         blank=True,
         null=True,
     )
@@ -381,7 +374,7 @@ class Work(models.Model):
 
 class Photo(models.Model):
     work = models.ForeignKey(Work, related_name='photos', on_delete=models.CASCADE)
-    image = WebPImageField(upload_to=get_staff_image_upload_path)
+    image = WebPImageField(upload_to=get_photo_image_upload_path)
 
     class Meta:
         verbose_name = 'фото'

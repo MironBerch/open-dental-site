@@ -22,7 +22,7 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ('name', 'email', 'phone', 'message', 'rating', 'image')
+        fields = ('name', 'email', 'phone', 'message', 'rating',)
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': ''}),
             'email': forms.EmailInput(attrs={'placeholder': ''}),
@@ -31,7 +31,6 @@ class ReviewForm(forms.ModelForm):
                 choices=[(i, i) for i in range(1, 6)],
                 attrs={'class': 'rating-select'},
             ),
-            'image': forms.ClearableFileInput(attrs={'placeholder': ''}),
         }
         labels = {
             'name': 'Ваше имя*',
@@ -39,5 +38,4 @@ class ReviewForm(forms.ModelForm):
             'phone': 'Номер телефона',
             'message': 'Сообщение*',
             'rating': 'Оценка*',
-            'image': 'Фото',
         }
