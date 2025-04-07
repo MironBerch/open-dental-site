@@ -19,7 +19,21 @@ from clinic.views import (
     WorksView,
     WorkView,
 )
-from main.views import MainView, SearchAPIView, SearchView, SitemapView
+from main.views import (
+    BadRequestView,
+    MainView,
+    PageNotFoundView,
+    PermissionDeniedView,
+    SearchAPIView,
+    SearchView,
+    ServerErrorView,
+    SitemapView,
+)
+
+handler400 = BadRequestView.as_view()
+handler403 = PermissionDeniedView.as_view()
+handler404 = PageNotFoundView.as_view()
+handler500 = ServerErrorView.as_view()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
