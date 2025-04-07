@@ -4,12 +4,16 @@ from django.urls import reverse
 from django.views.generic import TemplateView, View
 from django.views.generic.base import TemplateResponseMixin
 
-from clinic.services import get_clinic_licenses, get_reviews_for_main_page, get_staff
+from clinic.models import Service, ServiceGroup
+from clinic.services import (
+    get_clinic_licenses,
+    get_reviews_for_main_page,
+    get_service_groups,
+    get_staff,
+    get_works,
+)
 from main.forms import SearchForm
 from main.services import get_search_results
-from services.models import Service, ServiceGroup
-from services.services import get_service_groups
-from works.services import get_works
 
 
 class MainView(TemplateResponseMixin, View):

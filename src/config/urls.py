@@ -12,11 +12,14 @@ from clinic.views import (
     PolicyView,
     PricesView,
     ReviewsView,
+    ServicesGroupsView,
+    ServicesGroupView,
+    ServiceView,
     StaffView,
+    WorksView,
+    WorkView,
 )
 from main.views import MainView, SearchAPIView, SearchView, SitemapView
-from services.views import ServicesGroupsView, ServicesGroupView, ServiceView
-from works.views import WorksView, WorkView
 
 urlpatterns = [
     path('admin/', admin.site.urls),

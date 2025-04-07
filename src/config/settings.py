@@ -33,8 +33,6 @@ INSTALLED_APPS = [
     # local
     'main.apps.MainConfig',
     'clinic.apps.ClinicConfig',
-    'services.apps.ServicesConfig',
-    'works.apps.WorksConfig',
 ]
 
 MIDDLEWARE = [

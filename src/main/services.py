@@ -1,9 +1,7 @@
 from django.db.models import Q
 from django.urls import reverse
 
-from clinic.models import Staff
-from services.models import Service, ServiceGroup
-from works.models import Work
+from clinic.models import Service, ServiceGroup, Staff, Work
 
 
 def get_search_results(query: str):

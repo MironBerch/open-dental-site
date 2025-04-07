@@ -12,7 +12,15 @@ from clinic.services import (
     get_clinic_contacts,
     get_clinic_licenses,
     get_clinic_policy,
+    get_group_by_slug,
     get_published_reviews,
+    get_service_by_slug,
+    get_service_groups,
+    get_services_by_group,
+    get_services_by_groups,
+    get_work_by_slug,
+    get_work_images_by_work_slug,
+    get_works,
 )
 
 
@@ -116,5 +124,72 @@ class PricesView(TemplateResponseMixin, View):
             context={
                 'active_page': 'prices',
                 'price_groups': PriceGroup.objects.prefetch_related('price_set').all()
+            },
+        )
+
+
+class ServicesGroupsView(TemplateResponseMixin, View):
+    template_name = 'services_groups.html'
+
+    def get(self, request: HttpRequest):
+        return self.render_to_response(
+            context={
+                'active_page': 'services',
+                'services': get_service_groups(),
+            },
+        )
+
+
+class ServicesGroupView(TemplateResponseMixin, View):
+    template_name = 'services_group.html'
+
+    def get(self, request: HttpRequest, slug: str):
+        group = get_group_by_slug(slug)
+        services_by_group = get_services_by_groups()
+        return self.render_to_response(
+            context={
+                'active_page': 'services',
+                'group': group,
+                'services': get_services_by_group(group),
+                'service_groups': services_by_group,
+            },
+        )
+
+
+class ServiceView(TemplateResponseMixin, View):
+    template_name = 'services_service.html'
+
+    def get(self, request: HttpRequest, slug: str):
+        service, prices = get_service_by_slug(slug)
+        return self.render_to_response(
+            context={
+                'active_page': 'services',
+                'service': service,
+                'prices': prices,
+            },
+        )
+
+
+class WorksView(TemplateResponseMixin, View):
+    template_name = 'works_list.html'
+
+    def get(self, request: HttpRequest):
+        return self.render_to_response(
+            context={
+                'active_page': 'works',
+                'works': get_works(),
+            },
+        )
+
+
+class WorkView(TemplateResponseMixin, View):
+    template_name = 'works_detail.html'
+
+    def get(self, request: HttpRequest, slug: str):
+        return self.render_to_response(
+            context={
+                'active_page': 'works',
+                'work': get_work_by_slug(slug=slug),
+                'images': get_work_images_by_work_slug(slug=slug),
             },
         )
