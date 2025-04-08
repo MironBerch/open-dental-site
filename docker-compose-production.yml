@@ -2,7 +2,7 @@ services:
 
   dental:
     restart: always
-    build: .
+    image: ${DOCKERHUB_USERNAME}/dental:latest
     command: >
       sh -c "cd /app/src/
       && mkdir -p media
