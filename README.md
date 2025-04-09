@@ -28,4 +28,4 @@ for develop - ```docker compose up --build```
 
 for develop production - ```docker compose -f docker-compose-prod.yml up --build```
 
-for production - ```docker compose up docker-compose-production.yml up --build```
+for production - ```docker compose up -f docker-compose-production.yml up --build```
