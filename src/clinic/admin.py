@@ -84,6 +84,9 @@ class StaffAdmin(admin.ModelAdmin):
         'roles',
     )
     list_filter = ('stage', 'published',)
+    prepopulated_fields = {
+        'slug': ('fio', ),
+    }
 
     def view_image(self, obj):
         if obj.image:
