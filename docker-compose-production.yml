@@ -39,6 +39,8 @@ services:
       - "POSTGRES_DB=${POSTGRES_DB}"
       - "POSTGRES_USER=${POSTGRES_USER}"
       - "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}"
+    volumes:
+      - db_volume:/var/lib/postgresql/data/
 
   redis:
     image: redis:7-alpine
@@ -62,3 +64,4 @@ services:
 volumes:
   static_volume:
   media_volume:
+  db_volume:
