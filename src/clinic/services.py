@@ -58,15 +58,7 @@ def get_staff() -> QuerySet[Staff]:
 
 
 def get_all_staff() -> QuerySet[Staff]:
-    return Staff.objects.filter(published=True).annotate(
-        position_order=Case(
-            When(stage=PositionChoices.MANAGER, then=1),
-            When(stage=PositionChoices.ADMINISTRATOR, then=2),
-            When(stage=PositionChoices.MEDIC, then=3),
-            When(stage=PositionChoices.JUNIOR_MEDIC, then=4),
-            default=5,
-        )
-    ).order_by('position_order')
+    return Staff.objects.filter(published=True)
 
 
 def get_service_groups() -> QuerySet[ServiceGroup]:

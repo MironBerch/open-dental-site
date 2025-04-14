@@ -203,12 +203,6 @@ class Staff(models.Model):
         verbose_name='роли или специализации',
         blank=True,
     )
-    stage = models.CharField(
-        verbose_name='позиция',
-        blank=True,
-        max_length=50,
-        choices=PositionChoices.choices,
-    )
 
     published = models.BooleanField(
         verbose_name='является ли опубликованным',

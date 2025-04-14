@@ -78,12 +78,11 @@ class ContactAdmin(admin.ModelAdmin):
 class StaffAdmin(admin.ModelAdmin):
     list_display = (
         'fio',
-        'stage',
         'published',
         'view_image',
         'roles',
     )
-    list_filter = ('stage', 'published',)
+    list_filter = ('published', )
     prepopulated_fields = {
         'slug': ('fio', ),
     }
