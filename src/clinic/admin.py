@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django.contrib.auth.models import Group
 
 from clinic.models import (
     About,
@@ -17,6 +18,7 @@ from clinic.models import (
     Work,
 )
 
+admin.site.unregister(Group)
 admin.site.register(About)
 admin.site.register(Media)
 admin.site.register(Policy)
