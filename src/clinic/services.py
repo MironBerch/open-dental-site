@@ -5,7 +5,6 @@ from clinic.models import (
     About,
     Contact,
     License,
-    Media,
     Photo,
     Policy,
     Review,
@@ -33,10 +32,6 @@ def get_clinic_contacts() -> QuerySet[License]:
 
 def get_clinic_contact() -> QuerySet[Contact]:
     return Contact.objects.first()
-
-
-def get_clinic_media() -> QuerySet[Media]:
-    return Media.objects.first()
 
 
 def get_clinic_policy() -> QuerySet[Policy]:

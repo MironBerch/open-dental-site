@@ -6,7 +6,6 @@ from clinic.models import (
     About,
     Contact,
     License,
-    Media,
     Photo,
     Policy,
     Price,
@@ -20,7 +19,6 @@ from clinic.models import (
 
 admin.site.unregister(Group)
 admin.site.register(About)
-admin.site.register(Media)
 admin.site.register(Policy)
 admin.site.register(PriceGroup)
 
@@ -73,6 +71,9 @@ class ContactAdmin(admin.ModelAdmin):
         'opening_hours',
         'phone_numbers',
         'email',
+        'tg',
+        'whatsapp',
+        'vk',
     )
 
 

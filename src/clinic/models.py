@@ -1,5 +1,4 @@
 from django_ckeditor_5.fields import CKEditor5Field
-from phonenumber_field.modelfields import PhoneNumberField
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -40,7 +39,6 @@ class PositionChoices(models.TextChoices):
 
 class License(models.Model):
     name = models.CharField(verbose_name='название лицензии', max_length=255)
-
     image = WebPImageField(
         verbose_name='фото документа',
         blank=True,
@@ -53,7 +51,6 @@ class License(models.Model):
         null=True,
         upload_to=get_license_pdf_upload_path,
     )
-
     published = models.BooleanField(
         verbose_name='является ли опубликованным',
         blank=True,
@@ -101,16 +98,6 @@ class Contact(models.Model):
         max_length=255,
         blank=True,
     )
-
-    class Meta:
-        verbose_name = 'Контакт'
-        verbose_name_plural = 'Контакты'
-
-    def __str__(self):
-        return self.address
-
-
-class Media(models.Model):
     tg = models.URLField(
         verbose_name='телеграм',
         max_length=255,
@@ -128,8 +115,11 @@ class Media(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Ссылки на социальные сети и контакты'
-        verbose_name_plural = 'Ссылки на социальные сети и контакты'
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
+    def __str__(self):
+        return self.address
 
 
 class Policy(models.Model):
@@ -146,16 +136,7 @@ class Policy(models.Model):
 
 class Review(models.Model):
     name = models.CharField(verbose_name='имя', max_length=255)
-    email = models.EmailField(
-        verbose_name='почта',
-        null=True,
-        blank=True,
-        max_length=255,
-    )
-    phone = PhoneNumberField(verbose_name='номер телефона', blank=True, null=True)
-
     message = models.TextField(verbose_name='сообщение', blank=True, null=True)
-
     rating = models.PositiveIntegerField(
         verbose_name='оценка',
         validators=[
@@ -163,13 +144,11 @@ class Review(models.Model):
             MaxValueValidator(5),
         ]
     )
-
     published = models.BooleanField(
         verbose_name='является ли опубликованным',
         blank=True,
         default=True,
     )
-
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
 
     class Meta:
@@ -203,7 +182,6 @@ class Staff(models.Model):
         verbose_name='роли или специализации',
         blank=True,
     )
-
     published = models.BooleanField(
         verbose_name='является ли опубликованным',
         blank=True,
@@ -237,7 +215,6 @@ class Price(models.Model):
     )
     cost = models.PositiveIntegerField(verbose_name='цена')
     constant = models.BooleanField(default=False, verbose_name='постоянная')
-
     group = models.ForeignKey(
         PriceGroup,
         on_delete=models.SET_NULL,
@@ -245,7 +222,6 @@ class Price(models.Model):
         blank=True,
         verbose_name='группа цен',
     )
-
     published = models.BooleanField(
         verbose_name='является ли опубликованным',
         blank=True,
@@ -294,20 +270,17 @@ class Service(models.Model):
         blank=True,
         null=True,
     )
-
     image = WebPImageField(
         verbose_name='фото документа',
         blank=True,
         null=True,
         upload_to=get_service_image_upload_path,
     )
-
     prices = models.ManyToManyField(
         Price,
         verbose_name='цены',
         blank=True,
     )
-
     group = models.ForeignKey(
         ServiceGroup,
         on_delete=models.SET_NULL,
@@ -315,7 +288,6 @@ class Service(models.Model):
         blank=True,
         verbose_name='группа',
     )
-
     published = models.BooleanField(
         verbose_name='является ли опубликованным',
         blank=True,
