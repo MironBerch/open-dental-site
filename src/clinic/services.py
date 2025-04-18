@@ -1,4 +1,4 @@
-from django.db.models import Case, Count, QuerySet, When
+from django.db.models import Count, QuerySet
 from django.shortcuts import get_object_or_404
 
 from clinic.models import (
@@ -8,7 +8,6 @@ from clinic.models import (
     Media,
     Photo,
     Policy,
-    PositionChoices,
     Review,
     Service,
     ServiceGroup,
