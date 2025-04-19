@@ -1,5 +1,8 @@
-from django.contrib import admin
+from django import forms
+from django.contrib import admin, messages
 from django.contrib.auth.models import Group
+from django.shortcuts import redirect, render
+from django.urls import path
 from django.utils.html import format_html
 
 from clinic.models import (
@@ -16,6 +19,7 @@ from clinic.models import (
     Staff,
     Work,
 )
+from clinic.services import parse_yandex_reviews
 
 admin.site.unregister(Group)
 admin.site.register(About)
@@ -35,15 +39,47 @@ class PriceAdmin(admin.ModelAdmin):
     list_filter = ('group__name', 'constant')
 
 
+class HTMLImportForm(forms.Form):
+    html_content = forms.CharField(
+        widget=forms.Textarea(attrs={'rows': 20, 'cols': 100}),
+        label='Вставьте HTML-код страницы с отзывами'
+    )
+
+
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-        'rating',
-        'created_at',
-        'published',
-    )
-    list_filter = ('rating', 'published', )
+    list_display = ('name', 'rating', 'created_at', 'published')
+    list_filter = ('rating', 'published')
+    change_list_template = 'admin/reviews_change_list.html'
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('parse-reviews/', self.admin_site.admin_view(self.parse_reviews_view)),
+        ]
+        return custom_urls + urls
+
+    def parse_reviews_view(self, request):
+        if request.method == 'POST':
+            form = HTMLImportForm(request.POST)
+            if form.is_valid():
+                html_content = form.cleaned_data['html_content']
+                try:
+                    count = parse_yandex_reviews(html_content)
+                    messages.success(request, f'Успешно обработано {count} отзывов')
+                    return redirect('admin:clinic_review_changelist')
+                except Exception as e:
+                    messages.error(request, f'Ошибка: {str(e)}')
+        else:
+            form = HTMLImportForm()
+
+        context = {
+            **self.admin_site.each_context(request),
+            'form': form,
+            'opts': self.model._meta,
+            'title': 'Импорт отзывов из HTML'
+        }
+        return render(request, 'admin/html_import.html', context)
 
 
 @admin.register(License)

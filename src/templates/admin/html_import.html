@@ -1,0 +1,17 @@
+<!-- templates/admin/html_import.html -->
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<div id="content-main">
+    <form method="post" id="html-import-form">
+        {% csrf_token %}
+        <div>
+            {{ form.html_content }}
+        </div>
+        <div class="submit-row">
+            <input type="submit" value="Загрузить отзывы" class="default">
+        </div>
+    </form>
+</div>
+{% endblock %}
