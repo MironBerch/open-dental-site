@@ -25,7 +25,6 @@ INSTALLED_APPS = [
 
     # django 3rd party
     'django_ckeditor_5',
-    'phonenumber_field',
     'django_bootstrap5',
     'debug_toolbar',
     'cachalot',

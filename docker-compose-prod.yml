@@ -6,10 +6,10 @@ services:
     command: >
       sh -c "cd /app/src/
       && mkdir -p media
-      && poetry run python manage.py collectstatic --noinput
-      && poetry run python manage.py migrate --noinput
-      && poetry run python manage.py createsuperuser --noinput || true
-      && poetry run gunicorn --reload -c /app/conf/gunicorn/config.py config.wsgi:application"
+      && uv run manage.py collectstatic --noinput
+      && uv run manage.py migrate --noinput
+      && uv run manage.py createsuperuser --noinput || true
+      && uv run gunicorn --reload -c /app/conf/gunicorn/config.py config.wsgi:application"
     expose:
       - "8000"
     volumes:
