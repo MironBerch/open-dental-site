@@ -1,0 +1,15 @@
+[
+    {
+        "model": "clinic.contact",
+        "pk": 1,
+        "fields": {
+            "address": "Владимирская ул., дом 6, Ломоносов",
+            "opening_hours": "ежедневно с 09.00 до 21.00",
+            "phone_numbers": "+7 (812) 422-52-53",
+            "email": "",
+            "tg": "",
+            "whatsapp": "https://wa.me/79117301729",
+            "vk": "https://vk.com/dentaliya_lomonosov"
+        }
+    }
+]
