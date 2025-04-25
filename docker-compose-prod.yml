@@ -1,6 +1,7 @@
 services:
 
   dental:
+    container_name: dental
     restart: always
     image: ${DOCKERHUB_USERNAME}/dental:latest
     command: >
@@ -31,6 +32,7 @@ services:
       - db
 
   db:
+    container_name: dental_db
     image: postgres:16-alpine
     restart: always
     ports:
@@ -43,12 +45,14 @@ services:
       - db_volume:/var/lib/postgresql/data/
 
   redis:
+    container_name: dental_redis
     image: redis:7-alpine
     restart: always 
     ports:
       - "6379:6379"
 
   nginx:
+    container_name: dental_nginx
     image: ${DOCKERHUB_USERNAME}/dental-nginx:latest
     volumes:
       - static_volume:/app/src/static
