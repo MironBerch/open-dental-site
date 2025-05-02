@@ -232,6 +232,11 @@ class Price(models.Model):
 class ServiceGroup(models.Model):
     name = models.CharField(verbose_name='название', unique=True, max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
+    short_description = models.TextField(
+        verbose_name='краткое описание',
+        blank=True,
+        null=True,
+    )
     description = models.TextField(
         verbose_name='описание',
         blank=True,
