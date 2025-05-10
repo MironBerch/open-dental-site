@@ -135,7 +135,7 @@ class Review(models.Model):
         validators=[
             MinValueValidator(1),
             MaxValueValidator(5),
-        ]
+        ],
     )
     published = models.BooleanField(
         verbose_name='является ли опубликованным',

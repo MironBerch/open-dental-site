@@ -6,7 +6,11 @@ from clinic.models import Review
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ('name', 'message', 'rating', )
+        fields = (
+            'name',
+            'message',
+            'rating',
+        )
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': ''}),
             'message': forms.Textarea(attrs={'rows': 4, 'placeholder': ''}),

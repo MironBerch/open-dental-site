@@ -13,8 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="servicegroup",
             name="short_description",
-            field=models.TextField(
-                blank=True, null=True, verbose_name="краткое описание"
-            ),
+            field=models.TextField(blank=True, null=True, verbose_name="краткое описание"),
         ),
     ]

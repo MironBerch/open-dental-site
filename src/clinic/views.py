@@ -111,7 +111,7 @@ class StaffView(TemplateResponseMixin, View):
         return self.render_to_response(
             context={
                 'active_page': 'staff',
-                'staff':  get_all_staff(),
+                'staff': get_all_staff(),
             },
         )
 
@@ -123,7 +123,7 @@ class PricesView(TemplateResponseMixin, View):
         return self.render_to_response(
             context={
                 'active_page': 'prices',
-                'price_groups': PriceGroup.objects.prefetch_related('price_set').all()
+                'price_groups': PriceGroup.objects.prefetch_related('price_set').all(),
             },
         )
 

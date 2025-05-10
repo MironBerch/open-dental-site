@@ -138,60 +138,72 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Ckeditor configuration
 CustomColorPalette = [
-    {
-        'color': 'hsl(4, 90%, 58%)',
-        'label': 'Red'
-    },
-    {
-        'color': 'hsl(340, 82%, 52%)',
-        'label': 'Pink'
-    },
-    {
-        'color': 'hsl(291, 64%, 42%)',
-        'label': 'Purple'
-    },
-    {
-        'color': 'hsl(262, 52%, 47%)',
-        'label': 'Deep Purple'
-    },
-    {
-        'color': 'hsl(231, 48%, 48%)',
-        'label': 'Indigo'
-    },
-    {
-        'color': 'hsl(207, 90%, 54%)',
-        'label': 'Blue'
-    },
+    {'color': 'hsl(4, 90%, 58%)', 'label': 'Red'},
+    {'color': 'hsl(340, 82%, 52%)', 'label': 'Pink'},
+    {'color': 'hsl(291, 64%, 42%)', 'label': 'Purple'},
+    {'color': 'hsl(262, 52%, 47%)', 'label': 'Deep Purple'},
+    {'color': 'hsl(231, 48%, 48%)', 'label': 'Indigo'},
+    {'color': 'hsl(207, 90%, 54%)', 'label': 'Blue'},
 ]
 
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': [
-            'heading', '|',
-            'bold', 'italic', 'underline', 'strikethrough', '|',
-            'link', 'insertImage', 'blockQuote', '|',
-            'bulletedList', 'numberedList', 'todoList', '|',
-            'outdent', 'indent', '|',
-            'highlight', 'sourceEditing', '|',
-            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor',
-            'removeFormat', '|',
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'underline',
+            'strikethrough',
+            '|',
+            'link',
+            'insertImage',
+            'blockQuote',
+            '|',
+            'bulletedList',
+            'numberedList',
+            'todoList',
+            '|',
+            'outdent',
+            'indent',
+            '|',
+            'highlight',
+            'sourceEditing',
+            '|',
+            'fontSize',
+            'fontFamily',
+            'fontColor',
+            'fontBackgroundColor',
+            'removeFormat',
+            '|',
             'insertTable',
-            'mediaEmbed'
+            'mediaEmbed',
         ],
         'image': {
             'toolbar': [
-                'imageTextAlternative', '|',
-                'imageStyle:alignLeft', 'imageStyle:alignRight',
-                'imageStyle:alignCenter', 'imageStyle:side', '|'
+                'imageTextAlternative',
+                '|',
+                'imageStyle:alignLeft',
+                'imageStyle:alignRight',
+                'imageStyle:alignCenter',
+                'imageStyle:side',
+                '|',
             ],
             'styles': [
-                'full', 'side', 'alignLeft', 'alignRight', 'alignCenter',
-            ]
+                'full',
+                'side',
+                'alignLeft',
+                'alignRight',
+                'alignCenter',
+            ],
         },
         'table': {
             'contentToolbar': [
-                'tableColumn', 'tableRow', 'mergeTableCells',
-                'tableProperties', 'tableCellProperties'
+                'tableColumn',
+                'tableRow',
+                'mergeTableCells',
+                'tableProperties',
+                'tableCellProperties',
             ],
             'tableProperties': {
                 'borderColors': CustomColorPalette,
@@ -200,7 +212,7 @@ CKEDITOR_5_CONFIGS = {
             'tableCellProperties': {
                 'borderColors': CustomColorPalette,
                 'backgroundColors': CustomColorPalette,
-            }
+            },
         },
         'heading': {
             'options': [
@@ -240,47 +252,76 @@ CKEDITOR_5_CONFIGS = {
                     'view': 'h6',
                     'title': 'Heading 6',
                     'class': 'ck-heading_heading6',
-                }
+                },
             ]
-        }
+        },
     },
     'extends': {
         'blockToolbar': [
-            'paragraph', 'heading1', 'heading2', 'heading3',
+            'paragraph',
+            'heading1',
+            'heading2',
+            'heading3',
             '|',
-            'bulletedList', 'numberedList',
+            'bulletedList',
+            'numberedList',
             '|',
-            'blockQuote'
+            'blockQuote',
         ],
         'toolbar': [
-            'heading', '|',
-            'outdent', 'indent', '|',
-            'bold', 'italic', 'link', 'underline',
-            'strikethrough', 'subscript',
-            'superscript', 'highlight', '|',
-            'sourceEditing', 'insertImage',
-            'bulletedList', 'numberedList', 'todoList',
-            '|', 'blockQuote', 'imageUpload', '|',
-            'fontSize', 'fontFamily', 'fontColor',
-            'fontBackgroundColor', 'mediaEmbed',
-            'removeFormat', 'insertTable',
+            'heading',
+            '|',
+            'outdent',
+            'indent',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'underline',
+            'strikethrough',
+            'subscript',
+            'superscript',
+            'highlight',
+            '|',
+            'sourceEditing',
+            'insertImage',
+            'bulletedList',
+            'numberedList',
+            'todoList',
+            '|',
+            'blockQuote',
+            'imageUpload',
+            '|',
+            'fontSize',
+            'fontFamily',
+            'fontColor',
+            'fontBackgroundColor',
+            'mediaEmbed',
+            'removeFormat',
+            'insertTable',
         ],
         'image': {
             'toolbar': [
-                'imageTextAlternative', '|',
+                'imageTextAlternative',
+                '|',
                 'imageStyle:alignLeft',
                 'imageStyle:alignRight',
-                'imageStyle:alignCenter', 'imageStyle:side', '|'
+                'imageStyle:alignCenter',
+                'imageStyle:side',
+                '|',
             ],
             'styles': [
-                'full', 'side',
-                'alignLeft', 'alignRight',
+                'full',
+                'side',
+                'alignLeft',
+                'alignRight',
                 'alignCenter',
-            ]
+            ],
         },
         'table': {
             'contentToolbar': [
-                'tableColumn', 'tableRow',
+                'tableColumn',
+                'tableRow',
                 'mergeTableCells',
                 'tableProperties',
                 'tableCellProperties',
@@ -292,7 +333,7 @@ CKEDITOR_5_CONFIGS = {
             'tableCellProperties': {
                 'borderColors': CustomColorPalette,
                 'backgroundColors': CustomColorPalette,
-            }
+            },
         },
     },
     'list': {
@@ -301,7 +342,7 @@ CKEDITOR_5_CONFIGS = {
             'startIndex': 'true',
             'reversed': 'true',
         }
-    }
+    },
 }
 CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'staff'
 

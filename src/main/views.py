@@ -61,7 +61,7 @@ class SearchView(TemplateResponseMixin, View):
         form = self.form_class(request.POST)
         if form.is_valid():
             query = form.cleaned_data['query']
-            return redirect(f'{reverse('search_view')}?query={query}')
+            return redirect(f"{reverse('search_view')}?query={query}")
         return self.render_to_response(
             context={
                 'form': form,
@@ -71,6 +71,7 @@ class SearchView(TemplateResponseMixin, View):
 
 class SitemapView(TemplateView):
     """Просмотр для отображения карты сайта."""
+
     template_name = 'main/site_map.html'
 
     def get_context_data(self, **kwargs):

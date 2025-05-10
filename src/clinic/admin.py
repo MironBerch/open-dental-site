@@ -42,7 +42,7 @@ class PriceAdmin(admin.ModelAdmin):
 class HTMLImportForm(forms.Form):
     html_content = forms.CharField(
         widget=forms.Textarea(attrs={'rows': 20, 'cols': 100}),
-        label='Вставьте HTML-код страницы с отзывами'
+        label='Вставьте HTML-код страницы с отзывами',
     )
 
 
@@ -77,7 +77,7 @@ class ReviewAdmin(admin.ModelAdmin):
             **self.admin_site.each_context(request),
             'form': form,
             'opts': self.model._meta,
-            'title': 'Импорт отзывов из HTML'
+            'title': 'Импорт отзывов из HTML',
         }
         return render(request, 'admin/html_import.html', context)
 
@@ -89,7 +89,7 @@ class LicenseAdmin(admin.ModelAdmin):
         'published',
         'view_image',
     )
-    list_filter = ('published', )
+    list_filter = ('published',)
 
     def view_image(self, obj):
         if obj.image:
@@ -121,9 +121,9 @@ class StaffAdmin(admin.ModelAdmin):
         'view_image',
         'roles',
     )
-    list_filter = ('published', )
+    list_filter = ('published',)
     prepopulated_fields = {
-        'slug': ('fio', ),
+        'slug': ('fio',),
     }
 
     def view_image(self, obj):
@@ -140,21 +140,24 @@ class StaffAdmin(admin.ModelAdmin):
 @admin.register(ServiceGroup)
 class ServiceGroupAdmin(admin.ModelAdmin):
     prepopulated_fields = {
-        'slug': ('name', ),
+        'slug': ('name',),
     }
 
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
     prepopulated_fields = {
-        'slug': ('name', ),
+        'slug': ('name',),
     }
     list_display = (
         'name',
         'group',
         'published',
     )
-    list_filter = ('group', 'published', )
+    list_filter = (
+        'group',
+        'published',
+    )
 
 
 class PhotoInline(admin.TabularInline):
@@ -165,15 +168,15 @@ class PhotoInline(admin.TabularInline):
 @admin.register(Work)
 class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {
-        'slug': ('name', ),
+        'slug': ('name',),
     }
     list_display = (
         'name',
         'published',
         'view_image',
     )
-    list_filter = ('published', )
-    inlines = (PhotoInline, )
+    list_filter = ('published',)
+    inlines = (PhotoInline,)
 
     def view_image(self, obj):
         if obj.image:
@@ -192,7 +195,7 @@ class PhotoAdmin(admin.ModelAdmin):
         'work__name',
         'view_image',
     )
-    list_filter = ('work__name', )
+    list_filter = ('work__name',)
 
     def view_image(self, obj):
         if obj.image:

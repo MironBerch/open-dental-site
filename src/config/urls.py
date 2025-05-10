@@ -37,11 +37,9 @@ handler500 = ServerErrorView.as_view()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     # Gallery
     path('gallery/', WorksView.as_view(), name='gallery'),
     path('gallery/<slug>/', WorkView.as_view(), name='work'),
-
     # Services
     path(
         route='services/',
@@ -63,7 +61,6 @@ urlpatterns = [
         view=PricesView.as_view(),
         name='prices',
     ),
-
     path(
         route='sitemap/',
         view=SitemapView.as_view(),
@@ -74,7 +71,6 @@ urlpatterns = [
         view=MainView.as_view(),
         name='main',
     ),
-
     # Search
     path(
         route='api/search/',
@@ -86,7 +82,6 @@ urlpatterns = [
         view=SearchView.as_view(),
         name='search_view',
     ),
-
     # Company
     path(
         route='company/',
@@ -118,7 +113,6 @@ urlpatterns = [
         view=PolicyView.as_view(),
         name='policy',
     ),
-
     path('ckeditor5/', include('django_ckeditor_5.urls')),
 ] + debug_toolbar_urls()
 

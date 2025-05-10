@@ -5,7 +5,7 @@ class SearchForm(forms.Form):
     query = forms.CharField(label='Поиск')
 
     class Meta:
-        fields = ('query', )
+        fields = ('query',)
         widgets = {
             'query': forms.TextInput(attrs={'placeholder': ''}),
         }

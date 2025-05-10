@@ -17,9 +17,10 @@ dependencies = [
     "psycopg2-binary>=2.9.10",
 ]
 
+
 [tool.flake8]
 max-line-length = 100
-exclude = [".venv"]
+exclude = [".venv", "*/migrations/*.py"]
 
 [tool.isort]
 line_length = 100
@@ -38,3 +39,8 @@ sections = [
     "FIRSTPARTY",
     "LOCALFOLDER"
 ]
+
+[tool.black]
+line-length = 100
+exclude = '\.venv/'
+skip-string-normalization = true
