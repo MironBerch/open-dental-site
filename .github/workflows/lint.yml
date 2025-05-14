@@ -1,0 +1,33 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.13"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 isort black
+    - name: Lint with flake8
+      run: |
+        flake8 . --count --show-source --statistics --max-line-length=100 --exclude=.venv,*/migrations/*.py
+    - name: Lint with isort
+      run: |
+        isort . --check-only --diff --line-length=100 --multi-line=3 --skip-glob=.venv
+    - name: Lint with black
+      run: |
+        black --check . --line-length=100 --exclude='\.venv|settings\.py' --skip-string-normalization
