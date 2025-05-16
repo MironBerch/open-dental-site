@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 
     # django 3rd party
     'django_ckeditor_5',
@@ -359,3 +360,6 @@ CACHES = {
         'LOCATION': 'redis://redis:6379',
     },
 }
+
+# Sitemap
+SITEMAP_CACHE_TIMEOUT = 86400

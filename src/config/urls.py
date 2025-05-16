@@ -3,6 +3,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 
 from clinic.views import (
@@ -19,6 +20,13 @@ from clinic.views import (
     WorksView,
     WorkView,
 )
+from config.sitemap import (
+    MainStaticViewSitemap,
+    ServiceGroupSitemap,
+    ServiceSitemap,
+    StaticViewSitemap,
+    WorkSitemap,
+)
 from main.views import (
     BadRequestView,
     MainView,
@@ -29,6 +37,14 @@ from main.views import (
     ServerErrorView,
     SitemapView,
 )
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'service_groups': ServiceGroupSitemap,
+    'services': ServiceSitemap,
+    'works': WorkSitemap,
+    'main_static': MainStaticViewSitemap,
+}
 
 handler400 = BadRequestView.as_view()
 handler403 = PermissionDeniedView.as_view()
@@ -113,6 +129,16 @@ urlpatterns = [
         view=PolicyView.as_view(),
         name='policy',
     ),
+
+    path(
+        'sitemap.xml',
+        sitemap,
+        {
+            'sitemaps': sitemaps,
+        },
+        name='django.contrib.sitemaps.views.sitemap',
+    ),
+
     path('ckeditor5/', include('django_ckeditor_5.urls')),
 ] + debug_toolbar_urls()
 
