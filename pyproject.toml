@@ -42,5 +42,5 @@ sections = [
 
 [tool.black]
 line-length = 100
-exclude = '\.venv/'
+exclude = '\.venv/|settings.py'
 skip-string-normalization = true

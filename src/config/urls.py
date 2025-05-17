@@ -116,7 +116,7 @@ urlpatterns = [
         view=PolicyView.as_view(),
         name='policy',
     ),
-
+    # SEO
     path(
         'sitemap.xml',
         sitemap,
@@ -125,7 +125,6 @@ urlpatterns = [
         },
         name='django.contrib.sitemaps.views.sitemap',
     ),
-
     path(
         'robots.txt',
         TemplateView.as_view(
@@ -133,7 +132,7 @@ urlpatterns = [
             content_type='text/plain',
         ),
     ),
-
+    # ckeditor5
     path('ckeditor5/', include('django_ckeditor_5.urls')),
 ] + debug_toolbar_urls()
 
